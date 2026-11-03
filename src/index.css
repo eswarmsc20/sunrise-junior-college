@@ -36,7 +36,7 @@
 }
 
 /* ========================================================
-   SINGLE-PAGE PRINT STYLES FOR OFFICIAL COLLEGE FEE RECEIPT
+   SINGLE-PAGE PRINT STYLES FOR FEE RECEIPT & MARKS MEMO
    ======================================================== */
 @media print {
   @page {
@@ -61,6 +61,7 @@
 
   /* Make modal container visible */
   body > div:has(.printable-receipt-card),
+  body > div:has(.printable-memo-card),
   #root,
   .print-modal-container {
     display: block !important;
@@ -71,20 +72,21 @@
     width: 100% !important;
   }
 
-  /* Hide everything inside the modal except the receipt card */
+  /* Hide buttons and interactive controls from print */
   .no-print {
     display: none !important;
     visibility: hidden !important;
   }
 
-  /* Single Page Receipt Card Styling */
-  .printable-receipt-card {
+  /* 1-Page Fee Receipt Card */
+  .printable-receipt-card,
+  .printable-memo-card {
     display: block !important;
     position: relative !important;
     width: 100% !important;
     max-width: 190mm !important;
     margin: 0 auto !important;
-    padding: 16px 20px !important;
+    padding: 16px 22px !important;
     background: #ffffff !important;
     border: 2px solid #0f172a !important;
     border-radius: 12px !important;
@@ -94,31 +96,37 @@
     page-break-after: avoid !important;
   }
 
-  /* Ensure text colors are crisp and high contrast in print */
-  .printable-receipt-card * {
+  /* Ensure text colors are crisp in print */
+  .printable-receipt-card *,
+  .printable-memo-card * {
     color: #000000 !important;
     text-shadow: none !important;
   }
 
-  .printable-receipt-card table {
+  .printable-receipt-card table,
+  .printable-memo-card table {
     border-collapse: collapse !important;
     width: 100% !important;
     page-break-inside: avoid !important;
   }
 
   .printable-receipt-card th,
-  .printable-receipt-card td {
-    padding: 6px 10px !important;
-    border: 1px solid #cbd5e1 !important;
+  .printable-receipt-card td,
+  .printable-memo-card th,
+  .printable-memo-card td {
+    padding: 5px 8px !important;
+    border: 1px solid #94a3b8 !important;
   }
 
-  .printable-receipt-card thead th {
+  .printable-receipt-card thead th,
+  .printable-memo-card thead th {
     background-color: #f1f5f9 !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
 
-  .printable-receipt-card .receipt-badge {
+  .printable-receipt-card .receipt-badge,
+  .printable-memo-card .memo-badge {
     background-color: #0f172a !important;
     color: #ffffff !important;
     -webkit-print-color-adjust: exact !important;

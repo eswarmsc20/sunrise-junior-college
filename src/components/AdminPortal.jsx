@@ -472,18 +472,18 @@ export default function AdminPortal({ admin, onLogout, onOpenReceipt, onOpenMark
                             <button
                               onClick={() => onOpenReceipt(s)}
                               className="bg-amber-100 hover:bg-amber-200 text-amber-900 text-[11px] font-bold px-2 py-1 rounded-lg transition flex items-center gap-1"
-                              title="Generate Official Fee Receipt"
+                              title="Generate Official Fee Receipt Only"
                             >
                               <Receipt className="w-3 h-3" />
-                              <span>Receipt</span>
+                              <span>Fee Receipt</span>
                             </button>
                             <button
                               onClick={() => onOpenMarks(s)}
                               className="bg-indigo-100 hover:bg-indigo-200 text-indigo-900 text-[11px] font-bold px-2 py-1 rounded-lg transition flex items-center gap-1"
-                              title="View & Dispatch Exam Marks"
+                              title="View & Print Official Marks Memo Only"
                             >
                               <Award className="w-3 h-3" />
-                              <span>Marks</span>
+                              <span>Marks Memo</span>
                             </button>
                           </div>
                         </td>

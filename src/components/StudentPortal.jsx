@@ -104,17 +104,17 @@ Principal Desk: 8143217785`;
           <div className="flex flex-wrap items-center gap-3 w-full md:w-auto justify-end">
             <button
               onClick={() => onOpenReceipt(s)}
-              className="bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold px-4 py-2.5 rounded-xl shadow transition flex items-center gap-1.5"
+              className="bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-black px-4 py-2.5 rounded-xl shadow transition flex items-center gap-1.5"
             >
               <Receipt className="w-4 h-4" />
-              <span>Fee Receipt</span>
+              <span>Fee Receipt Only</span>
             </button>
             <button
               onClick={() => onOpenMarks(s)}
-              className="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow transition flex items-center gap-1.5"
+              className="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black px-4 py-2.5 rounded-xl shadow transition flex items-center gap-1.5"
             >
               <Award className="w-4 h-4" />
-              <span>All Exam Marks</span>
+              <span>Marks Memo Only</span>
             </button>
             <button
               onClick={onLogout}
@@ -265,9 +265,9 @@ Principal Desk: 8143217785`;
               </div>
               <button
                 onClick={() => onOpenMarks(s)}
-                className="text-xs font-bold text-indigo-700 bg-indigo-50 px-3 py-1.5 rounded-xl border border-indigo-200 hover:bg-indigo-100 transition"
+                className="text-xs font-black text-indigo-700 bg-indigo-50 px-3 py-1.5 rounded-xl border border-indigo-200 hover:bg-indigo-100 transition"
               >
-                View All Exams & Send WhatsApp →
+                Print / View Marks Memo →
               </button>
             </div>
 
