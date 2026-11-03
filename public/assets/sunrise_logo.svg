@@ -1,0 +1,167 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <!-- Sun Radial Gradient -->
+    <radialGradient id="sunGlow" cx="50%" cy="80%" r="80%">
+      <stop offset="0%" stop-color="#FFFBEB" />
+      <stop offset="30%" stop-color="#FDE047" />
+      <stop offset="65%" stop-color="#F59E0B" />
+      <stop offset="90%" stop-color="#EA580C" />
+      <stop offset="100%" stop-color="#B91C1C" />
+    </radialGradient>
+
+    <!-- Ray Gradient -->
+    <linearGradient id="rayGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.9" />
+      <stop offset="70%" stop-color="#FDE047" stop-opacity="1" />
+      <stop offset="100%" stop-color="#EA580C" stop-opacity="0.8" />
+    </linearGradient>
+
+    <!-- Blue Pages Gradient -->
+    <linearGradient id="bluePage" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="40%" stop-color="#2563EB" />
+      <stop offset="100%" stop-color="#1D4ED8" />
+    </linearGradient>
+
+    <!-- Green Pages Gradient -->
+    <linearGradient id="greenPage" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399" />
+      <stop offset="40%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#047857" />
+    </linearGradient>
+
+    <!-- Golden Ring Gradient -->
+    <linearGradient id="goldRing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D97706" />
+      <stop offset="35%" stop-color="#FCD34D" />
+      <stop offset="70%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#B45309" />
+    </linearGradient>
+
+    <!-- Maroon Ring Gradient -->
+    <linearGradient id="maroonRing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7F1D1D" />
+      <stop offset="50%" stop-color="#991B1B" />
+      <stop offset="100%" stop-color="#450A0A" />
+    </linearGradient>
+
+    <!-- Drop Shadows -->
+    <filter id="glowShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.2" />
+    </filter>
+
+    <filter id="subtleShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.15" />
+    </filter>
+
+    <!-- Circular text paths -->
+    <path id="topTextPath" d="M 80 250 A 170 170 0 0 1 420 250" fill="none" />
+    <path id="bottomTextPath" d="M 420 250 A 170 170 0 0 1 80 250" fill="none" />
+  </defs>
+
+  <!-- Outer Ring with Shadow -->
+  <circle cx="250" cy="250" r="240" fill="#FFFFFF" filter="url(#glowShadow)" stroke="url(#goldRing)" stroke-width="5" />
+
+  <!-- Outer Maroon Border Band -->
+  <circle cx="250" cy="250" r="226" fill="none" stroke="url(#maroonRing)" stroke-width="18" />
+  <circle cx="250" cy="250" r="215" fill="none" stroke="#FEF3C7" stroke-width="1.5" stroke-dasharray="3,3" />
+
+  <!-- Inner Gold Accent Ring -->
+  <circle cx="250" cy="250" r="148" fill="none" stroke="url(#goldRing)" stroke-width="4" />
+  <circle cx="250" cy="250" r="144" fill="none" stroke="#991B1B" stroke-width="1.5" />
+
+  <!-- Center Circle Canvas -->
+  <circle cx="250" cy="250" r="142" fill="#FFFDF5" />
+
+  <!-- ================= TEXT IN BORDER ================= -->
+  <!-- Top Text: SUNRISE JUNIOR COLLEGE -->
+  <text font-family="'Arial Black', 'Impact', sans-serif" font-size="23" font-weight="900" fill="#7F1D1D" letter-spacing="3.5">
+    <textPath href="#topTextPath" startOffset="50%" text-anchor="middle">
+      SUNRISE JUNIOR COLLEGE
+    </textPath>
+  </text>
+
+  <!-- Bottom Text: SRIKAKULAM • BIE: 01089 -->
+  <text font-family="'Arial Black', 'Impact', sans-serif" font-size="19" font-weight="900" fill="#7F1D1D" letter-spacing="3.5">
+    <textPath href="#bottomTextPath" startOffset="50%" text-anchor="middle">
+      ★ SRIKAKULAM • BIE: 01089 ★
+    </textPath>
+  </text>
+
+  <!-- Side Stars in Outer Band -->
+  <g fill="#D97706" transform="translate(56, 243)">
+    <polygon points="10,1 12,7 18,7 13,11 15,17 10,13 5,17 7,11 2,7 8,7" />
+  </g>
+  <g fill="#D97706" transform="translate(424, 243)">
+    <polygon points="10,1 12,7 18,7 13,11 15,17 10,13 5,17 7,11 2,7 8,7" />
+  </g>
+
+  <!-- ================= CENTER EMBLEM ART ================= -->
+  <g id="centerArt" filter="url(#subtleShadow)">
+    
+    <!-- 1. Sunburst Radiating Rays -->
+    <g id="sunRays">
+      <polygon points="247,240 250,140 253,240" fill="url(#rayGrad)" />
+      
+      <!-- Symmetrical Rays at angles -->
+      <polygon points="247,240 226,144 253,240" fill="url(#rayGrad)" />
+      <polygon points="247,240 274,144 253,240" fill="url(#rayGrad)" />
+      
+      <polygon points="247,240 203,153 253,240" fill="url(#rayGrad)" />
+      <polygon points="247,240 297,153 253,240" fill="url(#rayGrad)" />
+      
+      <polygon points="247,240 182,168 253,240" fill="url(#rayGrad)" />
+      <polygon points="247,240 318,168 253,240" fill="url(#rayGrad)" />
+      
+      <polygon points="247,240 164,188 253,240" fill="url(#rayGrad)" />
+      <polygon points="247,240 336,188 253,240" fill="url(#rayGrad)" />
+      
+      <polygon points="247,240 152,212 253,240" fill="url(#rayGrad)" />
+      <polygon points="247,240 348,212 253,240" fill="url(#rayGrad)" />
+
+      <polygon points="247,240 146,240 253,240" fill="url(#rayGrad)" />
+      <polygon points="247,240 354,240 253,240" fill="url(#rayGrad)" />
+    </g>
+
+    <!-- 2. Rising Sun (Half Sphere) -->
+    <path d="M 180 248 A 70 70 0 0 1 320 248 Z" fill="url(#sunGlow)" stroke="#D97706" stroke-width="1.5" />
+
+    <!-- 3. Open Book of Knowledge -->
+    <!-- Book Shadow & Binding Base -->
+    <path d="M 160 286 C 200 278 245 284 250 288 C 255 284 300 278 340 286 C 330 296 295 292 250 298 C 205 292 170 296 160 286 Z" fill="#1E293B" opacity="0.6" />
+
+    <!-- Left Book Pages (Blue Wing) -->
+    <path d="M 152 278 C 190 270 240 275 250 282 L 250 274 C 240 267 190 262 152 270 Z" fill="#1E3A8A" />
+    <path d="M 154 274 C 192 266 242 271 250 278 L 250 270 C 242 263 192 258 154 266 Z" fill="#F8FAFC" stroke="#94A3B8" stroke-width="0.5" />
+    
+    <!-- Main Top Blue Page -->
+    <path d="M 156 268 C 195 258 244 265 250 272 C 244 248 190 244 150 256 C 145 264 150 266 156 268 Z" fill="url(#bluePage)" stroke="#1D4ED8" stroke-width="1.5" />
+    
+    <!-- Blue Page Leaf Detail Highlight -->
+    <path d="M 164 260 C 195 252 230 256 246 263" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.8" />
+    <path d="M 172 265 C 200 260 228 263 242 268" fill="none" stroke="#93C5FD" stroke-width="1.5" stroke-linecap="round" opacity="0.9" />
+
+    <!-- Right Book Pages (Green Wing) -->
+    <path d="M 348 278 C 310 270 260 275 250 282 L 250 274 C 260 267 310 262 348 270 Z" fill="#064E3B" />
+    <path d="M 346 274 C 308 266 258 271 250 278 L 250 270 C 258 263 308 258 346 266 Z" fill="#F8FAFC" stroke="#94A3B8" stroke-width="0.5" />
+
+    <!-- Main Top Green Page -->
+    <path d="M 344 268 C 305 258 256 265 250 272 C 256 248 310 244 350 256 C 355 264 350 266 344 268 Z" fill="url(#greenPage)" stroke="#047857" stroke-width="1.5" />
+
+    <!-- Green Page Leaf Detail Highlight -->
+    <path d="M 336 260 C 305 252 270 256 254 263" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.8" />
+    <path d="M 328 265 C 300 260 272 263 258 268" fill="none" stroke="#A7F3D0" stroke-width="1.5" stroke-linecap="round" opacity="0.9" />
+
+    <!-- Book Center Spine Joint -->
+    <path d="M 248 255 L 252 255 L 252 284 L 248 284 Z" fill="#F59E0B" />
+
+    <!-- Sunrise Ribbon Banner at bottom of book -->
+    <g transform="translate(170, 290)">
+      <rect x="0" y="0" width="160" height="22" rx="11" fill="url(#goldRing)" filter="url(#subtleShadow)" />
+      <text x="80" y="15" font-family="'Segoe UI', 'Outfit', sans-serif" font-size="11" font-weight="900" fill="#7F1D1D" text-anchor="middle" letter-spacing="1">
+        ESTD. 2008
+      </text>
+    </g>
+
+  </g>
+</svg>

@@ -1,0 +1,4368 @@
+[
+  {
+    "id": "STU001",
+    "hallTicket": "2601089001",
+    "name": "Nakka Reshma",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "9493044571",
+    "isHostel": false,
+    "attendance": 85,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 77,
+      "Physics/Zoology": 73,
+      "Chemistry": 76,
+      "English": 81,
+      "Sanskrit": 90
+    },
+    "admissionNo": "SJC-2026-001",
+    "fatherName": "Satyanarayana Chowdary",
+    "fatherPhone": "9848001373",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 20000,
+      "dueFee": 15000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0001",
+          "date": "12-08-2026",
+          "amountPaid": 20000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120001",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 21,
+        "Chemistry": 25,
+        "English": 23,
+        "Sanskrit": 24
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 23,
+        "Chemistry": 23,
+        "English": 24,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 77,
+        "Physics/Zoology": 73,
+        "Chemistry": 76,
+        "English": 81,
+        "Sanskrit": 90
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 80,
+        "Physics/Zoology": 76,
+        "Chemistry": 79,
+        "English": 84,
+        "Sanskrit": 93
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 20,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU002",
+    "hallTicket": "2601089002",
+    "name": "Mamidi  Nagamani",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "7093819492",
+    "isHostel": false,
+    "attendance": 88,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 84,
+      "Physics/Zoology": 78,
+      "Chemistry": 80,
+      "English": 87,
+      "Sanskrit": 92
+    },
+    "admissionNo": "SJC-2026-002",
+    "fatherName": "Suresh Reddy",
+    "fatherPhone": "9848002746",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 25000,
+      "dueFee": 10000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0002",
+          "date": "12-08-2026",
+          "amountPaid": 25000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120002",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 20,
+        "Physics/Zoology": 23,
+        "Chemistry": 24,
+        "English": 24,
+        "Sanskrit": 25
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 25,
+        "Physics/Zoology": 20,
+        "Chemistry": 24,
+        "English": 25,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 84,
+        "Physics/Zoology": 78,
+        "Chemistry": 80,
+        "English": 87,
+        "Sanskrit": 92
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 87,
+        "Physics/Zoology": 81,
+        "Chemistry": 83,
+        "English": 90,
+        "Sanskrit": 95
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 22,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU003",
+    "hallTicket": "2601089003",
+    "name": "Ruppa Gayathri",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "9963674059",
+    "isHostel": false,
+    "attendance": 91,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 91,
+      "Physics/Zoology": 83,
+      "Chemistry": 84,
+      "English": 93,
+      "Sanskrit": 94
+    },
+    "admissionNo": "SJC-2026-003",
+    "fatherName": "Nageswara Varma",
+    "fatherPhone": "9848004119",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 20000,
+      "dueFee": 15000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0003",
+          "date": "12-08-2026",
+          "amountPaid": 20000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120003",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 25,
+        "Chemistry": 23,
+        "English": 25,
+        "Sanskrit": 23
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 22,
+        "Physics/Zoology": 23,
+        "Chemistry": 25,
+        "English": 23,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 91,
+        "Physics/Zoology": 83,
+        "Chemistry": 84,
+        "English": 93,
+        "Sanskrit": 94
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 94,
+        "Physics/Zoology": 86,
+        "Chemistry": 87,
+        "English": 96,
+        "Sanskrit": 97
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 24,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU004",
+    "hallTicket": "2601089004",
+    "name": "Sadhu Mohini Priya",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "7382773981",
+    "isHostel": false,
+    "attendance": 94,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 98,
+      "Physics/Zoology": 88,
+      "Chemistry": 88,
+      "English": 75,
+      "Sanskrit": 96
+    },
+    "admissionNo": "SJC-2026-004",
+    "fatherName": "Appala Patnaik",
+    "fatherPhone": "9848005492",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 35000,
+      "dueFee": 0,
+      "status": "Fully Paid",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0004",
+          "date": "12-08-2026",
+          "amountPaid": 35000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120004",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 20,
+        "Physics/Zoology": 20,
+        "Chemistry": 22,
+        "English": 22,
+        "Sanskrit": 24
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 24,
+        "Physics/Zoology": 20,
+        "Chemistry": 22,
+        "English": 24,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 98,
+        "Physics/Zoology": 88,
+        "Chemistry": 88,
+        "English": 75,
+        "Sanskrit": 96
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 100,
+        "Physics/Zoology": 91,
+        "Chemistry": 91,
+        "English": 78,
+        "Sanskrit": 99
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 26,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU005",
+    "hallTicket": "2601089005",
+    "name": "Alapana Nandini",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "7981024477",
+    "isHostel": false,
+    "attendance": 97,
+    "feeStatus": "Pending",
+    "marks": {
+      "Maths/Botany": 76,
+      "Physics/Zoology": 93,
+      "Chemistry": 92,
+      "English": 81,
+      "Sanskrit": 98
+    },
+    "admissionNo": "SJC-2026-005",
+    "fatherName": "Ramesh Sharma",
+    "fatherPhone": "9848006865",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 20000,
+      "dueFee": 15000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0005",
+          "date": "12-08-2026",
+          "amountPaid": 20000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120005",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 22,
+        "Chemistry": 21,
+        "English": 23,
+        "Sanskrit": 25
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 21,
+        "Physics/Zoology": 23,
+        "Chemistry": 23,
+        "English": 25,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 76,
+        "Physics/Zoology": 93,
+        "Chemistry": 92,
+        "English": 81,
+        "Sanskrit": 98
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 79,
+        "Physics/Zoology": 96,
+        "Chemistry": 95,
+        "English": 84,
+        "Sanskrit": 100
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 28,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU006",
+    "hallTicket": "2601089006",
+    "name": "Ummidarapu Divya",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "9989303126",
+    "isHostel": false,
+    "attendance": 84,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 83,
+      "Physics/Zoology": 68,
+      "Chemistry": 96,
+      "English": 87,
+      "Sanskrit": 88
+    },
+    "admissionNo": "SJC-2026-006",
+    "fatherName": "Krishna Murthy",
+    "fatherPhone": "9848008238",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 25000,
+      "dueFee": 10000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0006",
+          "date": "12-08-2026",
+          "amountPaid": 25000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120006",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 20,
+        "Physics/Zoology": 24,
+        "Chemistry": 25,
+        "English": 24,
+        "Sanskrit": 23
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 20,
+        "Chemistry": 24,
+        "English": 23,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 83,
+        "Physics/Zoology": 68,
+        "Chemistry": 96,
+        "English": 87,
+        "Sanskrit": 88
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 86,
+        "Physics/Zoology": 71,
+        "Chemistry": 99,
+        "English": 90,
+        "Sanskrit": 91
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 30,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU007",
+    "hallTicket": "2601089007",
+    "name": "Jaka Meenakshi",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "9515951260",
+    "isHostel": false,
+    "attendance": 87,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 90,
+      "Physics/Zoology": 73,
+      "Chemistry": 73,
+      "English": 93,
+      "Sanskrit": 90
+    },
+    "admissionNo": "SJC-2026-007",
+    "fatherName": "Venkata Guptha",
+    "fatherPhone": "9848009611",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 20000,
+      "dueFee": 15000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0007",
+          "date": "12-08-2026",
+          "amountPaid": 20000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120007",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 19,
+        "Chemistry": 24,
+        "English": 25,
+        "Sanskrit": 24
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 25,
+        "Physics/Zoology": 23,
+        "Chemistry": 25,
+        "English": 24,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 90,
+        "Physics/Zoology": 73,
+        "Chemistry": 73,
+        "English": 93,
+        "Sanskrit": 90
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 93,
+        "Physics/Zoology": 76,
+        "Chemistry": 76,
+        "English": 96,
+        "Sanskrit": 93
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Absent",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 32,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU008",
+    "hallTicket": "2601089008",
+    "name": "Ummdarapu Kumari",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "8187020492",
+    "isHostel": false,
+    "attendance": 90,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 97,
+      "Physics/Zoology": 78,
+      "Chemistry": 77,
+      "English": 75,
+      "Sanskrit": 92
+    },
+    "admissionNo": "SJC-2026-008",
+    "fatherName": "Prasad Naidu",
+    "fatherPhone": "9848010984",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 35000,
+      "dueFee": 0,
+      "status": "Fully Paid",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0008",
+          "date": "12-08-2026",
+          "amountPaid": 35000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120008",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 20,
+        "Physics/Zoology": 21,
+        "Chemistry": 23,
+        "English": 22,
+        "Sanskrit": 25
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 22,
+        "Physics/Zoology": 20,
+        "Chemistry": 22,
+        "English": 25,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 97,
+        "Physics/Zoology": 78,
+        "Chemistry": 77,
+        "English": 75,
+        "Sanskrit": 92
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 100,
+        "Physics/Zoology": 81,
+        "Chemistry": 80,
+        "English": 78,
+        "Sanskrit": 95
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 34,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU009",
+    "hallTicket": "2601089009",
+    "name": "Rella Alekhya",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "9704002140",
+    "isHostel": false,
+    "attendance": 93,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 75,
+      "Physics/Zoology": 83,
+      "Chemistry": 81,
+      "English": 81,
+      "Sanskrit": 94
+    },
+    "admissionNo": "SJC-2026-009",
+    "fatherName": "Mohan Rao",
+    "fatherPhone": "9848012357",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 20000,
+      "dueFee": 15000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0009",
+          "date": "12-08-2026",
+          "amountPaid": 20000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120009",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 23,
+        "Chemistry": 22,
+        "English": 23,
+        "Sanskrit": 23
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 24,
+        "Physics/Zoology": 23,
+        "Chemistry": 23,
+        "English": 23,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 75,
+        "Physics/Zoology": 83,
+        "Chemistry": 81,
+        "English": 81,
+        "Sanskrit": 94
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 78,
+        "Physics/Zoology": 86,
+        "Chemistry": 84,
+        "English": 84,
+        "Sanskrit": 97
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 36,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU010",
+    "hallTicket": "2601089010",
+    "name": "Ummidarapu Deepthi",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "9989303136",
+    "isHostel": false,
+    "attendance": 96,
+    "feeStatus": "Pending",
+    "marks": {
+      "Maths/Botany": 82,
+      "Physics/Zoology": 88,
+      "Chemistry": 85,
+      "English": 87,
+      "Sanskrit": 96
+    },
+    "admissionNo": "SJC-2026-010",
+    "fatherName": "Srinivasa Chowdary",
+    "fatherPhone": "9848013730",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 25000,
+      "dueFee": 10000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0010",
+          "date": "12-08-2026",
+          "amountPaid": 25000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120010",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 20,
+        "Physics/Zoology": 25,
+        "Chemistry": 21,
+        "English": 24,
+        "Sanskrit": 24
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 21,
+        "Physics/Zoology": 20,
+        "Chemistry": 24,
+        "English": 24,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 82,
+        "Physics/Zoology": 88,
+        "Chemistry": 85,
+        "English": 87,
+        "Sanskrit": 96
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 85,
+        "Physics/Zoology": 91,
+        "Chemistry": 88,
+        "English": 90,
+        "Sanskrit": 99
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 38,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU011",
+    "hallTicket": "2601089011",
+    "name": "Tallavalasa Akshita",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "9963199013",
+    "isHostel": false,
+    "attendance": 83,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 89,
+      "Physics/Zoology": 93,
+      "Chemistry": 89,
+      "English": 93,
+      "Sanskrit": 98
+    },
+    "admissionNo": "SJC-2026-011",
+    "fatherName": "Satyanarayana Reddy",
+    "fatherPhone": "9848015103",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 20000,
+      "dueFee": 15000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0011",
+          "date": "12-08-2026",
+          "amountPaid": 20000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120011",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 20,
+        "Chemistry": 25,
+        "English": 25,
+        "Sanskrit": 25
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 23,
+        "Chemistry": 25,
+        "English": 25,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 89,
+        "Physics/Zoology": 93,
+        "Chemistry": 89,
+        "English": 93,
+        "Sanskrit": 98
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 92,
+        "Physics/Zoology": 96,
+        "Chemistry": 92,
+        "English": 96,
+        "Sanskrit": 100
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 40,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU012",
+    "hallTicket": "2601089012",
+    "name": "Jogi Vanitha",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "9908673341",
+    "isHostel": false,
+    "attendance": 86,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 96,
+      "Physics/Zoology": 68,
+      "Chemistry": 93,
+      "English": 75,
+      "Sanskrit": 88
+    },
+    "admissionNo": "SJC-2026-012",
+    "fatherName": "Suresh Varma",
+    "fatherPhone": "9848016476",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 35000,
+      "dueFee": 0,
+      "status": "Fully Paid",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0012",
+          "date": "12-08-2026",
+          "amountPaid": 35000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120012",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 20,
+        "Physics/Zoology": 22,
+        "Chemistry": 24,
+        "English": 22,
+        "Sanskrit": 23
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 25,
+        "Physics/Zoology": 20,
+        "Chemistry": 22,
+        "English": 23,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 96,
+        "Physics/Zoology": 68,
+        "Chemistry": 93,
+        "English": 75,
+        "Sanskrit": 88
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 99,
+        "Physics/Zoology": 71,
+        "Chemistry": 96,
+        "English": 78,
+        "Sanskrit": 91
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 42,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU013",
+    "hallTicket": "2601089013",
+    "name": "Jagalinki Vedavathi",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "9908818185",
+    "isHostel": false,
+    "attendance": 89,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 74,
+      "Physics/Zoology": 73,
+      "Chemistry": 97,
+      "English": 81,
+      "Sanskrit": 90
+    },
+    "admissionNo": "SJC-2026-013",
+    "fatherName": "Nageswara Patnaik",
+    "fatherPhone": "9848017849",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 20000,
+      "dueFee": 15000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0013",
+          "date": "12-08-2026",
+          "amountPaid": 20000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120013",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 24,
+        "Chemistry": 23,
+        "English": 23,
+        "Sanskrit": 24
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 22,
+        "Physics/Zoology": 23,
+        "Chemistry": 23,
+        "English": 24,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 74,
+        "Physics/Zoology": 73,
+        "Chemistry": 97,
+        "English": 81,
+        "Sanskrit": 90
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 77,
+        "Physics/Zoology": 76,
+        "Chemistry": 100,
+        "English": 84,
+        "Sanskrit": 93
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 44,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU014",
+    "hallTicket": "2601089014",
+    "name": "Padala Kruthagnya",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "9177794451",
+    "isHostel": false,
+    "attendance": 92,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 81,
+      "Physics/Zoology": 78,
+      "Chemistry": 74,
+      "English": 87,
+      "Sanskrit": 92
+    },
+    "admissionNo": "SJC-2026-014",
+    "fatherName": "Appala Sharma",
+    "fatherPhone": "9848019222",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 25000,
+      "dueFee": 10000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0014",
+          "date": "12-08-2026",
+          "amountPaid": 25000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120014",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 20,
+        "Physics/Zoology": 19,
+        "Chemistry": 22,
+        "English": 24,
+        "Sanskrit": 25
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 24,
+        "Physics/Zoology": 20,
+        "Chemistry": 24,
+        "English": 25,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 81,
+        "Physics/Zoology": 78,
+        "Chemistry": 74,
+        "English": 87,
+        "Sanskrit": 92
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 84,
+        "Physics/Zoology": 81,
+        "Chemistry": 77,
+        "English": 90,
+        "Sanskrit": 95
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Absent",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 18,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU015",
+    "hallTicket": "2601089015",
+    "name": "Koppala Jasnmin",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "9490265738",
+    "isHostel": false,
+    "attendance": 95,
+    "feeStatus": "Pending",
+    "marks": {
+      "Maths/Botany": 88,
+      "Physics/Zoology": 83,
+      "Chemistry": 78,
+      "English": 93,
+      "Sanskrit": 94
+    },
+    "admissionNo": "SJC-2026-015",
+    "fatherName": "Ramesh Murthy",
+    "fatherPhone": "9848020595",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 20000,
+      "dueFee": 15000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0015",
+          "date": "12-08-2026",
+          "amountPaid": 20000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120015",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 21,
+        "Chemistry": 21,
+        "English": 25,
+        "Sanskrit": 23
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 21,
+        "Physics/Zoology": 23,
+        "Chemistry": 25,
+        "English": 23,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 88,
+        "Physics/Zoology": 83,
+        "Chemistry": 78,
+        "English": 93,
+        "Sanskrit": 94
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 91,
+        "Physics/Zoology": 86,
+        "Chemistry": 81,
+        "English": 96,
+        "Sanskrit": 97
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 20,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU016",
+    "hallTicket": "2601089016",
+    "name": "Dangedi Sandhya",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "7386700411",
+    "isHostel": false,
+    "attendance": 82,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 95,
+      "Physics/Zoology": 88,
+      "Chemistry": 82,
+      "English": 75,
+      "Sanskrit": 96
+    },
+    "admissionNo": "SJC-2026-016",
+    "fatherName": "Krishna Guptha",
+    "fatherPhone": "9848021968",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 35000,
+      "dueFee": 0,
+      "status": "Fully Paid",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0016",
+          "date": "12-08-2026",
+          "amountPaid": 35000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120016",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 20,
+        "Physics/Zoology": 23,
+        "Chemistry": 25,
+        "English": 22,
+        "Sanskrit": 24
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 20,
+        "Chemistry": 22,
+        "English": 24,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 95,
+        "Physics/Zoology": 88,
+        "Chemistry": 82,
+        "English": 75,
+        "Sanskrit": 96
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 98,
+        "Physics/Zoology": 91,
+        "Chemistry": 85,
+        "English": 78,
+        "Sanskrit": 99
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 22,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU017",
+    "hallTicket": "2601089017",
+    "name": "Gujjala Syamanth",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "9704519220",
+    "isHostel": false,
+    "attendance": 85,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 73,
+      "Physics/Zoology": 93,
+      "Chemistry": 86,
+      "English": 81,
+      "Sanskrit": 98
+    },
+    "admissionNo": "SJC-2026-017",
+    "fatherName": "Venkata Naidu",
+    "fatherPhone": "9848023341",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 20000,
+      "dueFee": 15000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0017",
+          "date": "12-08-2026",
+          "amountPaid": 20000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120017",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 25,
+        "Chemistry": 24,
+        "English": 23,
+        "Sanskrit": 25
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 25,
+        "Physics/Zoology": 23,
+        "Chemistry": 23,
+        "English": 25,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 73,
+        "Physics/Zoology": 93,
+        "Chemistry": 86,
+        "English": 81,
+        "Sanskrit": 98
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 76,
+        "Physics/Zoology": 96,
+        "Chemistry": 89,
+        "English": 84,
+        "Sanskrit": 100
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 24,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU018",
+    "hallTicket": "2601089018",
+    "name": "Tungana Neeraj Kumar",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "7995836241",
+    "isHostel": false,
+    "attendance": 88,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 80,
+      "Physics/Zoology": 68,
+      "Chemistry": 90,
+      "English": 87,
+      "Sanskrit": 88
+    },
+    "admissionNo": "SJC-2026-018",
+    "fatherName": "Prasad Rao",
+    "fatherPhone": "9848024714",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 25000,
+      "dueFee": 10000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0018",
+          "date": "12-08-2026",
+          "amountPaid": 25000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120018",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 20,
+        "Physics/Zoology": 20,
+        "Chemistry": 23,
+        "English": 24,
+        "Sanskrit": 23
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 22,
+        "Physics/Zoology": 20,
+        "Chemistry": 24,
+        "English": 23,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 80,
+        "Physics/Zoology": 68,
+        "Chemistry": 90,
+        "English": 87,
+        "Sanskrit": 88
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 83,
+        "Physics/Zoology": 71,
+        "Chemistry": 93,
+        "English": 90,
+        "Sanskrit": 91
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 26,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU019",
+    "hallTicket": "2601089019",
+    "name": "Gedala Satwik",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "8106512591",
+    "isHostel": false,
+    "attendance": 91,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 87,
+      "Physics/Zoology": 73,
+      "Chemistry": 94,
+      "English": 93,
+      "Sanskrit": 90
+    },
+    "admissionNo": "SJC-2026-019",
+    "fatherName": "Mohan Chowdary",
+    "fatherPhone": "9848026087",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 20000,
+      "dueFee": 15000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0019",
+          "date": "12-08-2026",
+          "amountPaid": 20000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120019",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 22,
+        "Chemistry": 22,
+        "English": 25,
+        "Sanskrit": 24
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 24,
+        "Physics/Zoology": 23,
+        "Chemistry": 25,
+        "English": 24,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 87,
+        "Physics/Zoology": 73,
+        "Chemistry": 94,
+        "English": 93,
+        "Sanskrit": 90
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 90,
+        "Physics/Zoology": 76,
+        "Chemistry": 97,
+        "English": 96,
+        "Sanskrit": 93
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 28,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU020",
+    "hallTicket": "2601089020",
+    "name": "Ponnada Sai Sudhakar",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "7702258090",
+    "isHostel": false,
+    "attendance": 94,
+    "feeStatus": "Pending",
+    "marks": {
+      "Maths/Botany": 94,
+      "Physics/Zoology": 78,
+      "Chemistry": 98,
+      "English": 75,
+      "Sanskrit": 92
+    },
+    "admissionNo": "SJC-2026-020",
+    "fatherName": "Srinivasa Reddy",
+    "fatherPhone": "9848027460",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 35000,
+      "dueFee": 0,
+      "status": "Fully Paid",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0020",
+          "date": "12-08-2026",
+          "amountPaid": 35000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120020",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 20,
+        "Physics/Zoology": 24,
+        "Chemistry": 21,
+        "English": 22,
+        "Sanskrit": 25
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 21,
+        "Physics/Zoology": 20,
+        "Chemistry": 22,
+        "English": 25,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 94,
+        "Physics/Zoology": 78,
+        "Chemistry": 98,
+        "English": 75,
+        "Sanskrit": 92
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 97,
+        "Physics/Zoology": 81,
+        "Chemistry": 100,
+        "English": 78,
+        "Sanskrit": 95
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 30,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU021",
+    "hallTicket": "2601089021",
+    "name": "Gedala Ram Charan",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "7801057892",
+    "isHostel": false,
+    "attendance": 97,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 72,
+      "Physics/Zoology": 83,
+      "Chemistry": 75,
+      "English": 81,
+      "Sanskrit": 94
+    },
+    "admissionNo": "SJC-2026-021",
+    "fatherName": "Satyanarayana Varma",
+    "fatherPhone": "9848028833",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 20000,
+      "dueFee": 15000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0021",
+          "date": "12-08-2026",
+          "amountPaid": 20000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120021",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 19,
+        "Chemistry": 25,
+        "English": 23,
+        "Sanskrit": 23
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 23,
+        "Chemistry": 23,
+        "English": 23,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 72,
+        "Physics/Zoology": 83,
+        "Chemistry": 75,
+        "English": 81,
+        "Sanskrit": 94
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 75,
+        "Physics/Zoology": 86,
+        "Chemistry": 78,
+        "English": 84,
+        "Sanskrit": 97
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Absent",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 32,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU022",
+    "hallTicket": "2601089022",
+    "name": "Potnuru Charan",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "9381279573",
+    "isHostel": false,
+    "attendance": 84,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 79,
+      "Physics/Zoology": 88,
+      "Chemistry": 79,
+      "English": 87,
+      "Sanskrit": 96
+    },
+    "admissionNo": "SJC-2026-022",
+    "fatherName": "Suresh Patnaik",
+    "fatherPhone": "9848030206",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 25000,
+      "dueFee": 10000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0022",
+          "date": "12-08-2026",
+          "amountPaid": 25000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120022",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 20,
+        "Physics/Zoology": 21,
+        "Chemistry": 24,
+        "English": 24,
+        "Sanskrit": 24
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 25,
+        "Physics/Zoology": 20,
+        "Chemistry": 24,
+        "English": 24,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 79,
+        "Physics/Zoology": 88,
+        "Chemistry": 79,
+        "English": 87,
+        "Sanskrit": 96
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 82,
+        "Physics/Zoology": 91,
+        "Chemistry": 82,
+        "English": 90,
+        "Sanskrit": 99
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 34,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU023",
+    "hallTicket": "2601089023",
+    "name": "Velamala Devi Sri Prasad",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "9951774058",
+    "isHostel": false,
+    "attendance": 87,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 86,
+      "Physics/Zoology": 93,
+      "Chemistry": 83,
+      "English": 93,
+      "Sanskrit": 98
+    },
+    "admissionNo": "SJC-2026-023",
+    "fatherName": "Nageswara Sharma",
+    "fatherPhone": "9848031579",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 20000,
+      "dueFee": 15000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0023",
+          "date": "12-08-2026",
+          "amountPaid": 20000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120023",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 23,
+        "Chemistry": 23,
+        "English": 25,
+        "Sanskrit": 25
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 22,
+        "Physics/Zoology": 23,
+        "Chemistry": 25,
+        "English": 25,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 86,
+        "Physics/Zoology": 93,
+        "Chemistry": 83,
+        "English": 93,
+        "Sanskrit": 98
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 89,
+        "Physics/Zoology": 96,
+        "Chemistry": 86,
+        "English": 96,
+        "Sanskrit": 100
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 36,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU024",
+    "hallTicket": "2601089024",
+    "name": "Nalla Lokesh",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "9652278173",
+    "isHostel": false,
+    "attendance": 90,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 93,
+      "Physics/Zoology": 68,
+      "Chemistry": 87,
+      "English": 75,
+      "Sanskrit": 88
+    },
+    "admissionNo": "SJC-2026-024",
+    "fatherName": "Appala Murthy",
+    "fatherPhone": "9848032952",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 35000,
+      "dueFee": 0,
+      "status": "Fully Paid",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0024",
+          "date": "12-08-2026",
+          "amountPaid": 35000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120024",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 20,
+        "Physics/Zoology": 25,
+        "Chemistry": 22,
+        "English": 22,
+        "Sanskrit": 23
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 24,
+        "Physics/Zoology": 20,
+        "Chemistry": 22,
+        "English": 23,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 93,
+        "Physics/Zoology": 68,
+        "Chemistry": 87,
+        "English": 75,
+        "Sanskrit": 88
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 96,
+        "Physics/Zoology": 71,
+        "Chemistry": 90,
+        "English": 78,
+        "Sanskrit": 91
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 38,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU025",
+    "hallTicket": "2601089025",
+    "name": "Yadla Thulasi",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "9441468282",
+    "isHostel": false,
+    "attendance": 93,
+    "feeStatus": "Pending",
+    "marks": {
+      "Maths/Botany": 71,
+      "Physics/Zoology": 73,
+      "Chemistry": 91,
+      "English": 81,
+      "Sanskrit": 90
+    },
+    "admissionNo": "SJC-2026-025",
+    "fatherName": "Ramesh Guptha",
+    "fatherPhone": "9848034325",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 20000,
+      "dueFee": 15000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0025",
+          "date": "12-08-2026",
+          "amountPaid": 20000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120025",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 20,
+        "Chemistry": 21,
+        "English": 23,
+        "Sanskrit": 24
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 21,
+        "Physics/Zoology": 23,
+        "Chemistry": 23,
+        "English": 24,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 71,
+        "Physics/Zoology": 73,
+        "Chemistry": 91,
+        "English": 81,
+        "Sanskrit": 90
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 74,
+        "Physics/Zoology": 76,
+        "Chemistry": 94,
+        "English": 84,
+        "Sanskrit": 93
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 40,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU026",
+    "hallTicket": "2601089026",
+    "name": "Paidi Syam Kumar",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "8374533420",
+    "isHostel": false,
+    "attendance": 96,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 78,
+      "Physics/Zoology": 78,
+      "Chemistry": 95,
+      "English": 87,
+      "Sanskrit": 92
+    },
+    "admissionNo": "SJC-2026-026",
+    "fatherName": "Krishna Naidu",
+    "fatherPhone": "9848035698",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 25000,
+      "dueFee": 10000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0026",
+          "date": "12-08-2026",
+          "amountPaid": 25000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120026",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 20,
+        "Physics/Zoology": 22,
+        "Chemistry": 25,
+        "English": 24,
+        "Sanskrit": 25
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 20,
+        "Chemistry": 24,
+        "English": 25,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 78,
+        "Physics/Zoology": 78,
+        "Chemistry": 95,
+        "English": 87,
+        "Sanskrit": 92
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 81,
+        "Physics/Zoology": 81,
+        "Chemistry": 98,
+        "English": 90,
+        "Sanskrit": 95
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 42,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU027",
+    "hallTicket": "2601089027",
+    "name": "Boddepalli Aravindh",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "9704320146",
+    "isHostel": false,
+    "attendance": 83,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 85,
+      "Physics/Zoology": 83,
+      "Chemistry": 72,
+      "English": 93,
+      "Sanskrit": 94
+    },
+    "admissionNo": "SJC-2026-027",
+    "fatherName": "Venkata Rao",
+    "fatherPhone": "9848037071",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 20000,
+      "dueFee": 15000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0027",
+          "date": "12-08-2026",
+          "amountPaid": 20000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120027",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 24,
+        "Chemistry": 24,
+        "English": 25,
+        "Sanskrit": 23
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 25,
+        "Physics/Zoology": 23,
+        "Chemistry": 25,
+        "English": 23,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 85,
+        "Physics/Zoology": 83,
+        "Chemistry": 72,
+        "English": 93,
+        "Sanskrit": 94
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 88,
+        "Physics/Zoology": 86,
+        "Chemistry": 75,
+        "English": 96,
+        "Sanskrit": 97
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 44,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU028",
+    "hallTicket": "2601089028",
+    "name": "Ponduru Chittibabu",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "9177001359",
+    "isHostel": false,
+    "attendance": 86,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 92,
+      "Physics/Zoology": 88,
+      "Chemistry": 76,
+      "English": 75,
+      "Sanskrit": 96
+    },
+    "admissionNo": "SJC-2026-028",
+    "fatherName": "Prasad Chowdary",
+    "fatherPhone": "9848038444",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 35000,
+      "dueFee": 0,
+      "status": "Fully Paid",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0028",
+          "date": "12-08-2026",
+          "amountPaid": 35000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120028",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 20,
+        "Physics/Zoology": 19,
+        "Chemistry": 23,
+        "English": 22,
+        "Sanskrit": 24
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 22,
+        "Physics/Zoology": 20,
+        "Chemistry": 22,
+        "English": 24,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 92,
+        "Physics/Zoology": 88,
+        "Chemistry": 76,
+        "English": 75,
+        "Sanskrit": 96
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 95,
+        "Physics/Zoology": 91,
+        "Chemistry": 79,
+        "English": 78,
+        "Sanskrit": 99
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Absent",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 18,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU029",
+    "hallTicket": "2601089029",
+    "name": "Simma Dhanush",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "9100602940",
+    "isHostel": false,
+    "attendance": 89,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 70,
+      "Physics/Zoology": 93,
+      "Chemistry": 80,
+      "English": 81,
+      "Sanskrit": 98
+    },
+    "admissionNo": "SJC-2026-029",
+    "fatherName": "Mohan Reddy",
+    "fatherPhone": "9848039817",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 20000,
+      "dueFee": 15000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0029",
+          "date": "12-08-2026",
+          "amountPaid": 20000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120029",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 21,
+        "Chemistry": 22,
+        "English": 23,
+        "Sanskrit": 25
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 24,
+        "Physics/Zoology": 23,
+        "Chemistry": 23,
+        "English": 25,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 70,
+        "Physics/Zoology": 93,
+        "Chemistry": 80,
+        "English": 81,
+        "Sanskrit": 98
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 73,
+        "Physics/Zoology": 96,
+        "Chemistry": 83,
+        "English": 84,
+        "Sanskrit": 100
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 20,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU030",
+    "hallTicket": "2601089030",
+    "name": "Sudharshan Naveen",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "8185823756",
+    "isHostel": false,
+    "attendance": 92,
+    "feeStatus": "Pending",
+    "marks": {
+      "Maths/Botany": 77,
+      "Physics/Zoology": 68,
+      "Chemistry": 84,
+      "English": 87,
+      "Sanskrit": 88
+    },
+    "admissionNo": "SJC-2026-030",
+    "fatherName": "Srinivasa Varma",
+    "fatherPhone": "9848041190",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 25000,
+      "dueFee": 10000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0030",
+          "date": "12-08-2026",
+          "amountPaid": 25000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120030",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 20,
+        "Physics/Zoology": 23,
+        "Chemistry": 21,
+        "English": 24,
+        "Sanskrit": 23
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 21,
+        "Physics/Zoology": 20,
+        "Chemistry": 24,
+        "English": 23,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 77,
+        "Physics/Zoology": 68,
+        "Chemistry": 84,
+        "English": 87,
+        "Sanskrit": 88
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 80,
+        "Physics/Zoology": 71,
+        "Chemistry": 87,
+        "English": 90,
+        "Sanskrit": 91
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 22,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU031",
+    "hallTicket": "2601089031",
+    "name": "Kanchi Manoj",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "7893167273",
+    "isHostel": false,
+    "attendance": 95,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 84,
+      "Physics/Zoology": 73,
+      "Chemistry": 88,
+      "English": 93,
+      "Sanskrit": 90
+    },
+    "admissionNo": "SJC-2026-031",
+    "fatherName": "Satyanarayana Patnaik",
+    "fatherPhone": "9848042563",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 20000,
+      "dueFee": 15000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0031",
+          "date": "12-08-2026",
+          "amountPaid": 20000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120031",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 25,
+        "Chemistry": 25,
+        "English": 25,
+        "Sanskrit": 24
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 23,
+        "Chemistry": 25,
+        "English": 24,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 84,
+        "Physics/Zoology": 73,
+        "Chemistry": 88,
+        "English": 93,
+        "Sanskrit": 90
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 87,
+        "Physics/Zoology": 76,
+        "Chemistry": 91,
+        "English": 96,
+        "Sanskrit": 93
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 24,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU032",
+    "hallTicket": "2601089032",
+    "name": "Vaddithandra Ganesh",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "939287219",
+    "isHostel": false,
+    "attendance": 82,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 91,
+      "Physics/Zoology": 78,
+      "Chemistry": 92,
+      "English": 75,
+      "Sanskrit": 92
+    },
+    "admissionNo": "SJC-2026-032",
+    "fatherName": "Suresh Sharma",
+    "fatherPhone": "9848043936",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 35000,
+      "dueFee": 0,
+      "status": "Fully Paid",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0032",
+          "date": "12-08-2026",
+          "amountPaid": 35000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120032",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 20,
+        "Physics/Zoology": 20,
+        "Chemistry": 24,
+        "English": 22,
+        "Sanskrit": 25
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 25,
+        "Physics/Zoology": 20,
+        "Chemistry": 22,
+        "English": 25,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 91,
+        "Physics/Zoology": 78,
+        "Chemistry": 92,
+        "English": 75,
+        "Sanskrit": 92
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 94,
+        "Physics/Zoology": 81,
+        "Chemistry": 95,
+        "English": 78,
+        "Sanskrit": 95
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 26,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU033",
+    "hallTicket": "2601089033",
+    "name": "Gedala Kiran Kumar",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "9390862763",
+    "isHostel": false,
+    "attendance": 85,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 98,
+      "Physics/Zoology": 83,
+      "Chemistry": 96,
+      "English": 81,
+      "Sanskrit": 94
+    },
+    "admissionNo": "SJC-2026-033",
+    "fatherName": "Nageswara Murthy",
+    "fatherPhone": "9848045309",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 20000,
+      "dueFee": 15000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0033",
+          "date": "12-08-2026",
+          "amountPaid": 20000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120033",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 22,
+        "Chemistry": 23,
+        "English": 23,
+        "Sanskrit": 23
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 22,
+        "Physics/Zoology": 23,
+        "Chemistry": 23,
+        "English": 23,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 98,
+        "Physics/Zoology": 83,
+        "Chemistry": 96,
+        "English": 81,
+        "Sanskrit": 94
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 100,
+        "Physics/Zoology": 86,
+        "Chemistry": 99,
+        "English": 84,
+        "Sanskrit": 97
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 28,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU034",
+    "hallTicket": "2601089034",
+    "name": "Menda Mohan Krishna",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "8341958773",
+    "isHostel": false,
+    "attendance": 88,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 76,
+      "Physics/Zoology": 88,
+      "Chemistry": 73,
+      "English": 87,
+      "Sanskrit": 96
+    },
+    "admissionNo": "SJC-2026-034",
+    "fatherName": "Appala Guptha",
+    "fatherPhone": "9848046682",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 25000,
+      "dueFee": 10000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0034",
+          "date": "12-08-2026",
+          "amountPaid": 25000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120034",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 20,
+        "Physics/Zoology": 24,
+        "Chemistry": 22,
+        "English": 24,
+        "Sanskrit": 24
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 24,
+        "Physics/Zoology": 20,
+        "Chemistry": 24,
+        "English": 24,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 76,
+        "Physics/Zoology": 88,
+        "Chemistry": 73,
+        "English": 87,
+        "Sanskrit": 96
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 79,
+        "Physics/Zoology": 91,
+        "Chemistry": 76,
+        "English": 90,
+        "Sanskrit": 99
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 30,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU035",
+    "hallTicket": "2601089035",
+    "name": "Vandana Shanmukha Rao",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "9949387964",
+    "isHostel": false,
+    "attendance": 91,
+    "feeStatus": "Pending",
+    "marks": {
+      "Maths/Botany": 83,
+      "Physics/Zoology": 93,
+      "Chemistry": 77,
+      "English": 93,
+      "Sanskrit": 98
+    },
+    "admissionNo": "SJC-2026-035",
+    "fatherName": "Ramesh Naidu",
+    "fatherPhone": "9848048055",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 20000,
+      "dueFee": 15000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0035",
+          "date": "12-08-2026",
+          "amountPaid": 20000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120035",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 19,
+        "Chemistry": 21,
+        "English": 25,
+        "Sanskrit": 25
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 21,
+        "Physics/Zoology": 23,
+        "Chemistry": 25,
+        "English": 25,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 83,
+        "Physics/Zoology": 93,
+        "Chemistry": 77,
+        "English": 93,
+        "Sanskrit": 98
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 86,
+        "Physics/Zoology": 96,
+        "Chemistry": 80,
+        "English": 96,
+        "Sanskrit": 100
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Absent",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 32,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU036",
+    "hallTicket": "2601089036",
+    "name": "Maddi Thanuj",
+    "group": "MPC",
+    "groupFull": "M.P.C EM",
+    "phone": "9032389365",
+    "isHostel": false,
+    "attendance": 94,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 90,
+      "Physics/Zoology": 68,
+      "Chemistry": 81,
+      "English": 75,
+      "Sanskrit": 88
+    },
+    "admissionNo": "SJC-2026-036",
+    "fatherName": "Krishna Rao",
+    "fatherPhone": "9848049428",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 35000,
+      "dueFee": 0,
+      "status": "Fully Paid",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0036",
+          "date": "12-08-2026",
+          "amountPaid": 35000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120036",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 20,
+        "Physics/Zoology": 21,
+        "Chemistry": 25,
+        "English": 22,
+        "Sanskrit": 23
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 20,
+        "Chemistry": 22,
+        "English": 23,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 90,
+        "Physics/Zoology": 68,
+        "Chemistry": 81,
+        "English": 75,
+        "Sanskrit": 88
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 93,
+        "Physics/Zoology": 71,
+        "Chemistry": 84,
+        "English": 78,
+        "Sanskrit": 91
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 34,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU037",
+    "hallTicket": "2601089037",
+    "name": "Gunta Niranjan",
+    "group": "MPC",
+    "groupFull": "M.P.C EM H",
+    "phone": "8074506002",
+    "isHostel": true,
+    "attendance": 97,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 97,
+      "Physics/Zoology": 73,
+      "Chemistry": 85,
+      "English": 81,
+      "Sanskrit": 90
+    },
+    "admissionNo": "SJC-2026-037",
+    "fatherName": "Venkata Chowdary",
+    "fatherPhone": "9848050801",
+    "feeDetails": {
+      "totalFee": 65000,
+      "paidFee": 50000,
+      "dueFee": 15000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0037",
+          "date": "12-08-2026",
+          "amountPaid": 50000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120037",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 23,
+        "Chemistry": 24,
+        "English": 23,
+        "Sanskrit": 24
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 25,
+        "Physics/Zoology": 23,
+        "Chemistry": 23,
+        "English": 24,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 97,
+        "Physics/Zoology": 73,
+        "Chemistry": 85,
+        "English": 81,
+        "Sanskrit": 90
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 100,
+        "Physics/Zoology": 76,
+        "Chemistry": 88,
+        "English": 84,
+        "Sanskrit": 93
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 36,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU038",
+    "hallTicket": "2601089038",
+    "name": "Pedada Jagadeesh",
+    "group": "MPC",
+    "groupFull": "M.P.C EM H",
+    "phone": "7382983585",
+    "isHostel": true,
+    "attendance": 84,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 75,
+      "Physics/Zoology": 78,
+      "Chemistry": 89,
+      "English": 87,
+      "Sanskrit": 92
+    },
+    "admissionNo": "SJC-2026-038",
+    "fatherName": "Prasad Reddy",
+    "fatherPhone": "9848052174",
+    "feeDetails": {
+      "totalFee": 65000,
+      "paidFee": 55000,
+      "dueFee": 10000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0038",
+          "date": "12-08-2026",
+          "amountPaid": 55000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120038",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 20,
+        "Physics/Zoology": 25,
+        "Chemistry": 23,
+        "English": 24,
+        "Sanskrit": 25
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 22,
+        "Physics/Zoology": 20,
+        "Chemistry": 24,
+        "English": 25,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 75,
+        "Physics/Zoology": 78,
+        "Chemistry": 89,
+        "English": 87,
+        "Sanskrit": 92
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 78,
+        "Physics/Zoology": 81,
+        "Chemistry": 92,
+        "English": 90,
+        "Sanskrit": 95
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 38,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU039",
+    "hallTicket": "2601089039",
+    "name": "Guru Manohar",
+    "group": "MPC",
+    "groupFull": "M.P.C EM H",
+    "phone": "8328136712",
+    "isHostel": true,
+    "attendance": 87,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 82,
+      "Physics/Zoology": 83,
+      "Chemistry": 93,
+      "English": 93,
+      "Sanskrit": 94
+    },
+    "admissionNo": "SJC-2026-039",
+    "fatherName": "Mohan Varma",
+    "fatherPhone": "9848053547",
+    "feeDetails": {
+      "totalFee": 65000,
+      "paidFee": 50000,
+      "dueFee": 15000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0039",
+          "date": "12-08-2026",
+          "amountPaid": 50000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120039",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 20,
+        "Chemistry": 22,
+        "English": 25,
+        "Sanskrit": 23
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 24,
+        "Physics/Zoology": 23,
+        "Chemistry": 25,
+        "English": 23,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 82,
+        "Physics/Zoology": 83,
+        "Chemistry": 93,
+        "English": 93,
+        "Sanskrit": 94
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 85,
+        "Physics/Zoology": 86,
+        "Chemistry": 96,
+        "English": 96,
+        "Sanskrit": 97
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 40,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU040",
+    "hallTicket": "2601089040",
+    "name": "J. Korlayya",
+    "group": "MPC",
+    "groupFull": "M.P.C EM H",
+    "phone": "6301415592",
+    "isHostel": true,
+    "attendance": 90,
+    "feeStatus": "Pending",
+    "marks": {
+      "Maths/Botany": 89,
+      "Physics/Zoology": 88,
+      "Chemistry": 97,
+      "English": 75,
+      "Sanskrit": 96
+    },
+    "admissionNo": "SJC-2026-040",
+    "fatherName": "Srinivasa Patnaik",
+    "fatherPhone": "9848054920",
+    "feeDetails": {
+      "totalFee": 65000,
+      "paidFee": 65000,
+      "dueFee": 0,
+      "status": "Fully Paid",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0040",
+          "date": "12-08-2026",
+          "amountPaid": 65000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120040",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 20,
+        "Physics/Zoology": 22,
+        "Chemistry": 21,
+        "English": 22,
+        "Sanskrit": 24
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 21,
+        "Physics/Zoology": 20,
+        "Chemistry": 22,
+        "English": 24,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 89,
+        "Physics/Zoology": 88,
+        "Chemistry": 97,
+        "English": 75,
+        "Sanskrit": 96
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 92,
+        "Physics/Zoology": 91,
+        "Chemistry": 100,
+        "English": 78,
+        "Sanskrit": 99
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 42,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU041",
+    "hallTicket": "2601089041",
+    "name": "Kalaga Karthika",
+    "group": "MPC",
+    "groupFull": "M.P.C EM H",
+    "phone": "9692718055",
+    "isHostel": true,
+    "attendance": 93,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 96,
+      "Physics/Zoology": 93,
+      "Chemistry": 74,
+      "English": 81,
+      "Sanskrit": 98
+    },
+    "admissionNo": "SJC-2026-041",
+    "fatherName": "Satyanarayana Sharma",
+    "fatherPhone": "9848056293",
+    "feeDetails": {
+      "totalFee": 65000,
+      "paidFee": 50000,
+      "dueFee": 15000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0041",
+          "date": "12-08-2026",
+          "amountPaid": 50000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120041",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 24,
+        "Chemistry": 25,
+        "English": 23,
+        "Sanskrit": 25
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 23,
+        "Chemistry": 23,
+        "English": 25,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 96,
+        "Physics/Zoology": 93,
+        "Chemistry": 74,
+        "English": 81,
+        "Sanskrit": 98
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 99,
+        "Physics/Zoology": 96,
+        "Chemistry": 77,
+        "English": 84,
+        "Sanskrit": 100
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 44,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU042",
+    "hallTicket": "2601089042",
+    "name": "Golivi Sridhar",
+    "group": "MPC",
+    "groupFull": "M.P.C EM H",
+    "phone": "9701610763",
+    "isHostel": true,
+    "attendance": 96,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 74,
+      "Physics/Zoology": 68,
+      "Chemistry": 78,
+      "English": 87,
+      "Sanskrit": 88
+    },
+    "admissionNo": "SJC-2026-042",
+    "fatherName": "Suresh Murthy",
+    "fatherPhone": "9848057666",
+    "feeDetails": {
+      "totalFee": 65000,
+      "paidFee": 55000,
+      "dueFee": 10000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0042",
+          "date": "12-08-2026",
+          "amountPaid": 55000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120042",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 20,
+        "Physics/Zoology": 19,
+        "Chemistry": 24,
+        "English": 24,
+        "Sanskrit": 23
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 25,
+        "Physics/Zoology": 20,
+        "Chemistry": 24,
+        "English": 23,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 74,
+        "Physics/Zoology": 68,
+        "Chemistry": 78,
+        "English": 87,
+        "Sanskrit": 88
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 77,
+        "Physics/Zoology": 71,
+        "Chemistry": 81,
+        "English": 90,
+        "Sanskrit": 91
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Absent",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 18,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU043",
+    "hallTicket": "2601089043",
+    "name": "Kottu Dhilleswara Rao",
+    "group": "MPC",
+    "groupFull": "M.P.C EM H",
+    "phone": "8978568698",
+    "isHostel": true,
+    "attendance": 83,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 81,
+      "Physics/Zoology": 73,
+      "Chemistry": 82,
+      "English": 93,
+      "Sanskrit": 90
+    },
+    "admissionNo": "SJC-2026-043",
+    "fatherName": "Nageswara Guptha",
+    "fatherPhone": "9848059039",
+    "feeDetails": {
+      "totalFee": 65000,
+      "paidFee": 50000,
+      "dueFee": 15000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0043",
+          "date": "12-08-2026",
+          "amountPaid": 50000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120043",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 21,
+        "Chemistry": 23,
+        "English": 25,
+        "Sanskrit": 24
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 22,
+        "Physics/Zoology": 23,
+        "Chemistry": 25,
+        "English": 24,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 81,
+        "Physics/Zoology": 73,
+        "Chemistry": 82,
+        "English": 93,
+        "Sanskrit": 90
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 84,
+        "Physics/Zoology": 76,
+        "Chemistry": 85,
+        "English": 96,
+        "Sanskrit": 93
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 20,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU044",
+    "hallTicket": "2601089044",
+    "name": "Lanka Sarath Kumar",
+    "group": "MPC",
+    "groupFull": "M.P.C EM H",
+    "phone": "8186010440",
+    "isHostel": true,
+    "attendance": 86,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 88,
+      "Physics/Zoology": 78,
+      "Chemistry": 86,
+      "English": 75,
+      "Sanskrit": 92
+    },
+    "admissionNo": "SJC-2026-044",
+    "fatherName": "Appala Naidu",
+    "fatherPhone": "9848060412",
+    "feeDetails": {
+      "totalFee": 65000,
+      "paidFee": 65000,
+      "dueFee": 0,
+      "status": "Fully Paid",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0044",
+          "date": "12-08-2026",
+          "amountPaid": 65000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120044",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 20,
+        "Physics/Zoology": 23,
+        "Chemistry": 22,
+        "English": 22,
+        "Sanskrit": 25
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 24,
+        "Physics/Zoology": 20,
+        "Chemistry": 22,
+        "English": 25,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 88,
+        "Physics/Zoology": 78,
+        "Chemistry": 86,
+        "English": 75,
+        "Sanskrit": 92
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 91,
+        "Physics/Zoology": 81,
+        "Chemistry": 89,
+        "English": 78,
+        "Sanskrit": 95
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 22,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU045",
+    "hallTicket": "2601089045",
+    "name": "Madugula Lokesh",
+    "group": "MPC",
+    "groupFull": "M.P.C EM H",
+    "phone": "9538143493",
+    "isHostel": true,
+    "attendance": 89,
+    "feeStatus": "Pending",
+    "marks": {
+      "Maths/Botany": 95,
+      "Physics/Zoology": 83,
+      "Chemistry": 90,
+      "English": 81,
+      "Sanskrit": 94
+    },
+    "admissionNo": "SJC-2026-045",
+    "fatherName": "Ramesh Rao",
+    "fatherPhone": "9848061785",
+    "feeDetails": {
+      "totalFee": 65000,
+      "paidFee": 50000,
+      "dueFee": 15000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0045",
+          "date": "12-08-2026",
+          "amountPaid": 50000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120045",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 25,
+        "Chemistry": 21,
+        "English": 23,
+        "Sanskrit": 23
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 21,
+        "Physics/Zoology": 23,
+        "Chemistry": 23,
+        "English": 23,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 95,
+        "Physics/Zoology": 83,
+        "Chemistry": 90,
+        "English": 81,
+        "Sanskrit": 94
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 98,
+        "Physics/Zoology": 86,
+        "Chemistry": 93,
+        "English": 84,
+        "Sanskrit": 97
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 24,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU046",
+    "hallTicket": "2601089046",
+    "name": "Gavara Bhargav",
+    "group": "MPC",
+    "groupFull": "M.P.C EM H",
+    "phone": "9032837981",
+    "isHostel": true,
+    "attendance": 92,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 73,
+      "Physics/Zoology": 88,
+      "Chemistry": 94,
+      "English": 87,
+      "Sanskrit": 96
+    },
+    "admissionNo": "SJC-2026-046",
+    "fatherName": "Krishna Chowdary",
+    "fatherPhone": "9848063158",
+    "feeDetails": {
+      "totalFee": 65000,
+      "paidFee": 55000,
+      "dueFee": 10000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0046",
+          "date": "12-08-2026",
+          "amountPaid": 55000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120046",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 20,
+        "Physics/Zoology": 20,
+        "Chemistry": 25,
+        "English": 24,
+        "Sanskrit": 24
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 20,
+        "Chemistry": 24,
+        "English": 24,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 73,
+        "Physics/Zoology": 88,
+        "Chemistry": 94,
+        "English": 87,
+        "Sanskrit": 96
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 76,
+        "Physics/Zoology": 91,
+        "Chemistry": 97,
+        "English": 90,
+        "Sanskrit": 99
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 26,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU047",
+    "hallTicket": "2601089047",
+    "name": "Gurana Thuran",
+    "group": "MPC",
+    "groupFull": "M.P.C EM H",
+    "phone": "9337718649",
+    "isHostel": true,
+    "attendance": 95,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 80,
+      "Physics/Zoology": 93,
+      "Chemistry": 98,
+      "English": 93,
+      "Sanskrit": 98
+    },
+    "admissionNo": "SJC-2026-047",
+    "fatherName": "Venkata Reddy",
+    "fatherPhone": "9848064531",
+    "feeDetails": {
+      "totalFee": 65000,
+      "paidFee": 50000,
+      "dueFee": 15000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0047",
+          "date": "12-08-2026",
+          "amountPaid": 50000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120047",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 22,
+        "Chemistry": 24,
+        "English": 25,
+        "Sanskrit": 25
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 25,
+        "Physics/Zoology": 23,
+        "Chemistry": 25,
+        "English": 25,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 80,
+        "Physics/Zoology": 93,
+        "Chemistry": 98,
+        "English": 93,
+        "Sanskrit": 98
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 83,
+        "Physics/Zoology": 96,
+        "Chemistry": 100,
+        "English": 96,
+        "Sanskrit": 100
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 28,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU048",
+    "hallTicket": "2601089048",
+    "name": "Kotta Bharath Chandu",
+    "group": "MPC",
+    "groupFull": "M.P.C EM H",
+    "phone": "9701722687",
+    "isHostel": true,
+    "attendance": 82,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 87,
+      "Physics/Zoology": 68,
+      "Chemistry": 75,
+      "English": 75,
+      "Sanskrit": 88
+    },
+    "admissionNo": "SJC-2026-048",
+    "fatherName": "Prasad Varma",
+    "fatherPhone": "9848065904",
+    "feeDetails": {
+      "totalFee": 65000,
+      "paidFee": 65000,
+      "dueFee": 0,
+      "status": "Fully Paid",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0048",
+          "date": "12-08-2026",
+          "amountPaid": 65000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120048",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 20,
+        "Physics/Zoology": 24,
+        "Chemistry": 23,
+        "English": 22,
+        "Sanskrit": 23
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 22,
+        "Physics/Zoology": 20,
+        "Chemistry": 22,
+        "English": 23,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 87,
+        "Physics/Zoology": 68,
+        "Chemistry": 75,
+        "English": 75,
+        "Sanskrit": 88
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 90,
+        "Physics/Zoology": 71,
+        "Chemistry": 78,
+        "English": 78,
+        "Sanskrit": 91
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 30,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU049",
+    "hallTicket": "2601089049",
+    "name": "Salada Bhumikha",
+    "group": "MPC",
+    "groupFull": "Bi.P.C EM",
+    "phone": "9553062151",
+    "isHostel": false,
+    "attendance": 85,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 94,
+      "Physics/Zoology": 73,
+      "Chemistry": 79,
+      "English": 81,
+      "Sanskrit": 90
+    },
+    "admissionNo": "SJC-2026-049",
+    "fatherName": "Mohan Patnaik",
+    "fatherPhone": "9848067277",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 20000,
+      "dueFee": 15000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0049",
+          "date": "12-08-2026",
+          "amountPaid": 20000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120049",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 19,
+        "Chemistry": 22,
+        "English": 23,
+        "Sanskrit": 24
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 24,
+        "Physics/Zoology": 23,
+        "Chemistry": 23,
+        "English": 24,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 94,
+        "Physics/Zoology": 73,
+        "Chemistry": 79,
+        "English": 81,
+        "Sanskrit": 90
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 97,
+        "Physics/Zoology": 76,
+        "Chemistry": 82,
+        "English": 84,
+        "Sanskrit": 93
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Absent",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 32,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU050",
+    "hallTicket": "2601089050",
+    "name": "Dallavalasa Lalasa",
+    "group": "MPC",
+    "groupFull": "Bi.P.C EM",
+    "phone": "8501017461",
+    "isHostel": false,
+    "attendance": 88,
+    "feeStatus": "Pending",
+    "marks": {
+      "Maths/Botany": 72,
+      "Physics/Zoology": 78,
+      "Chemistry": 83,
+      "English": 87,
+      "Sanskrit": 92
+    },
+    "admissionNo": "SJC-2026-050",
+    "fatherName": "Srinivasa Sharma",
+    "fatherPhone": "9848068650",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 25000,
+      "dueFee": 10000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0050",
+          "date": "12-08-2026",
+          "amountPaid": 25000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120050",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 20,
+        "Physics/Zoology": 21,
+        "Chemistry": 21,
+        "English": 24,
+        "Sanskrit": 25
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 21,
+        "Physics/Zoology": 20,
+        "Chemistry": 24,
+        "English": 25,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 72,
+        "Physics/Zoology": 78,
+        "Chemistry": 83,
+        "English": 87,
+        "Sanskrit": 92
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 75,
+        "Physics/Zoology": 81,
+        "Chemistry": 86,
+        "English": 90,
+        "Sanskrit": 95
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 34,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU051",
+    "hallTicket": "2601089051",
+    "name": "Chittivalasa Bhuvaneswari",
+    "group": "MPC",
+    "groupFull": "Bi.P.C EM",
+    "phone": "9010392055",
+    "isHostel": false,
+    "attendance": 91,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 79,
+      "Physics/Zoology": 83,
+      "Chemistry": 87,
+      "English": 93,
+      "Sanskrit": 94
+    },
+    "admissionNo": "SJC-2026-051",
+    "fatherName": "Satyanarayana Murthy",
+    "fatherPhone": "9848070023",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 20000,
+      "dueFee": 15000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0051",
+          "date": "12-08-2026",
+          "amountPaid": 20000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120051",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 23,
+        "Chemistry": 25,
+        "English": 25,
+        "Sanskrit": 23
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 23,
+        "Chemistry": 25,
+        "English": 23,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 79,
+        "Physics/Zoology": 83,
+        "Chemistry": 87,
+        "English": 93,
+        "Sanskrit": 94
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 82,
+        "Physics/Zoology": 86,
+        "Chemistry": 90,
+        "English": 96,
+        "Sanskrit": 97
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 36,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU052",
+    "hallTicket": "2601089052",
+    "name": "Menda Bhargavi",
+    "group": "MPC",
+    "groupFull": "Bi.P.C EM",
+    "phone": "8341958773",
+    "isHostel": false,
+    "attendance": 94,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 86,
+      "Physics/Zoology": 88,
+      "Chemistry": 91,
+      "English": 75,
+      "Sanskrit": 96
+    },
+    "admissionNo": "SJC-2026-052",
+    "fatherName": "Suresh Guptha",
+    "fatherPhone": "9848071396",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 35000,
+      "dueFee": 0,
+      "status": "Fully Paid",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0052",
+          "date": "12-08-2026",
+          "amountPaid": 35000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120052",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 20,
+        "Physics/Zoology": 25,
+        "Chemistry": 24,
+        "English": 22,
+        "Sanskrit": 24
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 25,
+        "Physics/Zoology": 20,
+        "Chemistry": 22,
+        "English": 24,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 86,
+        "Physics/Zoology": 88,
+        "Chemistry": 91,
+        "English": 75,
+        "Sanskrit": 96
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 89,
+        "Physics/Zoology": 91,
+        "Chemistry": 94,
+        "English": 78,
+        "Sanskrit": 99
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 38,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU053",
+    "hallTicket": "2601089053",
+    "name": "Ladi Shyamala",
+    "group": "MPC",
+    "groupFull": "Bi.P.C EM",
+    "phone": "9063303911",
+    "isHostel": false,
+    "attendance": 97,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 93,
+      "Physics/Zoology": 93,
+      "Chemistry": 95,
+      "English": 81,
+      "Sanskrit": 98
+    },
+    "admissionNo": "SJC-2026-053",
+    "fatherName": "Nageswara Naidu",
+    "fatherPhone": "9848072769",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 20000,
+      "dueFee": 15000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0053",
+          "date": "12-08-2026",
+          "amountPaid": 20000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120053",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 20,
+        "Chemistry": 23,
+        "English": 23,
+        "Sanskrit": 25
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 22,
+        "Physics/Zoology": 23,
+        "Chemistry": 23,
+        "English": 25,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 93,
+        "Physics/Zoology": 93,
+        "Chemistry": 95,
+        "English": 81,
+        "Sanskrit": 98
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 96,
+        "Physics/Zoology": 96,
+        "Chemistry": 98,
+        "English": 84,
+        "Sanskrit": 100
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 40,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU054",
+    "hallTicket": "2601089054",
+    "name": "Peddapati Kranthi Kumar",
+    "group": "MPC",
+    "groupFull": "Bi.P.C EM",
+    "phone": "8499969693",
+    "isHostel": false,
+    "attendance": 84,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 71,
+      "Physics/Zoology": 68,
+      "Chemistry": 72,
+      "English": 87,
+      "Sanskrit": 88
+    },
+    "admissionNo": "SJC-2026-054",
+    "fatherName": "Appala Rao",
+    "fatherPhone": "9848074142",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 25000,
+      "dueFee": 10000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0054",
+          "date": "12-08-2026",
+          "amountPaid": 25000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120054",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 20,
+        "Physics/Zoology": 22,
+        "Chemistry": 22,
+        "English": 24,
+        "Sanskrit": 23
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 24,
+        "Physics/Zoology": 20,
+        "Chemistry": 24,
+        "English": 23,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 71,
+        "Physics/Zoology": 68,
+        "Chemistry": 72,
+        "English": 87,
+        "Sanskrit": 88
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 74,
+        "Physics/Zoology": 71,
+        "Chemistry": 75,
+        "English": 90,
+        "Sanskrit": 91
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 42,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU055",
+    "hallTicket": "2601089055",
+    "name": "S. Ravi",
+    "group": "MPC",
+    "groupFull": "Bi.P.C EM H",
+    "phone": "6371428509",
+    "isHostel": true,
+    "attendance": 87,
+    "feeStatus": "Pending",
+    "marks": {
+      "Maths/Botany": 78,
+      "Physics/Zoology": 73,
+      "Chemistry": 76,
+      "English": 93,
+      "Sanskrit": 90
+    },
+    "admissionNo": "SJC-2026-055",
+    "fatherName": "Ramesh Chowdary",
+    "fatherPhone": "9848075515",
+    "feeDetails": {
+      "totalFee": 65000,
+      "paidFee": 50000,
+      "dueFee": 15000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0055",
+          "date": "12-08-2026",
+          "amountPaid": 50000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120055",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 24,
+        "Chemistry": 21,
+        "English": 25,
+        "Sanskrit": 24
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 21,
+        "Physics/Zoology": 23,
+        "Chemistry": 25,
+        "English": 24,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 78,
+        "Physics/Zoology": 73,
+        "Chemistry": 76,
+        "English": 93,
+        "Sanskrit": 90
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 81,
+        "Physics/Zoology": 76,
+        "Chemistry": 79,
+        "English": 96,
+        "Sanskrit": 93
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 44,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU056",
+    "hallTicket": "2601089056",
+    "name": "Seviti Chandu",
+    "group": "MPC",
+    "groupFull": "Bi.P.C EM H",
+    "phone": "9556119169",
+    "isHostel": true,
+    "attendance": 90,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 85,
+      "Physics/Zoology": 78,
+      "Chemistry": 80,
+      "English": 75,
+      "Sanskrit": 92
+    },
+    "admissionNo": "SJC-2026-056",
+    "fatherName": "Krishna Reddy",
+    "fatherPhone": "9848076888",
+    "feeDetails": {
+      "totalFee": 65000,
+      "paidFee": 65000,
+      "dueFee": 0,
+      "status": "Fully Paid",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0056",
+          "date": "12-08-2026",
+          "amountPaid": 65000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120056",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 20,
+        "Physics/Zoology": 19,
+        "Chemistry": 25,
+        "English": 22,
+        "Sanskrit": 25
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 20,
+        "Chemistry": 22,
+        "English": 25,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 85,
+        "Physics/Zoology": 78,
+        "Chemistry": 80,
+        "English": 75,
+        "Sanskrit": 92
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 88,
+        "Physics/Zoology": 81,
+        "Chemistry": 83,
+        "English": 78,
+        "Sanskrit": 95
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Absent",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 18,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU057",
+    "hallTicket": "2601089057",
+    "name": "Kanukuri Leela Prasad",
+    "group": "MPC",
+    "groupFull": "Bi.P.C EM",
+    "phone": "9392173799",
+    "isHostel": false,
+    "attendance": 93,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 92,
+      "Physics/Zoology": 83,
+      "Chemistry": 84,
+      "English": 81,
+      "Sanskrit": 94
+    },
+    "admissionNo": "SJC-2026-057",
+    "fatherName": "Venkata Varma",
+    "fatherPhone": "9848078261",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 20000,
+      "dueFee": 15000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0057",
+          "date": "12-08-2026",
+          "amountPaid": 20000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120057",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 21,
+        "Chemistry": 24,
+        "English": 23,
+        "Sanskrit": 23
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 25,
+        "Physics/Zoology": 23,
+        "Chemistry": 23,
+        "English": 23,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 92,
+        "Physics/Zoology": 83,
+        "Chemistry": 84,
+        "English": 81,
+        "Sanskrit": 94
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 95,
+        "Physics/Zoology": 86,
+        "Chemistry": 87,
+        "English": 84,
+        "Sanskrit": 97
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 20,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU058",
+    "hallTicket": "2601089058",
+    "name": "Donthurthi Jahnavi",
+    "group": "MPC",
+    "groupFull": "MPC EM",
+    "phone": "6281857714",
+    "isHostel": false,
+    "attendance": 96,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 70,
+      "Physics/Zoology": 88,
+      "Chemistry": 88,
+      "English": 87,
+      "Sanskrit": 96
+    },
+    "admissionNo": "SJC-2026-058",
+    "fatherName": "Prasad Patnaik",
+    "fatherPhone": "9848079634",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 25000,
+      "dueFee": 10000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0058",
+          "date": "12-08-2026",
+          "amountPaid": 25000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120058",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 20,
+        "Physics/Zoology": 23,
+        "Chemistry": 23,
+        "English": 24,
+        "Sanskrit": 24
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 22,
+        "Physics/Zoology": 20,
+        "Chemistry": 24,
+        "English": 24,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 70,
+        "Physics/Zoology": 88,
+        "Chemistry": 88,
+        "English": 87,
+        "Sanskrit": 96
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 73,
+        "Physics/Zoology": 91,
+        "Chemistry": 91,
+        "English": 90,
+        "Sanskrit": 99
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 22,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
+    "id": "STU059",
+    "hallTicket": "2601089059",
+    "name": "Savara Sailesh",
+    "group": "BiPC",
+    "groupFull": "BIPC EM",
+    "phone": "8978146729",
+    "isHostel": false,
+    "attendance": 83,
+    "feeStatus": "Paid",
+    "marks": {
+      "Maths/Botany": 77,
+      "Physics/Zoology": 93,
+      "Chemistry": 92,
+      "English": 93,
+      "Sanskrit": 98
+    },
+    "admissionNo": "SJC-2026-059",
+    "fatherName": "Mohan Sharma",
+    "fatherPhone": "9848081007",
+    "feeDetails": {
+      "totalFee": 35000,
+      "paidFee": 20000,
+      "dueFee": 15000,
+      "status": "Partial Due",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0059",
+          "date": "12-08-2026",
+          "amountPaid": 20000,
+          "paymentMode": "UPI / NetBanking",
+          "transactionRef": "UPI202608120059",
+          "remarks": "Term 1 Tuition & Laboratory Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "Maths/Botany": 23,
+        "Physics/Zoology": 25,
+        "Chemistry": 22,
+        "English": 25,
+        "Sanskrit": 25
+      },
+      "Unit Test - 2 (25M)": {
+        "Maths/Botany": 24,
+        "Physics/Zoology": 23,
+        "Chemistry": 25,
+        "English": 25,
+        "Sanskrit": 24
+      },
+      "Quarterly Exam (100M)": {
+        "Maths/Botany": 77,
+        "Physics/Zoology": 93,
+        "Chemistry": 92,
+        "English": 93,
+        "Sanskrit": 98
+      },
+      "Half-Yearly Exam (100M)": {
+        "Maths/Botany": 80,
+        "Physics/Zoology": 96,
+        "Chemistry": 95,
+        "English": 96,
+        "Sanskrit": 100
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:42 AM",
+      "gpsDistanceMeters": 24,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  }
+]

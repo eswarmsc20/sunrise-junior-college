@@ -1,0 +1,74 @@
+[
+  {
+    "id": "TCH101",
+    "name": "Sri K. Ramanjaneyulu",
+    "department": "Physics",
+    "designation": "HOD & Senior Lecturer",
+    "qualification": "M.Sc. (Physics), B.Ed.",
+    "phone": "9848123456",
+    "email": "k.ramanjaneyulu@sunrisejc.edu.in",
+    "assignedStreams": ["MPC 1st Year", "MPC 2nd Year"],
+    "experience": "18 Years",
+    "dateOfJoining": "2009-06-15"
+  },
+  {
+    "id": "TCH102",
+    "name": "Smt. P. Sujatha",
+    "department": "Mathematics",
+    "designation": "Senior Lecturer",
+    "qualification": "M.Sc. (Applied Maths)",
+    "phone": "9848234567",
+    "email": "p.sujatha@sunrisejc.edu.in",
+    "assignedStreams": ["MPC 1st Year", "MEC 1st Year"],
+    "experience": "14 Years",
+    "dateOfJoining": "2012-07-01"
+  },
+  {
+    "id": "TCH103",
+    "name": "Sri B. V. Satyanarayana",
+    "department": "Chemistry",
+    "designation": "Senior Lecturer",
+    "qualification": "M.Sc. (Organic Chemistry)",
+    "phone": "9848345678",
+    "email": "bv.satya@sunrisejc.edu.in",
+    "assignedStreams": ["MPC", "BiPC"],
+    "experience": "16 Years",
+    "dateOfJoining": "2010-06-20"
+  },
+  {
+    "id": "TCH104",
+    "name": "Dr. M. Kameswara Rao",
+    "department": "Biology (Botany & Zoology)",
+    "designation": "Dean of Medical Streams",
+    "qualification": "Ph.D., M.Sc. (Botany)",
+    "phone": "9848456789",
+    "email": "m.kameswar@sunrisejc.edu.in",
+    "assignedStreams": ["BiPC 1st Year", "BiPC 2nd Year"],
+    "experience": "21 Years",
+    "dateOfJoining": "2009-06-10"
+  },
+  {
+    "id": "TCH105",
+    "name": "Sri T. Appala Naidu",
+    "department": "Commerce & Economics",
+    "designation": "HOD Commerce",
+    "qualification": "M.Com., M.Phil.",
+    "phone": "9848567890",
+    "email": "t.naidu@sunrisejc.edu.in",
+    "assignedStreams": ["CEC 1st Year", "MEC 1st Year"],
+    "experience": "15 Years",
+    "dateOfJoining": "2011-08-15"
+  },
+  {
+    "id": "TCH106",
+    "name": "Smt. G. Padmavathi",
+    "department": "English & Communication",
+    "designation": "Lecturer",
+    "qualification": "M.A. (English Lit.), B.Ed.",
+    "phone": "9848678901",
+    "email": "g.padma@sunrisejc.edu.in",
+    "assignedStreams": ["All Groups"],
+    "experience": "11 Years",
+    "dateOfJoining": "2015-06-12"
+  }
+]
