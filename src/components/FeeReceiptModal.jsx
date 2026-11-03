@@ -4,7 +4,6 @@ import { collegeInfo } from '../data/collegeData';
 import { createWhatsAppLink } from '../utils/geoUtils';
 
 export default function FeeReceiptModal({ isOpen, onClose, student, onSendAlert }) {
-  const receiptRef = useRef();
   if (!isOpen || !student) return null;
 
   const fee = student.feeDetails || {
@@ -41,12 +40,12 @@ Principal Desk: 8143217785`;
   const fatherWhatsApp = createWhatsAppLink(student.fatherPhone || student.phone, receiptMessage);
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+    <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 overflow-y-auto print-modal-container">
       <div 
-        className="relative bg-white rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl border border-slate-300 my-8"
+        className="relative bg-white rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl border border-slate-300 my-4"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Top Control Bar */}
+        {/* Top Control Bar (Hidden from Print) */}
         <div className="bg-slate-900 text-white p-4 flex items-center justify-between no-print">
           <div className="flex items-center gap-2">
             <span className="text-xs font-bold text-amber-400 bg-amber-500/20 px-2 py-0.5 rounded">
@@ -58,10 +57,10 @@ Principal Desk: 8143217785`;
           <div className="flex items-center gap-2">
             <button
               onClick={handlePrint}
-              className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition shadow"
+              className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-xs px-4 py-2 rounded-xl flex items-center gap-1.5 transition shadow-md"
             >
-              <Printer className="w-3.5 h-3.5" />
-              <span>Print / Save PDF</span>
+              <Printer className="w-4 h-4" />
+              <span>Print / Save 1-Page PDF</span>
             </button>
             <button
               onClick={onClose}
@@ -72,126 +71,124 @@ Principal Desk: 8143217785`;
           </div>
         </div>
 
-        {/* Printable Receipt Paper */}
-        <div ref={receiptRef} className="p-6 sm:p-8 bg-white text-slate-900 printable-area">
+        {/* Printable Receipt Paper (Fits EXACTLY on 1 Single A4 Page) */}
+        <div className="printable-receipt-card p-6 bg-white text-slate-900">
+          
           {/* Institutional Header */}
-          <div className="border-b-2 border-slate-900 pb-4 text-center relative">
+          <div className="border-b-2 border-slate-900 pb-3 text-center relative">
             <div className="flex items-center justify-center gap-3 mb-1">
-              <div className="w-14 h-14 rounded-full overflow-hidden bg-white p-0.5 border border-amber-400 flex items-center justify-center shadow">
+              <div className="w-12 h-12 rounded-full overflow-hidden bg-white p-0.5 border-2 border-amber-500 flex items-center justify-center shadow-sm flex-shrink-0">
                 <img src="./assets/sunrise_logo.svg" alt="Sunrise Logo" className="w-full h-full object-contain" />
               </div>
               <div className="text-left">
-                <p className="text-[10px] font-bold tracking-widest text-slate-600 uppercase">Sunrise Educational Society</p>
-                <h2 className="text-2xl font-black tracking-tight text-slate-950 leading-none">
+                <p className="text-[9px] font-bold tracking-widest text-slate-600 uppercase">Sunrise Educational Society</p>
+                <h2 className="text-xl sm:text-2xl font-black tracking-tight text-slate-950 leading-none">
                   SUNRISE JUNIOR COLLEGE
                 </h2>
-                <p className="text-[11px] font-semibold text-slate-700">
+                <p className="text-[10px] font-semibold text-slate-700 mt-0.5">
                   Day & Night Junction, Opp. Sindhoora Hospital, Srikakulam – 532001
                 </p>
               </div>
             </div>
-            <div className="flex items-center justify-center gap-3 text-[11px] font-bold text-slate-800 pt-1">
+
+            <div className="flex items-center justify-center gap-3 text-[10px] font-bold text-slate-800 pt-1">
               <span>BIE AP Code: <strong>01089</strong></span>
               <span>•</span>
               <span>RC No. 652995/E2-3/2008-09</span>
               <span>•</span>
-              <span>Cell: 8143217785 / 7989285425</span>
+              <span>Phone: 8143217785 / 7989285425</span>
             </div>
-            <div className="inline-block bg-slate-900 text-white text-xs font-black px-4 py-1 rounded-full uppercase tracking-wider mt-2">
-              Fee Collection Receipt (Student Copy)
+
+            <div className="inline-block bg-slate-900 text-white text-[11px] font-black px-4 py-0.5 rounded-full uppercase tracking-wider mt-1.5 receipt-badge">
+              Fee Collection Receipt (Student & Parent Copy)
             </div>
           </div>
 
-          {/* Meta Details */}
-          <div className="grid grid-cols-2 gap-4 py-4 text-xs border-b border-slate-200">
-            <div>
-              <p className="text-slate-500">Receipt Number:</p>
-              <p className="font-mono font-bold text-slate-900 text-sm">{receiptNo}</p>
-              <p className="text-slate-500 mt-2">Admission / Enrolment No:</p>
-              <p className="font-mono font-bold text-indigo-700">{student.admissionNo || 'SJC-2026-001'}</p>
-              <p className="text-slate-500 mt-2">Hall Ticket / Roll No:</p>
-              <p className="font-mono font-bold text-slate-900">{student.hallTicket}</p>
+          {/* Student & Parent Metadata (Compact 2-Column Grid) */}
+          <div className="grid grid-cols-2 gap-4 py-2.5 text-xs border-b border-slate-200">
+            <div className="space-y-1">
+              <p><span className="text-slate-500">Receipt No:</span> <strong className="font-mono text-slate-900">{receiptNo}</strong></p>
+              <p><span className="text-slate-500">Admission No:</span> <strong className="font-mono text-indigo-700">{student.admissionNo || 'SJC-2026-001'}</strong></p>
+              <p><span className="text-slate-500">Hall Ticket / Roll:</span> <strong className="font-mono text-slate-900">{student.hallTicket}</strong></p>
+              <p><span className="text-slate-500">Stream / Group:</span> <strong>{student.groupFull || student.group}</strong></p>
             </div>
-            <div className="text-right">
-              <p className="text-slate-500">Receipt Date:</p>
-              <p className="font-bold text-slate-900">{receiptDate}</p>
-              <p className="text-slate-500 mt-2">Student Name:</p>
-              <p className="font-black text-slate-950 text-sm">{student.name}</p>
-              <p className="text-slate-500 mt-2">Father / Guardian Name:</p>
-              <p className="font-bold text-slate-800">{student.fatherName || 'Guardian'}</p>
-              <p className="text-slate-500 mt-1">Stream: <strong className="text-slate-900">{student.groupFull || student.group}</strong></p>
+            <div className="text-right space-y-1">
+              <p><span className="text-slate-500">Date:</span> <strong>{receiptDate}</strong></p>
+              <p><span className="text-slate-500">Student Name:</span> <strong className="text-slate-950 uppercase">{student.name}</strong></p>
+              <p><span className="text-slate-500">Father / Guardian:</span> <strong>{student.fatherName || 'Parent'}</strong></p>
+              <p><span className="text-slate-500">Student Mobile:</span> <strong className="font-mono">{student.phone}</strong></p>
             </div>
           </div>
 
-          {/* Fee Table */}
-          <div className="py-4">
+          {/* Compact Fee Particulars Table */}
+          <div className="py-2.5">
             <table className="w-full text-left text-xs border border-slate-300">
               <thead className="bg-slate-100 border-b border-slate-300 font-bold text-slate-700 uppercase">
                 <tr>
-                  <th className="py-2.5 px-3">#</th>
-                  <th className="py-2.5 px-3">Fee Particulars</th>
-                  <th className="py-2.5 px-3 text-right">Amount (₹)</th>
+                  <th className="py-1.5 px-3 w-8">#</th>
+                  <th className="py-1.5 px-3">Fee Particulars & Description</th>
+                  <th className="py-1.5 px-3 text-right">Amount (₹)</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-200">
                 <tr>
-                  <td className="py-2 px-3">1</td>
-                  <td className="py-2 px-3">Intermediate Tuition & Coaching Fee</td>
-                  <td className="py-2 px-3 text-right font-medium">₹ {(fee.totalFee * 0.65).toFixed(0)}</td>
+                  <td className="py-1.5 px-3 text-center">1</td>
+                  <td className="py-1.5 px-3 font-medium">Intermediate Academic Tuition & Coaching Fee</td>
+                  <td className="py-1.5 px-3 text-right font-medium">₹ {(fee.totalFee * 0.65).toFixed(0)}</td>
                 </tr>
                 <tr>
-                  <td className="py-2 px-3">2</td>
-                  <td className="py-2 px-3">Science Laboratories & Library Maintenance</td>
-                  <td className="py-2 px-3 text-right font-medium">₹ {(fee.totalFee * 0.20).toFixed(0)}</td>
+                  <td className="py-1.5 px-3 text-center">2</td>
+                  <td className="py-1.5 px-3 font-medium">Science Laboratories & Library Maintenance Fee</td>
+                  <td className="py-1.5 px-3 text-right font-medium">₹ {(fee.totalFee * 0.20).toFixed(0)}</td>
                 </tr>
                 <tr>
-                  <td className="py-2 px-3">3</td>
-                  <td className="py-2 px-3">BIE AP Board Examination & Model Papers</td>
-                  <td className="py-2 px-3 text-right font-medium">₹ {(fee.totalFee * 0.15).toFixed(0)}</td>
+                  <td className="py-1.5 px-3 text-center">3</td>
+                  <td className="py-1.5 px-3 font-medium">BIE AP Board Examination & Model Papers Assessment</td>
+                  <td className="py-1.5 px-3 text-right font-medium">₹ {(fee.totalFee * 0.15).toFixed(0)}</td>
                 </tr>
                 {student.isHostel && (
                   <tr>
-                    <td className="py-2 px-3">4</td>
-                    <td className="py-2 px-3">Residential Hostel & Food Charges (Term-1)</td>
-                    <td className="py-2 px-3 text-right font-medium">Included in Hostel Fee</td>
+                    <td className="py-1.5 px-3 text-center">4</td>
+                    <td className="py-1.5 px-3 font-medium">Residential Hostel & Food Charges (Term-1)</td>
+                    <td className="py-1.5 px-3 text-right font-medium">Included in Hostel Fee</td>
                   </tr>
                 )}
-                <tr className="bg-slate-50 font-bold border-t-2 border-slate-300">
-                  <td colSpan="2" className="py-2.5 px-3 text-right">Total Prescribed Fee:</td>
-                  <td className="py-2.5 px-3 text-right text-slate-900">₹ {fee.totalFee.toLocaleString('en-IN')}</td>
+                <tr className="bg-slate-50 font-bold border-t border-slate-300">
+                  <td colSpan="2" className="py-1.5 px-3 text-right">Total Prescribed Fee:</td>
+                  <td className="py-1.5 px-3 text-right text-slate-900">₹ {fee.totalFee.toLocaleString('en-IN')}</td>
                 </tr>
-                <tr className="bg-emerald-50 font-bold text-emerald-900">
-                  <td colSpan="2" className="py-2.5 px-3 text-right">Total Amount Received (Paid):</td>
-                  <td className="py-2.5 px-3 text-right text-base text-emerald-700">₹ {fee.paidFee.toLocaleString('en-IN')}</td>
+                <tr className="bg-emerald-50/70 font-bold border-t border-slate-300">
+                  <td colSpan="2" className="py-2 px-3 text-right text-emerald-950 font-black">Total Amount Received (Paid):</td>
+                  <td className="py-2 px-3 text-right text-sm font-black text-emerald-800">₹ {fee.paidFee.toLocaleString('en-IN')}</td>
                 </tr>
                 <tr className="bg-slate-50 font-bold">
-                  <td colSpan="2" className="py-2.5 px-3 text-right text-slate-600">Balance Due:</td>
-                  <td className="py-2.5 px-3 text-right text-slate-900">₹ {fee.dueFee.toLocaleString('en-IN')}</td>
+                  <td colSpan="2" className="py-1.5 px-3 text-right text-slate-600">Balance Due:</td>
+                  <td className="py-1.5 px-3 text-right text-slate-900">₹ {fee.dueFee.toLocaleString('en-IN')}</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          {/* Payment Mode & Seal */}
-          <div className="pt-4 flex items-end justify-between text-xs">
-            <div className="space-y-1">
-              <p className="text-slate-500">Mode of Payment: <strong>UPI / Bank Transfer / Cash</strong></p>
-              <p className="text-slate-500">Student Phone: <strong>{student.phone}</strong></p>
-              <p className="text-slate-500">Parent Phone: <strong>{student.fatherPhone || student.phone}</strong></p>
-              <p className="text-[10px] text-slate-400 italic pt-1">Note: Fees once paid is non-refundable. Computer generated receipt.</p>
+          {/* Payment Mode, Instructions & Signature Seal */}
+          <div className="pt-2 flex items-end justify-between text-xs">
+            <div className="space-y-0.5 text-[11px]">
+              <p className="text-slate-600">Payment Mode: <strong>UPI / Bank Transfer / Cash</strong></p>
+              <p className="text-slate-600">Father Mobile: <strong className="font-mono">{student.fatherPhone || student.phone}</strong></p>
+              <p className="text-[10px] text-slate-400 italic pt-0.5">Note: Fees once paid is non-refundable. Official system-generated receipt.</p>
             </div>
 
-            <div className="text-center space-y-1">
-              <div className="w-24 h-12 border border-dashed border-slate-300 rounded-lg flex items-center justify-center text-[10px] text-slate-400 font-bold uppercase mx-auto">
+            <div className="text-center">
+              <div className="w-24 h-10 border border-dashed border-slate-400 rounded flex items-center justify-center text-[9px] text-slate-400 font-bold uppercase mx-auto">
                 College Seal
               </div>
-              <p className="font-extrabold text-slate-900 text-xs mt-1">Authorized Signatory</p>
-              <p className="text-[10px] text-slate-500">Sunrise Junior College</p>
+              <p className="font-black text-slate-900 text-xs mt-1">Authorized Signatory</p>
+              <p className="text-[9px] text-slate-500">Sunrise Junior College, Srikakulam</p>
             </div>
           </div>
+
         </div>
 
-        {/* WhatsApp & SMS Dispatch Buttons (Direct Trigger) */}
+        {/* WhatsApp & SMS Notification Dispatch Buttons (Hidden from Print) */}
         <div className="p-4 bg-slate-50 border-t border-slate-200 no-print space-y-3">
           <p className="text-xs font-bold text-slate-700">
             Send Instant Fee Receipt Notification (WhatsApp / Message):

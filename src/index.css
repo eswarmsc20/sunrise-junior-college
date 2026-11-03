@@ -34,3 +34,94 @@
 .animate-pulse-slow {
   animation: pulseSlow 4s infinite ease-in-out;
 }
+
+/* ========================================================
+   SINGLE-PAGE PRINT STYLES FOR OFFICIAL COLLEGE FEE RECEIPT
+   ======================================================== */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 8mm 10mm;
+  }
+
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: visible !important;
+  }
+
+  /* Hide the rest of the application completely */
+  body > * {
+    display: none !important;
+  }
+
+  /* Make modal container visible */
+  body > div:has(.printable-receipt-card),
+  #root,
+  .print-modal-container {
+    display: block !important;
+    position: static !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  /* Hide everything inside the modal except the receipt card */
+  .no-print {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  /* Single Page Receipt Card Styling */
+  .printable-receipt-card {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    max-width: 190mm !important;
+    margin: 0 auto !important;
+    padding: 16px 20px !important;
+    background: #ffffff !important;
+    border: 2px solid #0f172a !important;
+    border-radius: 12px !important;
+    box-shadow: none !important;
+    page-break-inside: avoid !important;
+    page-break-before: avoid !important;
+    page-break-after: avoid !important;
+  }
+
+  /* Ensure text colors are crisp and high contrast in print */
+  .printable-receipt-card * {
+    color: #000000 !important;
+    text-shadow: none !important;
+  }
+
+  .printable-receipt-card table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    page-break-inside: avoid !important;
+  }
+
+  .printable-receipt-card th,
+  .printable-receipt-card td {
+    padding: 6px 10px !important;
+    border: 1px solid #cbd5e1 !important;
+  }
+
+  .printable-receipt-card thead th {
+    background-color: #f1f5f9 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .printable-receipt-card .receipt-badge {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
