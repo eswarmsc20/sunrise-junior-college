@@ -5,6 +5,21 @@ import { createWhatsAppLink } from '../utils/geoUtils';
 import sunriseLogo from '../assets/sunrise_official_logo.png';
 
 export default function FeeReceiptModal({ isOpen, onClose, student, onSendAlert }) {
+  // Close on Escape key & manage print body class (ALWAYS at top level before early returns)
+  React.useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+    if (isOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+      document.body.classList.add('modal-receipt-open');
+    }
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.classList.remove('modal-receipt-open');
+    };
+  }, [isOpen, onClose]);
+
   if (!isOpen || !student) return null;
 
   const fee = student.feeDetails || {
@@ -39,21 +54,6 @@ Principal Desk: 8143217785`;
 
   const studentWhatsApp = createWhatsAppLink(student.phone, receiptMessage);
   const fatherWhatsApp = createWhatsAppLink(student.fatherPhone || student.phone, receiptMessage);
-
-  // Close on Escape key & manage print body class
-  React.useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape') onClose();
-    };
-    if (isOpen) {
-      window.addEventListener('keydown', handleKeyDown);
-      document.body.classList.add('modal-receipt-open');
-    }
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      document.body.classList.remove('modal-receipt-open');
-    };
-  }, [isOpen, onClose]);
 
   return (
     <div 

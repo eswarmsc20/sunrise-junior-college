@@ -5,6 +5,22 @@ import sunriseLogo from '../assets/sunrise_official_logo.png';
 
 export default function ExamMarksModal({ isOpen, onClose, student, onSendAlert }) {
   const [selectedExam, setSelectedExam] = useState('Half-Yearly Exam (100M)');
+
+  // Close on Escape key & manage print body class (ALWAYS at top level before early returns)
+  React.useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+    if (isOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+      document.body.classList.add('modal-memo-open');
+    }
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.classList.remove('modal-memo-open');
+    };
+  }, [isOpen, onClose]);
+
   if (!isOpen || !student) return null;
 
   const exams = student.examReports || {
@@ -55,21 +71,6 @@ Principal: Sri Andhavarapu Sudarshan Rao (8143217785)`;
 
   const studentWhatsApp = createWhatsAppLink(student.phone, reportMessage);
   const fatherWhatsApp = createWhatsAppLink(student.fatherPhone || student.phone, reportMessage);
-
-  // Close on Escape key & manage print body class
-  React.useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape') onClose();
-    };
-    if (isOpen) {
-      window.addEventListener('keydown', handleKeyDown);
-      document.body.classList.add('modal-memo-open');
-    }
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      document.body.classList.remove('modal-memo-open');
-    };
-  }, [isOpen, onClose]);
 
   return (
     <div 
