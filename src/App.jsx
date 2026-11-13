@@ -156,7 +156,7 @@ export default function App() {
           {/* About Section */}
           <About />
 
-          {/* Academic Courses (MPC, BiPC, CEC, MEC) */}
+          {/* Academic Courses (MPC, BiPC, CEC, MEC, HEC) */}
           <Courses onSelectCourse={(c) => setSelectedCourse(c)} />
 
           {/* Video Streaming Showcase */}

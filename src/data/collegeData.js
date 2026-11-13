@@ -56,6 +56,17 @@ export const coursesData = [
     highlights: ["Advanced Business Mathematics", "Statistical Economics & Analysis", "Finance & Banking Foundations", "Versatile Career Options in STEM + Commerce"],
     color: "from-purple-600 to-violet-700",
     badge: "High Versatility"
+  },
+  {
+    id: "hec",
+    code: "H.E.C",
+    title: "History, Economics, Civics",
+    medium: "English & Telugu Medium",
+    duration: "2 Years Intermediate",
+    description: "The premier humanities stream tailored for Civil Services (UPSC IAS/IPS, APPSC Group 1 & 2), Judiciary, Law (CLAT), Public Administration, Journalism, and Social Sciences.",
+    highlights: ["UPSC & Civil Services Foundation", "Comprehensive Indian History & Constitution", "Macro & Micro Economics Mastery", "Debates, Essay Writing & Current Affairs"],
+    color: "from-rose-600 to-pink-700",
+    badge: "Civil Services & Law"
   }
 ];
 

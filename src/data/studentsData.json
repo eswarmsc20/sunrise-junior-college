@@ -1,5 +1,79 @@
 [
   {
+    "id": "STU000",
+    "hallTicket": "2601089000",
+    "name": "B. Anuradha",
+    "group": "HEC",
+    "groupFull": "H.E.C (History, Economics, Civics)",
+    "phone": "9848123999",
+    "isHostel": false,
+    "attendance": 96,
+    "feeStatus": "Paid",
+    "marks": {
+      "History": 94,
+      "Economics": 92,
+      "Civics": 95,
+      "English": 90,
+      "Telugu/Sanskrit": 98
+    },
+    "admissionNo": "SJC-2026-000",
+    "fatherName": "B. Satyanarayana",
+    "fatherPhone": "9848123999",
+    "feeDetails": {
+      "totalFee": 30000,
+      "paidFee": 30000,
+      "dueFee": 0,
+      "status": "Fully Paid",
+      "receipts": [
+        {
+          "receiptNo": "REC-2026-0000",
+          "date": "15-08-2026",
+          "amountPaid": 30000,
+          "paymentMode": "UPI Online",
+          "transactionRef": "UPI202608150000",
+          "remarks": "Humanities Tuition & Board Fee"
+        }
+      ]
+    },
+    "examReports": {
+      "Unit Test - 1 (25M)": {
+        "History": 24,
+        "Economics": 23,
+        "Civics": 24,
+        "English": 23,
+        "Telugu/Sanskrit": 25
+      },
+      "Unit Test - 2 (25M)": {
+        "History": 25,
+        "Economics": 24,
+        "Civics": 23,
+        "English": 24,
+        "Telugu/Sanskrit": 25
+      },
+      "Quarterly Exam (100M)": {
+        "History": 94,
+        "Economics": 91,
+        "Civics": 92,
+        "English": 90,
+        "Telugu/Sanskrit": 98
+      },
+      "Half-Yearly Exam (100M)": {
+        "History": 96,
+        "Economics": 93,
+        "Civics": 95,
+        "English": 92,
+        "Telugu/Sanskrit": 99
+      }
+    },
+    "attendanceLog": {
+      "todayStatus": "Present",
+      "checkInTime": "08:35 AM",
+      "gpsDistanceMeters": 14,
+      "geofenceVerified": true,
+      "adminApproved": true
+    }
+  },
+  {
     "id": "STU001",
     "hallTicket": "2601089001",
     "name": "Nakka Reshma",

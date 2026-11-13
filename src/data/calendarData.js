@@ -16,7 +16,7 @@ export const UPCOMING_INTER_CAMPAIGN_SCHEDULE = [
     day: 'Day 1',
     interval: 'Every 2 Days',
     topic: 'Welcome to Sunrise Junior College & Streams Overview',
-    message: `Dear SSC Student/Parent, Greetings from Sunrise Junior College, Srikakulam (BIE Code: 01089). We offer premier coaching for MPC, BiPC, CEC, MEC with 20+ yrs experienced faculty at Day & Night Junction. Admissions open 2027! Call 8143217785. Link: https://eswarmsc20.github.io/sunrise-junior-college/docs/`
+    message: `Dear SSC Student/Parent, Greetings from Sunrise Junior College, Srikakulam (BIE Code: 01089). We offer premier coaching for MPC, BiPC, CEC, MEC, and HEC with 20+ yrs experienced faculty at Day & Night Junction. Admissions open 2027! Call 8143217785. Link: https://eswarmsc20.github.io/sunrise-junior-college/docs/`
   },
   {
     day: 'Day 3',
@@ -42,5 +42,6 @@ export const MOCK_INTER_PROSPECTS = [
   { id: 'LEAD01', name: 'Chaitanya Varma', parent: 'C. Srinivas', phone: '7893505185', school: 'ZPHS Srikakulam', stream: 'MPC', status: 'Active (Testing Target)' },
   { id: 'LEAD02', name: 'K. Sai Teja', parent: 'K. Rama Rao', phone: '9440123456', school: 'AP Model School', stream: 'BiPC', status: 'Scheduled' },
   { id: 'LEAD03', name: 'P. Geetha', parent: 'P. Appala Naidu', phone: '9848556677', school: 'Municipal High School', stream: 'MEC', status: 'Scheduled' },
-  { id: 'LEAD04', name: 'M. Bhavani Shankar', parent: 'M. Krishna', phone: '7382112233', school: 'Bhashyam High School', stream: 'CEC', status: 'Scheduled' }
+  { id: 'LEAD04', name: 'M. Bhavani Shankar', parent: 'M. Krishna', phone: '7382112233', school: 'Bhashyam High School', stream: 'CEC', status: 'Scheduled' },
+  { id: 'LEAD05', name: 'B. Anuradha', parent: 'B. Satyanarayana', phone: '9848123999', school: 'Govt Girls High School', stream: 'HEC', status: 'Scheduled' }
 ];

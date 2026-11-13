@@ -185,6 +185,43 @@ export default function ExamPortalModal({ isOpen, onClose, onOpenMarksMemo }) {
         options: ['Total value of final goods & services produced in a country in a year', 'Only agricultural output', 'Bank deposit balances', 'Export earnings only'],
         answer: 0
       }
+    ],
+    HEC: [
+      {
+        id: 1,
+        subject: 'History',
+        q: 'Who was the founder of the Maurya Empire in ancient India?',
+        options: ['Chandragupta Maurya', 'Ashoka the Great', 'Samudragupta', 'Harshavardhana'],
+        answer: 0
+      },
+      {
+        id: 2,
+        subject: 'Civics',
+        q: 'Fundamental Rights in the Constitution of India are enshrined under which Part?',
+        options: ['Part II', 'Part III', 'Part IV', 'Part IV-A'],
+        answer: 1
+      },
+      {
+        id: 3,
+        subject: 'Economics',
+        q: 'The Planning Commission of India was replaced by NITI Aayog in which year?',
+        options: ['2014', '2015', '2016', '2017'],
+        answer: 1
+      },
+      {
+        id: 4,
+        subject: 'History',
+        q: 'The famous Indus Valley Civilization site Harappa was excavated along the banks of which river?',
+        options: ['Indus', 'Ravi', 'Ganges', 'Saraswati'],
+        answer: 1
+      },
+      {
+        id: 5,
+        subject: 'Civics',
+        q: 'Who is designated as the supreme Constitutional Head of the Republic of India?',
+        options: ['Prime Minister', 'President of India', 'Chief Justice of India', 'Speaker of Lok Sabha'],
+        answer: 1
+      }
     ]
   };
 
@@ -386,6 +423,7 @@ export default function ExamPortalModal({ isOpen, onClose, onOpenMarksMemo }) {
                   <option value="BiPC">BiPC (Biology, Physics, Chemistry)</option>
                   <option value="MEC">MEC (Maths, Economics, Commerce)</option>
                   <option value="CEC">CEC (Civics, Economics, Commerce)</option>
+                  <option value="HEC">HEC (History, Economics, Civics)</option>
                 </select>
               </div>
 

@@ -70,5 +70,17 @@
     "assignedStreams": ["All Groups"],
     "experience": "11 Years",
     "dateOfJoining": "2015-06-12"
+  },
+  {
+    "id": "TCH107",
+    "name": "Sri D. Jagannadha Rao",
+    "department": "Humanities (History & Civics)",
+    "designation": "HOD Humanities",
+    "qualification": "M.A. (History), M.A. (Pol. Sci.), B.Ed.",
+    "phone": "9848789012",
+    "email": "d.jagannadh@sunrisejc.edu.in",
+    "assignedStreams": ["HEC 1st Year", "HEC 2nd Year", "CEC"],
+    "experience": "19 Years",
+    "dateOfJoining": "2010-06-15"
   }
 ]

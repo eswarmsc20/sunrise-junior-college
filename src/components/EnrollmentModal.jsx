@@ -255,6 +255,7 @@ export default function EnrollmentModal({ isOpen, onClose, onEnrollStudent, onEn
                   <option value="BiPC">BiPC (Biology, Physics, Chemistry)</option>
                   <option value="CEC">CEC (Civics, Economics, Commerce)</option>
                   <option value="MEC">MEC (Maths, Economics, Commerce)</option>
+                  <option value="HEC">HEC (History, Economics, Civics)</option>
                 </select>
               </div>
 

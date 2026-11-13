@@ -24,12 +24,12 @@ export default function Courses({ onSelectCourse }) {
           </h2>
           <div className="w-20 h-1 bg-amber-500 mx-auto mt-4 rounded-full" />
           <p className="mt-4 text-slate-600 text-base sm:text-lg">
-            Recognised by the Board of Intermediate Education, AP. Offering rigorous two-year curricula in Science and Commerce streams in English Medium.
+            Recognised by the Board of Intermediate Education, AP. Offering rigorous two-year curricula in Science, Commerce, and Humanities streams in English & Telugu Medium.
           </p>
         </div>
 
         {/* Course Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {coursesData.map((course) => (
             <div
               key={course.id}

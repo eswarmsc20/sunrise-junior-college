@@ -185,6 +185,7 @@ export default function AdmissionForm({ initialCourse }) {
                         <option value="Bi.P.C">Bi.P.C (Biology, Physics, Chemistry)</option>
                         <option value="C.E.C">C.E.C (Civics, Economics, Commerce)</option>
                         <option value="M.E.C">M.E.C (Maths, Economics, Commerce)</option>
+                        <option value="H.E.C">H.E.C (History, Economics, Civics)</option>
                       </select>
                     </div>
 

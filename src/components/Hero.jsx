@@ -32,7 +32,7 @@ export default function Hero({ onOpenLogin, onPlayVideo, onOpenPayment, onOpenEx
             </h1>
 
             <p className="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl">
-              Welcome to <strong>Sunrise Junior College</strong> (BIE Code: <strong>01089</strong>). We deliver premier intermediate coaching for <strong>MPC, BiPC, CEC, and MEC</strong> with seasoned lecturers, structured study schedules, and safe residential hostel facilities right at Day & Night Junction, Srikakulam.
+              Welcome to <strong>Sunrise Junior College</strong> (BIE Code: <strong>01089</strong>). We deliver premier intermediate coaching for <strong>MPC, BiPC, CEC, MEC, and HEC</strong> with seasoned lecturers, structured study schedules, and safe residential hostel facilities right at Day & Night Junction, Srikakulam.
             </p>
 
             {/* Quick Benefits Bullet List */}

@@ -50,7 +50,7 @@ export default function About() {
               </div>
 
               <blockquote className="text-slate-300 text-sm leading-relaxed italic border-l-2 border-amber-400 pl-4 py-1">
-                "Our single-minded mission is to provide an encouraging, high-discipline academic environment where every student, whether in Science or Commerce, realizes their fullest potential with confidence."
+                "Our single-minded mission is to provide an encouraging, high-discipline academic environment where every student, whether in Science, Commerce, or Humanities (HEC), realizes their fullest potential with confidence."
               </blockquote>
 
               <div className="mt-6 pt-6 border-t border-slate-800 text-xs text-slate-300 space-y-2">

@@ -423,7 +423,7 @@ export default function AdminPortal({
               <div className="flex flex-wrap items-center gap-3">
                 <span className="text-xs font-bold text-slate-700">Filter Group:</span>
                 <div className="flex gap-1 bg-slate-100 p-1 rounded-xl">
-                  {['ALL', 'MPC', 'BiPC'].map((grp) => (
+                  {['ALL', 'MPC', 'BiPC', 'CEC', 'MEC', 'HEC'].map((grp) => (
                     <button
                       key={grp}
                       onClick={() => setGroupFilter(grp)}
@@ -668,6 +668,7 @@ export default function AdminPortal({
                     <option value="BiPC">BiPC (Biology, Physics, Chemistry)</option>
                     <option value="CEC">CEC (Civics, Economics, Commerce)</option>
                     <option value="MEC">MEC (Maths, Economics, Commerce)</option>
+                    <option value="HEC">HEC (History, Economics, Civics)</option>
                   </select>
                 </div>
 

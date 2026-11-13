@@ -154,7 +154,7 @@ BIE AP Code: 01089 • Srikakulam`;
                 Student Admission & Course Enquiry
               </h3>
               <p className="text-xs text-slate-500 mt-1">
-                Have questions regarding MPC, BiPC, CEC, MEC, or Hostel facilities? Submit your details below for instant guidance.
+                Have questions regarding MPC, BiPC, CEC, MEC, HEC, or Hostel facilities? Submit your details below for instant guidance.
               </p>
             </div>
 
@@ -202,6 +202,7 @@ BIE AP Code: 01089 • Srikakulam`;
                       <option value="BiPC">BiPC (Biology, Physics, Chemistry)</option>
                       <option value="MEC">MEC (Maths, Economics, Commerce)</option>
                       <option value="CEC">CEC (Civics, Economics, Commerce)</option>
+                      <option value="HEC">HEC (History, Economics, Civics)</option>
                     </select>
                   </div>
 

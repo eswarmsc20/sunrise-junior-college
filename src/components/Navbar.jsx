@@ -201,7 +201,7 @@ export default function Navbar({
           <div className="xl:hidden bg-white border-t border-slate-200 px-4 pt-3 pb-5 space-y-2 shadow-2xl">
             <button onClick={() => scrollTo('hero')} className="block w-full text-left py-2 font-semibold text-slate-800 hover:text-amber-600">Home</button>
             <button onClick={() => scrollTo('about')} className="block w-full text-left py-2 font-semibold text-slate-800 hover:text-amber-600">About College</button>
-            <button onClick={() => scrollTo('courses')} className="block w-full text-left py-2 font-semibold text-slate-800 hover:text-amber-600">Academic Courses (MPC, BiPC, CEC, MEC)</button>
+            <button onClick={() => scrollTo('courses')} className="block w-full text-left py-2 font-semibold text-slate-800 hover:text-amber-600">Academic Courses (MPC, BiPC, CEC, MEC, HEC)</button>
             <button onClick={() => scrollTo('facilities')} className="block w-full text-left py-2 font-semibold text-slate-800 hover:text-amber-600">Hostel & Facilities</button>
             <button onClick={() => scrollTo('gallery')} className="block w-full text-left py-2 font-semibold text-slate-800 hover:text-amber-600">Campus Photo Gallery</button>
             <button onClick={() => scrollTo('contact')} className="block w-full text-left py-2 font-semibold text-slate-800 hover:text-amber-600">Contact & Enquiry</button>

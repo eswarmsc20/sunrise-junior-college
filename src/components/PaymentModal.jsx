@@ -219,6 +219,7 @@ export default function PaymentModal({ isOpen, onClose, onPaymentSuccess }) {
                   <option value="BiPC (Biology, Physics, Chemistry)">BiPC (Biology, Physics, Chemistry)</option>
                   <option value="MEC (Maths, Economics, Commerce)">MEC (Maths, Economics, Commerce)</option>
                   <option value="CEC (Civics, Economics, Commerce)">CEC (Civics, Economics, Commerce)</option>
+                  <option value="HEC (History, Economics, Civics)">HEC (History, Economics, Civics)</option>
                 </select>
               </div>
 
