@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { X, Camera, MapPin, CheckCircle2, AlertTriangle, RefreshCw, ShieldCheck, Sparkles, Send, User, BellRing, AlertOctagon, Navigation } from 'lucide-react';
+import { X, Camera, MapPin, CheckCircle2, AlertTriangle, RefreshCw, ShieldCheck, Sparkles, Send, User, BellRing, AlertOctagon, Navigation, Home, ArrowRight } from 'lucide-react';
+import confetti from 'canvas-confetti';
 import { COLLEGE_LOCATION, calculateDistanceMeters, createWhatsAppLink } from '../utils/geoUtils';
 
 export default function FaceBiometricModal({ isOpen, onClose, onAttendanceRecorded, onSendAlert }) {
@@ -10,6 +11,8 @@ export default function FaceBiometricModal({ isOpen, onClose, onAttendanceRecord
   const [isSuccess, setIsSuccess] = useState(false);
   const [faceConfidence, setFaceConfidence] = useState(0);
   const [capturedImage, setCapturedImage] = useState(null);
+  const [countdown, setCountdown] = useState(3);
+  const [autoRedirectPaused, setAutoRedirectPaused] = useState(false);
 
   // Student details for attendance & geofence alerts
   const [studentName, setStudentName] = useState('Chaitanya Varma');
@@ -54,6 +57,35 @@ export default function FaceBiometricModal({ isOpen, onClose, onAttendanceRecord
     }
   }, [onClose]);
 
+  // Navigate back to Home seamlessly
+  const handleReturnToHome = useCallback(() => {
+    handleModalClose();
+    setIsSuccess(false);
+    setIsScanning(false);
+    setCountdown(3);
+    setAutoRedirectPaused(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const heroEl = document.getElementById('hero');
+    if (heroEl) {
+      heroEl.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [handleModalClose]);
+
+  // Auto-redirect timer: Return to Home 3 seconds after face recognition completes
+  useEffect(() => {
+    let timer;
+    if (isSuccess && !autoRedirectPaused) {
+      if (countdown > 0) {
+        timer = setTimeout(() => {
+          setCountdown((prev) => prev - 1);
+        }, 1000);
+      } else if (countdown === 0) {
+        handleReturnToHome();
+      }
+    }
+    return () => clearTimeout(timer);
+  }, [isSuccess, countdown, autoRedirectPaused, handleReturnToHome]);
+
   useEffect(() => {
     if (isOpen) {
       startCamera();
@@ -72,6 +104,8 @@ export default function FaceBiometricModal({ isOpen, onClose, onAttendanceRecord
     setCapturedImage(null);
     setFaceConfidence(0);
     setBreachAlertActive(false);
+    setCountdown(3);
+    setAutoRedirectPaused(false);
   };
 
   const startCamera = async () => {
@@ -249,6 +283,18 @@ Immediate action required. Call Principal: 8143217785`;
     setIsScanning(false);
     setIsSuccess(true);
     setFaceConfidence(99.2);
+    setCountdown(3);
+    setAutoRedirectPaused(false);
+
+    try {
+      confetti({
+        particleCount: 80,
+        spread: 60,
+        origin: { y: 0.6 }
+      });
+    } catch (e) {
+      // Confetti fallback
+    }
 
     const record = {
       studentName,
@@ -613,32 +659,78 @@ Please contact Principal: 8143217785 immediately.`;
                 </div>
               </div>
 
-              {/* Instant WhatsApp Dispatch */}
-              <div className="space-y-2 pt-2">
+              {/* Auto-Redirect Countdown Status */}
+              <div className="bg-amber-50 border border-amber-300 rounded-2xl p-3 text-xs text-amber-950 flex items-center justify-between shadow-sm">
+                <div className="flex items-center gap-2">
+                  <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping flex-shrink-0" />
+                  <span className="font-bold">
+                    {!autoRedirectPaused 
+                      ? `Attendance Verified! Returning to Home in ${countdown}s...` 
+                      : 'Auto-return paused.'}
+                  </span>
+                </div>
+                {!autoRedirectPaused ? (
+                  <button
+                    type="button"
+                    onClick={() => setAutoRedirectPaused(true)}
+                    className="text-[11px] font-bold text-amber-900 underline hover:text-black cursor-pointer"
+                  >
+                    Pause
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => setAutoRedirectPaused(false)}
+                    className="text-[11px] font-bold text-emerald-800 underline cursor-pointer"
+                  >
+                    Resume
+                  </button>
+                )}
+              </div>
+
+              {/* Prominent Action Buttons */}
+              <div className="space-y-2 pt-1">
+                {/* 1-Click Direct Return to Home Button */}
+                <button
+                  type="button"
+                  onClick={handleReturnToHome}
+                  className="w-full bg-gradient-to-r from-slate-950 to-indigo-950 hover:from-slate-900 hover:to-indigo-900 text-amber-400 font-black py-3.5 px-4 rounded-2xl text-xs sm:text-sm flex items-center justify-center gap-2 transition shadow-xl border border-amber-400/30 cursor-pointer group"
+                >
+                  <Home className="w-4 h-4 text-amber-400 group-hover:scale-110 transition" />
+                  <span>Return to Home (హోమ్‌కు వెళ్ళండి)</span>
+                  <ArrowRight className="w-4 h-4 text-amber-400 group-hover:translate-x-1 transition" />
+                </button>
+
+                {/* Instant WhatsApp Dispatch */}
                 <a
                   href={waAttendanceLink}
                   target="_blank"
                   rel="noreferrer"
-                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition shadow-sm"
+                  onClick={() => setAutoRedirectPaused(true)}
+                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 transition shadow-sm"
                 >
                   <Send className="w-4 h-4" />
-                  <span>Send Immediate WhatsApp Notification to Parent ({parentPhone})</span>
+                  <span>Send WhatsApp Notification to Parent ({parentPhone})</span>
                 </a>
 
-                <div className="flex gap-2">
+                <div className="flex gap-2 pt-1">
                   <button
                     type="button"
-                    onClick={resetState}
+                    onClick={() => {
+                      resetState();
+                      setCountdown(3);
+                      setAutoRedirectPaused(false);
+                    }}
                     className="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs py-2 px-3 rounded-xl transition cursor-pointer"
                   >
                     Mark Another Student
                   </button>
                   <button
                     type="button"
-                    onClick={handleModalClose}
-                    className="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs py-2 px-4 rounded-xl transition cursor-pointer"
+                    onClick={handleReturnToHome}
+                    className="bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-xs py-2 px-4 rounded-xl transition cursor-pointer"
                   >
-                    Done & Close
+                    Close Window
                   </button>
                 </div>
               </div>
