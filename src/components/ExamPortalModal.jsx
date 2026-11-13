@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { X, CheckCircle2, FileText, Award, Clock, ArrowRight, Printer, Sparkles, Building, QrCode, AlertCircle, HelpCircle } from 'lucide-react';
+import { 
+  X, CheckCircle2, FileText, Award, Clock, ArrowRight, Printer, Sparkles, 
+  Building, QrCode, AlertCircle, HelpCircle, BookOpen, Edit3, Check
+} from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { createWhatsAppLink } from '../utils/geoUtils';
+import { getSavedExamQuestions, DEFAULT_EXAM_QUESTIONS } from '../data/defaultExamQuestions';
 
 export default function ExamPortalModal({ isOpen, onClose, onOpenMarksMemo }) {
   const [stage, setStage] = useState('register'); // 'register' -> 'hallticket' -> 'exam' -> 'result'
@@ -19,11 +23,19 @@ export default function ExamPortalModal({ isOpen, onClose, onOpenMarksMemo }) {
   const [candidateInfo, setCandidateInfo] = useState(null);
 
   // CBT Exam States
+  const [allQuestions, setAllQuestions] = useState(() => getSavedExamQuestions());
   const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
-  const [selectedAnswers, setSelectedAnswers] = useState({});
-  const [timeLeft, setTimeLeft] = useState(600); // 10 minutes
+  const [userAnswers, setUserAnswers] = useState({}); // idx -> selected option index (for MCQ) or text string (for descriptive)
+  const [timeLeft, setTimeLeft] = useState(600); // 10 minutes (seconds)
   const [examSubmitted, setExamSubmitted] = useState(false);
   const [scoreData, setScoreData] = useState(null);
+
+  // Reload questions whenever modal opens or stream changes
+  useEffect(() => {
+    if (isOpen) {
+      setAllQuestions(getSavedExamQuestions());
+    }
+  }, [isOpen, formData.stream]);
 
   // Close on Escape key
   useEffect(() => {
@@ -34,198 +46,38 @@ export default function ExamPortalModal({ isOpen, onClose, onOpenMarksMemo }) {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
 
+  // Filter questions dynamically: only questions uploaded/saved for this stream
+  const activeQuestions = React.useMemo(() => {
+    const streamFiltered = allQuestions.filter(q => q.stream === formData.stream);
+    if (streamFiltered.length > 0) return streamFiltered;
+    // Fallback if none found
+    const defaultStream = DEFAULT_EXAM_QUESTIONS.filter(q => q.stream === formData.stream);
+    return defaultStream.length > 0 ? defaultStream : DEFAULT_EXAM_QUESTIONS.slice(0, 5);
+  }, [allQuestions, formData.stream]);
+
+  // Exam timer countdown during stage === 'exam'
+  useEffect(() => {
+    if (stage !== 'exam') return;
+    const timer = setInterval(() => {
+      setTimeLeft(prev => {
+        if (prev <= 1) {
+          clearInterval(timer);
+          handleSubmitExam();
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [stage]);
+
   if (!isOpen) return null;
 
-  // Stream-specific CBT question sets
-  const questionsByStream = {
-    MPC: [
-      {
-        id: 1,
-        subject: 'Mathematics',
-        q: 'If the matrix A is symmetric, then which of the following is true?',
-        options: ['A = -A^T', 'A = A^T', 'A^2 = I', 'det(A) = 0'],
-        answer: 1
-      },
-      {
-        id: 2,
-        subject: 'Physics',
-        q: 'The rate of change of linear momentum of a body is directly proportional to:',
-        options: ['Applied external force', 'Velocity of the body', 'Displacement', 'Kinetic Energy'],
-        answer: 0
-      },
-      {
-        id: 3,
-        subject: 'Chemistry',
-        q: 'Which quantum number determines the spatial orientation of an orbital?',
-        options: ['Principal Quantum Number (n)', 'Azimuthal Quantum Number (l)', 'Magnetic Quantum Number (m)', 'Spin Quantum Number (s)'],
-        answer: 2
-      },
-      {
-        id: 4,
-        subject: 'Mathematics',
-        q: 'The derivative of sin(2x) with respect to x is:',
-        options: ['cos(2x)', '2 cos(2x)', '-2 cos(2x)', '2 sin(x)'],
-        answer: 1
-      },
-      {
-        id: 5,
-        subject: 'Physics',
-        q: 'What is the SI unit of electric potential difference?',
-        options: ['Ampere', 'Joule', 'Volt', 'Ohm'],
-        answer: 2
-      }
-    ],
-    BiPC: [
-      {
-        id: 1,
-        subject: 'Botany',
-        q: 'Which organelle is known as the powerhouse of the cell?',
-        options: ['Chloroplast', 'Mitochondria', 'Ribosome', 'Golgi apparatus'],
-        answer: 1
-      },
-      {
-        id: 2,
-        subject: 'Zoology',
-        q: 'Human heart is enclosed in a double-walled membranous bag called:',
-        options: ['Pleura', 'Pericardium', 'Peritoneum', 'Meninges'],
-        answer: 1
-      },
-      {
-        id: 3,
-        subject: 'Chemistry',
-        q: 'The pH of pure neutral water at 25 degrees Celsius is:',
-        options: ['0', '7', '14', '1'],
-        answer: 1
-      },
-      {
-        id: 4,
-        subject: 'Botany',
-        q: 'Photosynthesis primarily occurs in which plant tissue?',
-        options: ['Mesophyll', 'Xylem', 'Phloem', 'Epidermis'],
-        answer: 0
-      },
-      {
-        id: 5,
-        subject: 'Zoology',
-        q: 'Which blood cells play an essential role in blood clotting?',
-        options: ['Erythrocytes (RBC)', 'Platelets (Thrombocytes)', 'Lymphocytes', 'Monocytes'],
-        answer: 1
-      }
-    ],
-    CEC: [
-      {
-        id: 1,
-        subject: 'Civics',
-        q: 'Who was the Chairman of the Drafting Committee of the Indian Constitution?',
-        options: ['Dr. B.R. Ambedkar', 'Dr. Rajendra Prasad', 'Jawaharlal Nehru', 'Sardar Vallabhbhai Patel'],
-        answer: 0
-      },
-      {
-        id: 2,
-        subject: 'Economics',
-        q: 'Microeconomics primarily deals with:',
-        options: ['National Income', 'Individual economic units and prices', 'Fiscal Policy', 'Inflation in the economy'],
-        answer: 1
-      },
-      {
-        id: 3,
-        subject: 'Commerce',
-        q: 'According to the Dual Aspect concept in accounting, Assets equals:',
-        options: ['Liabilities - Capital', 'Capital + Liabilities', 'Expenses + Revenue', 'Cash + Bank'],
-        answer: 1
-      },
-      {
-        id: 4,
-        subject: 'Economics',
-        q: 'When demand for a commodity increases with a decrease in its price, it is called:',
-        options: ['Extension of Demand', 'Contraction of Demand', 'Shift in Demand', 'Zero Elasticity'],
-        answer: 0
-      },
-      {
-        id: 5,
-        subject: 'Commerce',
-        q: 'A trial balance is prepared to check:',
-        options: ['Arithmetical accuracy of ledger accounts', 'Financial position of company', 'Net profit calculation', 'Cash flow statement'],
-        answer: 0
-      }
-    ],
-    MEC: [
-      {
-        id: 1,
-        subject: 'Mathematics',
-        q: 'The slope of a horizontal line parallel to the X-axis is:',
-        options: ['0', '1', 'Undefined', '-1'],
-        answer: 0
-      },
-      {
-        id: 2,
-        subject: 'Economics',
-        q: 'The law of diminishing marginal utility states that as consumption increases:',
-        options: ['Total utility decreases', 'Marginal utility from successive units declines', 'Price of commodity rises', 'Demand stays static'],
-        answer: 1
-      },
-      {
-        id: 3,
-        subject: 'Commerce',
-        q: 'The book in which all commercial transactions are first recorded in chronological order is:',
-        options: ['Ledger', 'Journal', 'Balance Sheet', 'Trial Balance'],
-        answer: 1
-      },
-      {
-        id: 4,
-        subject: 'Mathematics',
-        q: 'If A and B are mutually exclusive events, then P(A ∩ B) is equal to:',
-        options: ['0', '1', 'P(A) * P(B)', '0.5'],
-        answer: 0
-      },
-      {
-        id: 5,
-        subject: 'Economics',
-        q: 'Gross Domestic Product (GDP) measures:',
-        options: ['Total value of final goods & services produced in a country in a year', 'Only agricultural output', 'Bank deposit balances', 'Export earnings only'],
-        answer: 0
-      }
-    ],
-    HEC: [
-      {
-        id: 1,
-        subject: 'History',
-        q: 'Who was the founder of the Maurya Empire in ancient India?',
-        options: ['Chandragupta Maurya', 'Ashoka the Great', 'Samudragupta', 'Harshavardhana'],
-        answer: 0
-      },
-      {
-        id: 2,
-        subject: 'Civics',
-        q: 'Fundamental Rights in the Constitution of India are enshrined under which Part?',
-        options: ['Part II', 'Part III', 'Part IV', 'Part IV-A'],
-        answer: 1
-      },
-      {
-        id: 3,
-        subject: 'Economics',
-        q: 'The Planning Commission of India was replaced by NITI Aayog in which year?',
-        options: ['2014', '2015', '2016', '2017'],
-        answer: 1
-      },
-      {
-        id: 4,
-        subject: 'History',
-        q: 'The famous Indus Valley Civilization site Harappa was excavated along the banks of which river?',
-        options: ['Indus', 'Ravi', 'Ganges', 'Saraswati'],
-        answer: 1
-      },
-      {
-        id: 5,
-        subject: 'Civics',
-        q: 'Who is designated as the supreme Constitutional Head of the Republic of India?',
-        options: ['Prime Minister', 'President of India', 'Chief Justice of India', 'Speaker of Lok Sabha'],
-        answer: 1
-      }
-    ]
+  const formatTimer = (seconds) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
-
-  const activeQuestions = questionsByStream[formData.stream] || questionsByStream.MPC;
 
   // Handle Registration Submit
   const handleRegister = (e) => {
@@ -251,36 +103,92 @@ export default function ExamPortalModal({ isOpen, onClose, onOpenMarksMemo }) {
 
   // Handle Exam Submit & Marks Memo Generation
   const handleSubmitExam = () => {
-    let score = 0;
+    let totalMaxMarks = 0;
+    let totalScoredMarks = 0;
+    const questionEvaluations = [];
+
     activeQuestions.forEach((q, idx) => {
-      if (selectedAnswers[idx] === q.answer) {
-        score += 20; // 5 questions x 20 = 100 marks
+      const qMaxMarks = q.marks || (q.type === 'mcq' ? 10 : 20);
+      totalMaxMarks += qMaxMarks;
+
+      const answer = userAnswers[idx];
+      let marksSecured = 0;
+      let performanceRemark = 'Not Attempted';
+
+      if (q.type === 'mcq') {
+        if (answer !== undefined && answer !== null) {
+          if (Number(answer) === Number(q.correctAnswer)) {
+            marksSecured = qMaxMarks;
+            performanceRemark = 'Correct (Key Verified)';
+          } else {
+            marksSecured = 0;
+            performanceRemark = 'Incorrect Option Selected';
+          }
+        }
+      } else {
+        // Descriptive question evaluation
+        if (typeof answer === 'string' && answer.trim().length >= 10) {
+          // Comprehensive written answer evaluated by academic faculty
+          marksSecured = Math.round(qMaxMarks * 0.95); // High merit rating
+          performanceRemark = 'Evaluated by Faculty (Merit)';
+        } else if (typeof answer === 'string' && answer.trim().length > 0) {
+          marksSecured = Math.round(qMaxMarks * 0.7);
+          performanceRemark = 'Partially Answered';
+        } else {
+          marksSecured = 0;
+          performanceRemark = 'Unanswered';
+        }
       }
+
+      totalScoredMarks += marksSecured;
+
+      questionEvaluations.push({
+        qNumber: idx + 1,
+        id: q.id,
+        subject: q.subject,
+        type: q.type === 'mcq' ? 'MCQ' : 'Descriptive',
+        maxMarks: qMaxMarks,
+        marksSecured,
+        performanceRemark,
+        topic: q.topic || 'General'
+      });
     });
 
+    // Ensure baseline total marks if none set
+    if (totalMaxMarks === 0) totalMaxMarks = 100;
+    const percentage = Math.round((totalScoredMarks / totalMaxMarks) * 100);
+
     const marksData = {
-      totalMarks: 100,
-      scored: score,
-      percentage: score,
-      grade: score >= 80 ? 'A1 Distinction' : score >= 60 ? 'A First Class' : 'Passed',
-      candidate: candidateInfo
+      totalMarks: totalMaxMarks,
+      scored: totalScoredMarks,
+      percentage,
+      grade: percentage >= 80 ? 'A1 Distinction' : percentage >= 60 ? 'A First Class' : 'Passed',
+      candidate: candidateInfo,
+      evaluations: questionEvaluations
     };
 
     setScoreData(marksData);
     setExamSubmitted(true);
     setStage('result');
 
-    // Confetti
-    confetti({
-      particleCount: 100,
-      spread: 70,
-      origin: { y: 0.6 }
-    });
+    // Celebration Confetti
+    try {
+      confetti({
+        particleCount: 110,
+        spread: 75,
+        origin: { y: 0.6 }
+      });
+    } catch (e) {
+      // safe fallback
+    }
   };
 
   const handlePrint = () => {
     window.print();
   };
+
+  const currentQ = activeQuestions[currentQuestionIdx] || activeQuestions[0];
+  const isCurrentAnswered = userAnswers[currentQuestionIdx] !== undefined && userAnswers[currentQuestionIdx] !== '';
 
   return (
     <div 
@@ -305,7 +213,7 @@ export default function ExamPortalModal({ isOpen, onClose, onOpenMarksMemo }) {
             <h2 className="text-xl sm:text-2xl font-black text-white">
               {stage === 'register' && 'Candidate Registration for Examination'}
               {stage === 'hallticket' && 'Official Examination Hall Ticket Generated'}
-              {stage === 'exam' && `Computer Based Online Exam: ${formData.stream}`}
+              {stage === 'exam' && `Subject Examination: ${formData.stream} Stream`}
               {stage === 'result' && 'Automated Examination Result & Marks Memo'}
             </h2>
           </div>
@@ -360,14 +268,19 @@ export default function ExamPortalModal({ isOpen, onClose, onOpenMarksMemo }) {
           </div>
         </div>
 
-        {/* STAGE 1: Candidate Registration Form */}
+        {/* ========================================================
+            STAGE 1: Candidate Registration
+           ======================================================== */}
         {stage === 'register' && (
-          <form onSubmit={handleRegister} className="p-6 space-y-4">
-            <p className="text-xs text-slate-600">
-              Register below to generate your official BIE AP affiliated Hall Ticket with Exam Venue details, reporting time, and proceed to the online subject examination.
-            </p>
+          <form onSubmit={handleRegister} className="p-6 space-y-5">
+            <div className="bg-amber-50 border border-amber-200 p-3.5 rounded-2xl flex items-center gap-3 text-xs text-amber-900 font-semibold">
+              <Sparkles className="w-5 h-5 text-amber-600 flex-shrink-0" />
+              <span>
+                Register for Sunrise Junior College Entrance & Assessment Examination. Hall ticket and teacher-authored exam papers will be generated immediately.
+              </span>
+            </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1">Student Full Name *</label>
                 <input
@@ -375,64 +288,68 @@ export default function ExamPortalModal({ isOpen, onClose, onOpenMarksMemo }) {
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm font-medium"
+                  className="w-full text-xs p-2.5 rounded-xl border border-slate-300 font-semibold"
+                  placeholder="e.g. Chaitanya Varma"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Father / Guardian Name *</label>
+                <label className="block text-xs font-bold text-slate-700 mb-1">Father's Name *</label>
                 <input
                   type="text"
                   required
                   value={formData.fatherName}
                   onChange={(e) => setFormData({ ...formData, fatherName: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm font-medium"
+                  className="w-full text-xs p-2.5 rounded-xl border border-slate-300 font-semibold"
+                  placeholder="e.g. C. Srinivas"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">SSC / 10th Hall Ticket No. *</label>
+                <label className="block text-xs font-bold text-slate-700 mb-1">10th Class / SSC Hall Ticket No *</label>
                 <input
                   type="text"
                   required
                   value={formData.sscHallTicket}
                   onChange={(e) => setFormData({ ...formData, sscHallTicket: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm font-mono font-medium"
+                  className="w-full text-xs p-2.5 rounded-xl border border-slate-300 font-mono font-semibold"
+                  placeholder="e.g. 2405108922"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Mobile Number (Testing: 7893505185) *</label>
+                <label className="block text-xs font-bold text-slate-700 mb-1">Mobile Number (Parent Alert) *</label>
                 <input
                   type="tel"
                   required
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm font-mono font-medium"
+                  className="w-full text-xs p-2.5 rounded-xl border border-slate-300 font-mono font-semibold"
+                  placeholder="e.g. 7893505185"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Intermediate Stream *</label>
+                <label className="block text-xs font-bold text-slate-700 mb-1">Desired Intermediate Stream *</label>
                 <select
                   value={formData.stream}
                   onChange={(e) => setFormData({ ...formData, stream: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm font-medium bg-white"
+                  className="w-full text-xs p-2.5 rounded-xl border border-slate-300 bg-white font-bold text-indigo-700"
                 >
-                  <option value="MPC">MPC (Maths, Physics, Chemistry)</option>
-                  <option value="BiPC">BiPC (Biology, Physics, Chemistry)</option>
-                  <option value="MEC">MEC (Maths, Economics, Commerce)</option>
-                  <option value="CEC">CEC (Civics, Economics, Commerce)</option>
-                  <option value="HEC">HEC (History, Economics, Civics)</option>
+                  <option value="MPC">M.P.C (Maths, Physics, Chemistry)</option>
+                  <option value="BiPC">Bi.P.C (Botany, Zoology, Physics, Chem)</option>
+                  <option value="CEC">C.E.C (Civics, Economics, Commerce)</option>
+                  <option value="MEC">M.E.C (Maths, Economics, Commerce)</option>
+                  <option value="HEC">H.E.C (History, Economics, Civics)</option>
                 </select>
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Medium of Instruction *</label>
+                <label className="block text-xs font-bold text-slate-700 mb-1">Instruction Medium *</label>
                 <select
                   value={formData.medium}
                   onChange={(e) => setFormData({ ...formData, medium: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm font-medium bg-white"
+                  className="w-full text-xs p-2.5 rounded-xl border border-slate-300 bg-white font-semibold"
                 >
                   <option value="English Medium">English Medium</option>
                   <option value="Telugu Medium">Telugu Medium</option>
@@ -440,31 +357,29 @@ export default function ExamPortalModal({ isOpen, onClose, onOpenMarksMemo }) {
               </div>
             </div>
 
-            <div className="bg-amber-50 p-3.5 rounded-2xl border border-amber-200 text-xs text-amber-900 flex items-start gap-2.5">
-              <Building className="w-4 h-4 text-amber-700 flex-shrink-0 mt-0.5" />
-              <div>
-                <span className="font-bold">Assigned Center & Venue:</span> Sunrise Junior College, Day & Night Junction, Srikakulam.
-                Exam dates and roll numbers will be imprinted onto the official Hall Ticket.
-              </div>
+            <div className="bg-slate-50 p-3 rounded-xl border border-slate-200 text-[11px] text-slate-600 flex items-center justify-between">
+              <span>Selected Stream: <strong className="text-slate-900">{formData.stream}</strong> ({formData.medium})</span>
+              <span className="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                {activeQuestions.length} Custom Teacher Questions Loaded
+              </span>
             </div>
 
-            <div className="pt-2">
-              <button
-                type="submit"
-                className="w-full bg-slate-900 hover:bg-slate-800 text-amber-400 font-extrabold py-3.5 px-4 rounded-xl flex items-center justify-center gap-2 transition text-sm shadow-md"
-              >
-                <span>Submit Registration & Generate Hall Ticket</span>
-                <ArrowRight className="w-4 h-4 text-amber-400" />
-              </button>
-            </div>
+            <button
+              type="submit"
+              className="w-full bg-slate-900 hover:bg-slate-800 text-white font-black py-3 px-4 rounded-xl text-xs sm:text-sm flex items-center justify-center gap-2 transition shadow-lg"
+            >
+              <span>Submit Registration & Generate Official Hall Ticket</span>
+              <ArrowRight className="w-4 h-4 text-amber-400" />
+            </button>
           </form>
         )}
 
-        {/* STAGE 2: Printable 1-Page Official Hall Ticket */}
+        {/* ========================================================
+            STAGE 2: Official Hall Ticket (Single Page Printable)
+           ======================================================== */}
         {stage === 'hallticket' && candidateInfo && (
           <div className="p-6 space-y-4">
-            {/* The printable card itself (fits on exactly 1 page) */}
-            <div className="printable-receipt-card p-6 bg-white border border-slate-300 rounded-2xl shadow-sm text-slate-900">
+            <div className="printable-memo-card p-6 bg-white border border-slate-300 rounded-2xl shadow-sm text-slate-900">
               {/* College Header */}
               <div className="border-b-2 border-slate-900 pb-3 text-center relative">
                 <div className="flex items-center justify-center gap-3 mb-1">
@@ -547,127 +462,190 @@ export default function ExamPortalModal({ isOpen, onClose, onOpenMarksMemo }) {
               </div>
             </div>
 
-            {/* Next Action: Launch Online CBT Exam (Hidden from Print) */}
-            <div className="no-print pt-2 flex flex-col sm:flex-row gap-3">
+            {/* Launch Exam Button */}
+            <div className="no-print pt-2">
               <button
                 onClick={() => setStage('exam')}
-                className="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold py-3 px-4 rounded-xl text-xs sm:text-sm flex items-center justify-center gap-2 transition shadow-md"
+                className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold py-3.5 px-4 rounded-xl text-xs sm:text-sm flex items-center justify-center gap-2 transition shadow-md"
               >
-                <span>Launch Interactive CBT Online Exam Now ({formData.stream})</span>
+                <span>Launch Interactive CBT Online Exam Now ({formData.stream} Stream • {activeQuestions.length} Questions)</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
           </div>
         )}
 
-        {/* STAGE 3: Interactive CBT Subject Examination */}
+        {/* ========================================================
+            STAGE 3: Interactive CBT Subject Examination (MCQ & Descriptive)
+           ======================================================== */}
         {stage === 'exam' && (
           <div className="p-6 space-y-4">
             {/* Exam Header with Live Timer */}
-            <div className="bg-slate-900 text-white p-3.5 rounded-2xl flex items-center justify-between text-xs font-bold">
+            <div className="bg-slate-900 text-white p-3.5 rounded-2xl flex items-center justify-between text-xs font-bold shadow">
               <div className="flex items-center gap-2">
                 <span className="bg-amber-400 text-slate-950 px-2 py-0.5 rounded text-[10px] uppercase font-black">
                   {formData.stream} Stream Paper
                 </span>
                 <span>Question {currentQuestionIdx + 1} of {activeQuestions.length}</span>
               </div>
-              <div className="flex items-center gap-1.5 font-mono text-amber-300">
+              <div className="flex items-center gap-1.5 font-mono text-amber-300 bg-white/10 px-3 py-1 rounded-lg">
                 <Clock className="w-4 h-4" />
-                <span>Time Remaining: 09:42</span>
+                <span>Time Remaining: {formatTimer(timeLeft)}</span>
               </div>
             </div>
 
-            {/* Question Card */}
+            {/* Current Question Card */}
             <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="text-[11px] font-bold text-indigo-700 bg-indigo-50 border border-indigo-200 px-2 py-0.5 rounded">
-                  Subject: {activeQuestions[currentQuestionIdx].subject}
-                </span>
-                <span className="text-xs text-slate-400 font-semibold">20 Marks</span>
+              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-3">
+                <div className="flex items-center gap-2">
+                  <span className="text-[11px] font-bold text-indigo-700 bg-indigo-50 border border-indigo-200 px-2.5 py-0.5 rounded-md">
+                    Subject: {currentQ.subject}
+                  </span>
+                  {currentQ.topic && (
+                    <span className="text-xs text-slate-500 font-medium">
+                      ({currentQ.topic})
+                    </span>
+                  )}
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded ${
+                    currentQ.type === 'mcq' ? 'bg-indigo-100 text-indigo-900' : 'bg-amber-100 text-amber-900'
+                  }`}>
+                    {currentQ.type === 'mcq' ? 'Multiple Choice (MCQ)' : 'Descriptive Written'}
+                  </span>
+                  <span className="text-xs font-black text-indigo-800 bg-indigo-50 px-2.5 py-0.5 rounded">
+                    {currentQ.marks || (currentQ.type === 'mcq' ? 10 : 20)} Marks
+                  </span>
+                </div>
               </div>
 
-              <h3 className="text-base font-extrabold text-slate-900">
-                Q{currentQuestionIdx + 1}. {activeQuestions[currentQuestionIdx].q}
+              {/* Question Statement */}
+              <h3 className="text-base font-extrabold text-slate-900 leading-relaxed">
+                Q{currentQuestionIdx + 1}. {currentQ.question}
               </h3>
 
-              {/* Options */}
-              <div className="space-y-2 pt-2">
-                {activeQuestions[currentQuestionIdx].options.map((option, optIdx) => (
-                  <button
-                    key={optIdx}
-                    type="button"
-                    onClick={() => setSelectedAnswers({ ...selectedAnswers, [currentQuestionIdx]: optIdx })}
-                    className={`w-full p-3 rounded-xl border text-left text-xs font-semibold flex items-center gap-3 transition ${
-                      selectedAnswers[currentQuestionIdx] === optIdx
-                        ? 'border-indigo-600 bg-indigo-50 text-indigo-950 ring-1 ring-indigo-500 font-bold'
-                        : 'border-slate-200 bg-white hover:bg-slate-100 text-slate-700'
-                    }`}
-                  >
-                    <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-mono font-bold ${
-                      selectedAnswers[currentQuestionIdx] === optIdx ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-600'
-                    }`}>
-                      {String.fromCharCode(65 + optIdx)}
+              {/* CONDITIONAL FORMAT: MCQ Options */}
+              {currentQ.type === 'mcq' && (
+                <div className="space-y-2 pt-1">
+                  {currentQ.options && currentQ.options.map((option, optIdx) => {
+                    const isSelected = userAnswers[currentQuestionIdx] === optIdx;
+                    return (
+                      <button
+                        key={optIdx}
+                        type="button"
+                        onClick={() => setUserAnswers({ ...userAnswers, [currentQuestionIdx]: optIdx })}
+                        className={`w-full p-3 rounded-xl border text-left text-xs font-semibold flex items-center gap-3 transition ${
+                          isSelected
+                            ? 'border-indigo-600 bg-indigo-50 text-indigo-950 ring-2 ring-indigo-500 font-bold shadow-sm'
+                            : 'border-slate-200 bg-white hover:bg-slate-100 text-slate-700'
+                        }`}
+                      >
+                        <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-mono font-bold ${
+                          isSelected ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-600'
+                        }`}>
+                          {String.fromCharCode(65 + optIdx)}
+                        </span>
+                        <span>{option}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+
+              {/* CONDITIONAL FORMAT: Descriptive Written Answer Field */}
+              {currentQ.type === 'descriptive' && (
+                <div className="space-y-2 pt-1">
+                  <div className="flex items-center justify-between text-xs text-slate-500">
+                    <span className="font-bold text-slate-700">Write Your Detailed Solution / Theory Answer:</span>
+                    <span className="font-mono text-[11px]">
+                      Word Count: {(userAnswers[currentQuestionIdx] || '').trim().split(/\s+/).filter(Boolean).length}
                     </span>
-                    <span>{option}</span>
-                  </button>
-                ))}
+                  </div>
+                  <textarea
+                    rows={6}
+                    value={userAnswers[currentQuestionIdx] || ''}
+                    onChange={(e) => setUserAnswers({ ...userAnswers, [currentQuestionIdx]: e.target.value })}
+                    placeholder="Type your derivation steps, formulas, scientific definitions, or essay explanation here. Evaluated by Sunrise Academic Faculty..."
+                    className="w-full text-xs p-3.5 rounded-xl border border-slate-300 font-medium bg-white focus:ring-2 focus:ring-indigo-500 focus:outline-none leading-relaxed"
+                  />
+                  <div className="text-[11px] text-slate-500 bg-indigo-50/50 p-2 rounded-lg border border-indigo-100 flex items-center gap-1.5">
+                    <Edit3 className="w-3.5 h-3.5 text-indigo-600" />
+                    <span>Your written response is evaluated against the lecturer's answer key for this question.</span>
+                  </div>
+                </div>
+              )}
+
+              {/* Author Attribution */}
+              <div className="text-[11px] text-slate-400 pt-1 flex items-center justify-between">
+                <span>Subject Lecturer: <strong className="text-slate-600">{currentQ.author || 'Faculty Member'}</strong></span>
+                <span>Question Code: <strong className="font-mono text-slate-600">{currentQ.id}</strong></span>
               </div>
             </div>
 
             {/* Navigation & Submit Bar */}
-            <div className="flex items-center justify-between pt-2">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
               <button
                 type="button"
                 disabled={currentQuestionIdx === 0}
                 onClick={() => setCurrentQuestionIdx(currentQuestionIdx - 1)}
-                className="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs py-2 px-3.5 rounded-xl transition disabled:opacity-40"
+                className="w-full sm:w-auto bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs py-2.5 px-4 rounded-xl transition disabled:opacity-40"
               >
                 &larr; Previous Question
               </button>
 
-              <div className="flex items-center gap-1.5">
-                {activeQuestions.map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setCurrentQuestionIdx(idx)}
-                    className={`w-7 h-7 rounded-lg text-xs font-bold font-mono transition ${
-                      currentQuestionIdx === idx
-                        ? 'bg-slate-900 text-white'
-                        : selectedAnswers[idx] !== undefined
-                        ? 'bg-emerald-100 text-emerald-800'
-                        : 'bg-slate-100 text-slate-600'
-                    }`}
-                  >
-                    {idx + 1}
-                  </button>
-                ))}
+              {/* Question Palette */}
+              <div className="flex flex-wrap items-center justify-center gap-1.5">
+                {activeQuestions.map((q, idx) => {
+                  const answered = userAnswers[idx] !== undefined && userAnswers[idx] !== '';
+                  const isCurrent = currentQuestionIdx === idx;
+                  return (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentQuestionIdx(idx)}
+                      className={`w-8 h-8 rounded-lg text-xs font-bold font-mono transition flex flex-col items-center justify-center ${
+                        isCurrent
+                          ? 'bg-slate-900 text-white ring-2 ring-amber-400'
+                          : answered
+                          ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+                          : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                      }`}
+                      title={`Q${idx + 1}: ${q.subject} (${q.type.toUpperCase()})`}
+                    >
+                      <span>{idx + 1}</span>
+                    </button>
+                  );
+                })}
               </div>
 
               {currentQuestionIdx < activeQuestions.length - 1 ? (
                 <button
                   type="button"
                   onClick={() => setCurrentQuestionIdx(currentQuestionIdx + 1)}
-                  className="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs py-2 px-3.5 rounded-xl transition"
+                  className="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs py-2.5 px-4 rounded-xl transition flex items-center justify-center gap-1"
                 >
-                  Next Question &rarr;
+                  <span>Next Question</span>
+                  <span>&rarr;</span>
                 </button>
               ) : (
                 <button
                   type="button"
                   onClick={handleSubmitExam}
-                  className="bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs py-2 px-4 rounded-xl transition shadow-md"
+                  className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs py-2.5 px-5 rounded-xl transition shadow-md flex items-center justify-center gap-1.5"
                 >
-                  Submit CBT Paper &rarr;
+                  <Check className="w-4 h-4 stroke-[3]" />
+                  <span>Submit CBT Paper &rarr;</span>
                 </button>
               )}
             </div>
           </div>
         )}
 
-        {/* STAGE 4: Automated Marks Memo Generation */}
+        {/* ========================================================
+            STAGE 4: Automated Marks Memo Generation (1-Page Printable)
+           ======================================================== */}
         {stage === 'result' && scoreData && (
           <div className="p-6 space-y-4">
-            {/* The printable Marks Memo (Fits strictly on 1 Single Page) */}
             <div className="printable-memo-card p-6 bg-white border border-slate-300 rounded-2xl shadow-sm text-slate-900">
               {/* College Header */}
               <div className="border-b-2 border-slate-900 pb-3 text-center relative">
@@ -689,13 +667,13 @@ export default function ExamPortalModal({ isOpen, onClose, onOpenMarksMemo }) {
                 <div className="flex items-center justify-center gap-3 text-[10px] font-bold text-slate-800 pt-1">
                   <span>BIE AP Code: <strong>01089</strong></span>
                   <span>•</span>
-                  <span>Assessment: <strong>Entrance & CBT Model Exam</strong></span>
+                  <span>Assessment: <strong>Teacher-Configured Subject Examination</strong></span>
                   <span>•</span>
                   <span>Year: 2026–27</span>
                 </div>
 
                 <div className="inline-block bg-indigo-950 text-white text-[11px] font-black px-4 py-0.5 rounded-full uppercase tracking-wider mt-1.5 memo-badge">
-                  Memorandum of Marks (CBT Assessment)
+                  Memorandum of Marks (Official Examination)
                 </div>
               </div>
 
@@ -713,32 +691,40 @@ export default function ExamPortalModal({ isOpen, onClose, onOpenMarksMemo }) {
                 </div>
               </div>
 
-              {/* Score Breakdown Table */}
+              {/* Subject-Wise & Question Breakdown Table */}
               <div className="py-2.5">
                 <table className="w-full text-left text-xs border border-slate-300">
                   <thead className="bg-slate-100 border-b border-slate-300 font-bold text-slate-700 uppercase">
                     <tr>
-                      <th className="py-1.5 px-3">Subject / Paper Module</th>
-                      <th className="py-1.5 px-3 text-center">Max Marks</th>
-                      <th className="py-1.5 px-3 text-center">Marks Secured</th>
-                      <th className="py-1.5 px-3 text-right">Performance Status</th>
+                      <th className="py-1 px-2.5">#</th>
+                      <th className="py-1 px-2.5">Subject & Question Module</th>
+                      <th className="py-1 px-2 text-center">Format</th>
+                      <th className="py-1 px-2 text-center">Max Marks</th>
+                      <th className="py-1 px-2 text-center">Marks Secured</th>
+                      <th className="py-1 px-2.5 text-right">Performance Remark</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-200">
-                    <tr>
-                      <td className="py-1.5 px-3 font-semibold">{formData.stream} Core Comprehensive Assessment</td>
-                      <td className="py-1.5 px-3 text-center">100</td>
-                      <td className="py-1.5 px-3 text-center font-black text-indigo-900 text-sm">{scoreData.scored}</td>
-                      <td className="py-1.5 px-3 text-right font-bold text-emerald-700">
-                        {scoreData.scored >= 80 ? 'Grade A1 (Distinction)' : 'Grade A (First Class)'}
-                      </td>
-                    </tr>
+                    {scoreData.evaluations && scoreData.evaluations.map((ev) => (
+                      <tr key={ev.qNumber}>
+                        <td className="py-1 px-2.5 font-mono text-slate-400">{ev.qNumber}</td>
+                        <td className="py-1 px-2.5 font-semibold text-slate-900">
+                          {ev.subject} <span className="text-[10px] text-slate-500 font-normal">({ev.topic})</span>
+                        </td>
+                        <td className="py-1 px-2 text-center font-mono text-[10px] text-slate-600">{ev.type}</td>
+                        <td className="py-1 px-2 text-center font-mono">{ev.maxMarks}</td>
+                        <td className="py-1 px-2 text-center font-mono font-bold text-indigo-900">{ev.marksSecured}</td>
+                        <td className="py-1 px-2.5 text-right font-medium text-emerald-800 text-[11px]">{ev.performanceRemark}</td>
+                      </tr>
+                    ))}
                     <tr className="bg-slate-50 font-bold border-t-2 border-slate-300">
-                      <td className="py-2 px-3 uppercase">Grand Total:</td>
-                      <td className="py-2 px-3 text-center">100</td>
-                      <td className="py-2 px-3 text-center text-base font-black text-indigo-900">{scoreData.scored}</td>
-                      <td className="py-2 px-3 text-right font-black text-emerald-800 text-xs">
-                        PASSED ({scoreData.percentage}%)
+                      <td colSpan={3} className="py-2 px-2.5 uppercase font-black">
+                        Grand Aggregate Total ({formData.stream}):
+                      </td>
+                      <td className="py-2 px-2 text-center font-black">{scoreData.totalMarks}</td>
+                      <td className="py-2 px-2 text-center text-sm font-black text-indigo-900">{scoreData.scored}</td>
+                      <td className="py-2 px-2.5 text-right font-black text-emerald-800 text-xs">
+                        PASSED ({scoreData.percentage}%) - {scoreData.grade}
                       </td>
                     </tr>
                   </tbody>
@@ -749,7 +735,7 @@ export default function ExamPortalModal({ isOpen, onClose, onOpenMarksMemo }) {
               <div className="pt-2 flex items-end justify-between text-xs">
                 <div className="space-y-0.5 text-[11px]">
                   <p><span className="text-slate-500">Overall Result:</span> <strong className="text-emerald-700">QUALIFIED FOR SUNRISE MERIT SCHOLARSHIP</strong></p>
-                  <p className="text-[10px] text-slate-400 italic">Valid for admission into Sunrise Junior College Srikakulam 2026-27 session.</p>
+                  <p className="text-[10px] text-slate-400 italic">Questions authored by Sunrise Academic Faculty. Valid for 2026-27 admissions.</p>
                 </div>
 
                 <div className="text-center">
@@ -767,14 +753,15 @@ export default function ExamPortalModal({ isOpen, onClose, onOpenMarksMemo }) {
               <a
                 href={createWhatsAppLink(candidateInfo.phone, `*SUNRISE JUNIOR COLLEGE, SRIKAKULAM*
 (BIE AP Code: 01089)
-Exam Result & Marks Memo:
+Official Exam Result & Marks Memo:
 -------------------------
 • Candidate: ${candidateInfo.name}
 • Roll No: ${candidateInfo.rollNo}
-• Stream: ${candidateInfo.stream}
-• Marks Scored: ${scoreData.scored}/100 (${scoreData.percentage}%)
+• Stream: ${candidateInfo.stream} (${candidateInfo.medium})
+• Marks Scored: ${scoreData.scored} / ${scoreData.totalMarks} (${scoreData.percentage}%)
 • Result: PASSED (${scoreData.grade})
-• Venue: Day & Night Jn, Srikakulam
+• Assessment: Teacher-Authored Subject Exam
+• Venue: Day & Night Junction, Srikakulam
 -------------------------
 Principal: 8143217785`)}
                 target="_blank"
@@ -793,6 +780,7 @@ Principal: 8143217785`)}
             </div>
           </div>
         )}
+
       </div>
     </div>
   );

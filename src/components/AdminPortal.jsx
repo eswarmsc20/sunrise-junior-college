@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Users, School, BookOpen, ShieldCheck, FileSpreadsheet, Plus, Search, Filter, Phone, CheckCircle, Clock, Trash2, LogOut, Bell, Sparkles, Receipt, Award, MessageSquare, MapPin, Check, Mail, UserPlus } from 'lucide-react';
+import { Users, School, BookOpen, ShieldCheck, FileSpreadsheet, Plus, Search, Filter, Phone, CheckCircle, Clock, Trash2, LogOut, Bell, Sparkles, Receipt, Award, MessageSquare, MapPin, Check, Mail, UserPlus, Edit3, RotateCcw, AlertTriangle } from 'lucide-react';
 import initialStudents from '../data/studentsData.json';
 import initialTeachers from '../data/teachersData.json';
 import { createWhatsAppLink } from '../utils/geoUtils';
+import { getSavedExamQuestions, saveExamQuestions, DEFAULT_EXAM_QUESTIONS } from '../data/defaultExamQuestions';
 
 export default function AdminPortal({ 
   admin, 
@@ -16,7 +17,7 @@ export default function AdminPortal({
   onOpenBiometric,
   onOpenExamPortal
 }) {
-  const [activeTab, setActiveTab] = useState('students'); // 'students' | 'faculty' | 'attendance' | 'enroll_student' | 'enroll_teacher' | 'inquiries'
+  const [activeTab, setActiveTab] = useState('students'); // 'students' | 'faculty' | 'attendance' | 'enroll_student' | 'enroll_teacher' | 'inquiries' | 'exam_questions'
   
   const [students, setStudents] = useState(() => {
     const saved = localStorage.getItem('sunrise_enrolled_students');
@@ -31,6 +32,25 @@ export default function AdminPortal({
   const [searchTerm, setSearchTerm] = useState('');
   const [groupFilter, setGroupFilter] = useState('ALL');
   const [inquiries, setInquiries] = useState([]);
+
+  // Exam Question Bank State
+  const [examQuestions, setExamQuestions] = useState(() => getSavedExamQuestions());
+  const [examStreamFilter, setExamStreamFilter] = useState('ALL');
+  const [examTypeFilter, setExamTypeFilter] = useState('ALL');
+  const [questionSearch, setQuestionSearch] = useState('');
+  const [isAddingQuestion, setIsAddingQuestion] = useState(false);
+  const [editingQuestionId, setEditingQuestionId] = useState(null);
+  const [questionForm, setQuestionForm] = useState({
+    stream: 'MPC',
+    subject: 'Mathematics',
+    type: 'mcq',
+    question: '',
+    options: ['', '', '', ''],
+    correctAnswer: 0,
+    marks: 10,
+    topic: '',
+    gradingNotes: ''
+  });
 
   // Student Form State
   const [newStudent, setNewStudent] = useState({
@@ -226,6 +246,141 @@ export default function AdminPortal({
   const bipcCount = students.filter(s => s.group === 'BiPC').length;
   const hostelCount = students.filter(s => s.isHostel).length;
 
+  // --- EXAM QUESTION MASTER HANDLERS ---
+  const handleOpenAddQuestion = () => {
+    setQuestionForm({
+      stream: 'MPC',
+      subject: 'Mathematics',
+      type: 'mcq',
+      question: '',
+      options: ['', '', '', ''],
+      correctAnswer: 0,
+      marks: 10,
+      topic: '',
+      gradingNotes: ''
+    });
+    setEditingQuestionId(null);
+    setIsAddingQuestion(true);
+  };
+
+  const handleEditQuestion = (q) => {
+    setQuestionForm({
+      stream: q.stream,
+      subject: q.subject,
+      type: q.type || 'mcq',
+      question: q.question,
+      options: q.options && q.options.length === 4 ? [...q.options] : ['', '', '', ''],
+      correctAnswer: q.correctAnswer !== null && q.correctAnswer !== undefined ? q.correctAnswer : 0,
+      marks: q.marks || (q.type === 'mcq' ? 10 : 20),
+      topic: q.topic || '',
+      gradingNotes: q.gradingNotes || ''
+    });
+    setEditingQuestionId(q.id);
+    setIsAddingQuestion(true);
+  };
+
+  const handleDeleteQuestion = (id) => {
+    if (window.confirm(`Delete question ${id} from Master Exam Bank? Students will no longer see this question.`)) {
+      const updated = examQuestions.filter(q => q.id !== id);
+      setExamQuestions(updated);
+      saveExamQuestions(updated);
+      if (onSendAlert) {
+        onSendAlert({
+          title: "Exam Question Removed",
+          message: `Question ${id} has been permanently deleted by Admin from the examination portal.`
+        });
+      }
+    }
+  };
+
+  const handleResetQuestions = () => {
+    if (window.confirm("Reset all exam papers back to the official Sunrise Master seed question bank (MPC, BiPC, CEC, MEC, HEC)?")) {
+      setExamQuestions(DEFAULT_EXAM_QUESTIONS);
+      saveExamQuestions(DEFAULT_EXAM_QUESTIONS);
+      if (onSendAlert) {
+        onSendAlert({
+          title: "Master Exam Bank Reset",
+          message: "All 5 stream examination papers restored to default verified state."
+        });
+      }
+    }
+  };
+
+  const handleSaveQuestionSubmit = (e) => {
+    e.preventDefault();
+    if (!questionForm.question.trim()) return;
+
+    if (questionForm.type === 'mcq') {
+      const filled = questionForm.options.filter(o => o.trim() !== '');
+      if (filled.length < 4) {
+        alert("Please provide all 4 options (A, B, C, D) for the MCQ.");
+        return;
+      }
+    }
+
+    let updatedList;
+    if (editingQuestionId) {
+      updatedList = examQuestions.map(q => {
+        if (q.id === editingQuestionId) {
+          return {
+            ...q,
+            stream: questionForm.stream,
+            subject: questionForm.subject,
+            type: questionForm.type,
+            question: questionForm.question.trim(),
+            options: questionForm.type === 'mcq' ? questionForm.options.map(o => o.trim()) : [],
+            correctAnswer: questionForm.type === 'mcq' ? Number(questionForm.correctAnswer) : null,
+            marks: Number(questionForm.marks) || (questionForm.type === 'mcq' ? 10 : 20),
+            topic: questionForm.topic.trim() || 'General Curriculum',
+            gradingNotes: questionForm.gradingNotes.trim() || '',
+            author: 'Admin / Examination Board',
+            date: new Date().toLocaleDateString('en-GB')
+          };
+        }
+        return q;
+      });
+    } else {
+      const newId = `Q-${questionForm.stream}-${Date.now().toString().slice(-4)}`;
+      const newEntry = {
+        id: newId,
+        stream: questionForm.stream,
+        subject: questionForm.subject,
+        type: questionForm.type,
+        question: questionForm.question.trim(),
+        options: questionForm.type === 'mcq' ? questionForm.options.map(o => o.trim()) : [],
+        correctAnswer: questionForm.type === 'mcq' ? Number(questionForm.correctAnswer) : null,
+        marks: Number(questionForm.marks) || (questionForm.type === 'mcq' ? 10 : 20),
+        topic: questionForm.topic.trim() || 'General Curriculum',
+        gradingNotes: questionForm.gradingNotes.trim() || '',
+        author: 'Admin / Examination Board',
+        date: new Date().toLocaleDateString('en-GB')
+      };
+      updatedList = [newEntry, ...examQuestions];
+    }
+
+    setExamQuestions(updatedList);
+    saveExamQuestions(updatedList);
+    setIsAddingQuestion(false);
+    setEditingQuestionId(null);
+
+    if (onSendAlert) {
+      onSendAlert({
+        title: editingQuestionId ? "Exam Paper Updated" : "New Question Published by Admin",
+        message: `${questionForm.stream} - ${questionForm.subject} (${questionForm.type.toUpperCase()}): Question saved and live for student exams.`
+      });
+    }
+  };
+
+  const filteredExamQuestions = examQuestions.filter(q => {
+    const matchesStream = examStreamFilter === 'ALL' || q.stream === examStreamFilter;
+    const matchesType = examTypeFilter === 'ALL' || q.type === examTypeFilter;
+    const matchesSearch = q.question.toLowerCase().includes(questionSearch.toLowerCase()) ||
+                          q.subject.toLowerCase().includes(questionSearch.toLowerCase()) ||
+                          (q.topic && q.topic.toLowerCase().includes(questionSearch.toLowerCase())) ||
+                          q.id.toLowerCase().includes(questionSearch.toLowerCase());
+    return matchesStream && matchesType && matchesSearch;
+  });
+
   return (
     <div className="min-h-screen bg-slate-100 py-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
@@ -405,6 +560,16 @@ export default function AdminPortal({
           >
             <Phone className="w-4 h-4 text-indigo-400" />
             <span>Inquiries ({inquiries.length})</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab('exam_questions')}
+            className={`text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-2 ${
+              activeTab === 'exam_questions' ? 'bg-indigo-950 text-white shadow ring-2 ring-amber-400' : 'bg-white text-slate-700 hover:bg-slate-200'
+            }`}
+          >
+            <BookOpen className="w-4 h-4 text-amber-400" />
+            <span>Master Exam Bank ({examQuestions.length})</span>
           </button>
         </div>
 
@@ -1050,6 +1215,461 @@ export default function AdminPortal({
                 </table>
               </div>
             )}
+          </div>
+        )}
+
+        {/* Tab 7: Master Exam Bank & Question Management */}
+        {activeTab === 'exam_questions' && (
+          <div className="space-y-6">
+            
+            {/* Top Info Banner */}
+            <div className="bg-gradient-to-r from-indigo-950 via-slate-900 to-indigo-950 text-white rounded-3xl p-6 sm:p-8 border border-indigo-700/50 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-[11px] font-bold bg-amber-400 text-slate-950 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                    Central Examination Control Board
+                  </span>
+                  <span className="text-xs text-indigo-300">Live Synchronized Bank</span>
+                </div>
+                <h3 className="text-2xl font-black text-white">
+                  Master Exam Paper & Question Repository
+                </h3>
+                <p className="text-xs text-indigo-200 mt-1 max-w-2xl leading-relaxed">
+                  Only the subject-wise questions uploaded and approved by Lecturers or Admin below are served to students in the online examination portal. Configure Multiple Choice (MCQ) and Descriptive Theory questions across all 5 Academic Streams.
+                </p>
+
+                {/* Stream badges counter */}
+                <div className="flex flex-wrap items-center gap-2 pt-3">
+                  {['MPC', 'BiPC', 'CEC', 'MEC', 'HEC'].map(s => {
+                    const count = examQuestions.filter(q => q.stream === s).length;
+                    return (
+                      <span key={s} className="text-xs font-bold bg-white/10 px-2.5 py-1 rounded-xl border border-white/10 text-white">
+                        {s}: <strong className="text-amber-400">{count}</strong> Qs
+                      </span>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 flex-shrink-0">
+                <button
+                  onClick={handleResetQuestions}
+                  className="bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-bold px-4 py-2.5 rounded-xl border border-slate-700 transition flex items-center justify-center gap-1.5"
+                  title="Reset to default seed questions"
+                >
+                  <RotateCcw className="w-3.5 h-3.5 text-amber-400" />
+                  <span>Reset Seed Bank</span>
+                </button>
+
+                <button
+                  onClick={handleOpenAddQuestion}
+                  className="bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm px-5 py-2.5 rounded-xl shadow-lg transition flex items-center justify-center gap-2 active:scale-95"
+                >
+                  <Plus className="w-4 h-4 stroke-[3]" />
+                  <span>+ Add New Question</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Add / Edit Question Form Modal */}
+            {isAddingQuestion && (
+              <div className="bg-white rounded-3xl p-6 sm:p-8 border-2 border-indigo-600 shadow-xl space-y-6">
+                <div className="flex items-center justify-between border-b border-slate-200 pb-4">
+                  <div>
+                    <h3 className="text-lg font-black text-slate-900">
+                      {editingQuestionId ? `Edit Question: ${editingQuestionId}` : 'Publish New Question to Exam Portal'}
+                    </h3>
+                    <p className="text-xs text-slate-500">
+                      Configure question metadata, scoring weightage, and evaluation keys.
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => {
+                      setIsAddingQuestion(false);
+                      setEditingQuestionId(null);
+                    }}
+                    className="p-2 text-slate-400 hover:text-slate-700 rounded-xl"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+
+                <form onSubmit={handleSaveQuestionSubmit} className="space-y-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    {/* Stream Selection */}
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-1">Academic Stream *</label>
+                      <select
+                        value={questionForm.stream}
+                        onChange={(e) => setQuestionForm({ ...questionForm, stream: e.target.value })}
+                        className="w-full text-xs font-bold p-2.5 rounded-xl border border-slate-300 bg-white"
+                        required
+                      >
+                        <option value="MPC">M.P.C (Maths, Physics, Chem)</option>
+                        <option value="BiPC">Bi.P.C (Botany, Zoology, Physics, Chem)</option>
+                        <option value="CEC">C.E.C (Civics, Economics, Commerce)</option>
+                        <option value="MEC">M.E.C (Maths, Economics, Commerce)</option>
+                        <option value="HEC">H.E.C (History, Economics, Civics)</option>
+                      </select>
+                    </div>
+
+                    {/* Subject Input */}
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-1">Subject Name *</label>
+                      <input
+                        type="text"
+                        placeholder="e.g. Mathematics, History, Physics..."
+                        value={questionForm.subject}
+                        onChange={(e) => setQuestionForm({ ...questionForm, subject: e.target.value })}
+                        className="w-full text-xs p-2.5 rounded-xl border border-slate-300 font-semibold"
+                        required
+                      />
+                    </div>
+
+                    {/* Question Type Toggle */}
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-1">Question Format *</label>
+                      <div className="grid grid-cols-2 gap-2">
+                        <button
+                          type="button"
+                          onClick={() => setQuestionForm({ ...questionForm, type: 'mcq', marks: 10 })}
+                          className={`text-xs font-bold p-2.5 rounded-xl border transition text-center ${
+                            questionForm.type === 'mcq'
+                              ? 'bg-indigo-600 text-white border-indigo-600 shadow'
+                              : 'bg-slate-50 text-slate-700 border-slate-300 hover:bg-slate-100'
+                          }`}
+                        >
+                          Multiple Choice (MCQ)
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setQuestionForm({ ...questionForm, type: 'descriptive', marks: 20 })}
+                          className={`text-xs font-bold p-2.5 rounded-xl border transition text-center ${
+                            questionForm.type === 'descriptive'
+                              ? 'bg-indigo-600 text-white border-indigo-600 shadow'
+                              : 'bg-slate-50 text-slate-700 border-slate-300 hover:bg-slate-100'
+                          }`}
+                        >
+                          Descriptive (Theory)
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-1">Topic / Lesson Unit</label>
+                      <input
+                        type="text"
+                        placeholder="e.g. Matrices & Determinants, Thermodynamics, Indus Valley"
+                        value={questionForm.topic}
+                        onChange={(e) => setQuestionForm({ ...questionForm, topic: e.target.value })}
+                        className="w-full text-xs p-2.5 rounded-xl border border-slate-300 font-medium"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-1">Marks Weightage</label>
+                      <input
+                        type="number"
+                        min="1"
+                        max="50"
+                        value={questionForm.marks}
+                        onChange={(e) => setQuestionForm({ ...questionForm, marks: e.target.value })}
+                        className="w-full text-xs p-2.5 rounded-xl border border-slate-300 font-mono font-bold"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Question Text */}
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1">
+                      Question Statement / Formulation *
+                    </label>
+                    <textarea
+                      rows={3}
+                      placeholder="Type the full question statement as it should appear in the student exam paper..."
+                      value={questionForm.question}
+                      onChange={(e) => setQuestionForm({ ...questionForm, question: e.target.value })}
+                      className="w-full text-xs p-3 rounded-xl border border-slate-300 font-semibold focus:ring-2 focus:ring-indigo-500"
+                      required
+                    />
+                  </div>
+
+                  {/* Conditional MCQ Options */}
+                  {questionForm.type === 'mcq' && (
+                    <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-bold text-slate-800 uppercase tracking-wider">
+                          Options & Correct Answer (Click radio to set official key)
+                        </span>
+                        <span className="text-[11px] text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                          Official Key: Option {String.fromCharCode(65 + Number(questionForm.correctAnswer))}
+                        </span>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {questionForm.options.map((opt, oIdx) => (
+                          <div key={oIdx} className="flex items-center gap-2 bg-white p-2.5 rounded-xl border border-slate-200">
+                            <input
+                              type="radio"
+                              name="adminCorrectAnswerRadio"
+                              id={`admin-radio-${oIdx}`}
+                              checked={Number(questionForm.correctAnswer) === oIdx}
+                              onChange={() => setQuestionForm({ ...questionForm, correctAnswer: oIdx })}
+                              className="w-4 h-4 text-indigo-600 focus:ring-indigo-500 cursor-pointer"
+                            />
+                            <label htmlFor={`admin-radio-${oIdx}`} className="text-xs font-bold text-slate-600 font-mono">
+                              {String.fromCharCode(65 + oIdx)}:
+                            </label>
+                            <input
+                              type="text"
+                              placeholder={`Option ${String.fromCharCode(65 + oIdx)}`}
+                              value={opt}
+                              onChange={(e) => {
+                                const newOpts = [...questionForm.options];
+                                newOpts[oIdx] = e.target.value;
+                                setQuestionForm({ ...questionForm, options: newOpts });
+                              }}
+                              className="w-full text-xs p-1.5 rounded-lg border border-slate-200 font-medium"
+                              required={questionForm.type === 'mcq'}
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Conditional Descriptive Hints / Notes */}
+                  {questionForm.type === 'descriptive' && (
+                    <div className="bg-amber-50/70 p-4 rounded-2xl border border-amber-200 space-y-2">
+                      <span className="text-xs font-bold text-amber-900 block">
+                        Evaluation Rubric & Key Solution Points:
+                      </span>
+                      <textarea
+                        rows={2}
+                        placeholder="Expected derivation steps, key formulas, core definitions, or essay headings..."
+                        value={questionForm.gradingNotes}
+                        onChange={(e) => setQuestionForm({ ...questionForm, gradingNotes: e.target.value })}
+                        className="w-full text-xs p-2.5 rounded-xl border border-amber-200 bg-white font-medium"
+                      />
+                    </div>
+                  )}
+
+                  {/* Submit Buttons */}
+                  <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-200">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsAddingQuestion(false);
+                        setEditingQuestionId(null);
+                      }}
+                      className="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs px-4 py-2.5 rounded-xl transition"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="submit"
+                      className="bg-indigo-600 hover:bg-indigo-700 text-white font-black text-xs px-6 py-2.5 rounded-xl shadow-md transition flex items-center gap-1.5"
+                    >
+                      <Save className="w-4 h-4" />
+                      <span>{editingQuestionId ? 'Save Changes' : 'Publish to Exam Portal'}</span>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            )}
+
+            {/* Filter and Search Bar for Questions */}
+            <div className="bg-white rounded-3xl p-5 border border-slate-200 shadow-sm flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+              <div className="flex flex-wrap items-center gap-3">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-bold text-slate-700">Filter Stream:</span>
+                  <div className="flex flex-wrap gap-1 bg-slate-100 p-1 rounded-xl">
+                    {['ALL', 'MPC', 'BiPC', 'CEC', 'MEC', 'HEC'].map((grp) => (
+                      <button
+                        key={grp}
+                        onClick={() => setExamStreamFilter(grp)}
+                        className={`text-xs font-bold px-3 py-1.5 rounded-lg transition ${
+                          examStreamFilter === grp ? 'bg-indigo-900 text-white shadow' : 'text-slate-600 hover:text-slate-900'
+                        }`}
+                      >
+                        {grp}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-bold text-slate-700">Type:</span>
+                  <div className="flex gap-1 bg-slate-100 p-1 rounded-xl">
+                    {[
+                      { id: 'ALL', label: 'All Formats' },
+                      { id: 'mcq', label: 'MCQs' },
+                      { id: 'descriptive', label: 'Descriptive' }
+                    ].map((t) => (
+                      <button
+                        key={t.id}
+                        onClick={() => setExamTypeFilter(t.id)}
+                        className={`text-xs font-bold px-3 py-1.5 rounded-lg transition ${
+                          examTypeFilter === t.id ? 'bg-amber-500 text-slate-950 shadow' : 'text-slate-600 hover:text-slate-900'
+                        }`}
+                      >
+                        {t.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="relative flex-1 sm:w-64">
+                <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
+                <input
+                  type="text"
+                  placeholder="Search questions, subjects..."
+                  value={questionSearch}
+                  onChange={(e) => setQuestionSearch(e.target.value)}
+                  className="w-full text-xs pl-9 pr-3 py-2 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+              </div>
+            </div>
+
+            {/* Questions List */}
+            <div className="space-y-3">
+              <div className="flex items-center justify-between text-xs font-bold text-slate-600 px-2">
+                <span>Showing {filteredExamQuestions.length} of {examQuestions.length} Total Master Questions</span>
+                <span className="text-emerald-700 font-bold bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                  Enrolled Students Live Access: Active
+                </span>
+              </div>
+
+              {filteredExamQuestions.length === 0 ? (
+                <div className="bg-white rounded-3xl p-10 text-center border border-slate-200">
+                  <BookOpen className="w-12 h-12 text-slate-300 mx-auto mb-2" />
+                  <p className="text-slate-600 font-bold text-sm">No exam questions found matching the filter.</p>
+                  <button
+                    onClick={handleOpenAddQuestion}
+                    className="mt-3 bg-indigo-600 text-white font-bold text-xs px-4 py-2 rounded-xl"
+                  >
+                    + Add New Question
+                  </button>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 gap-4">
+                  {filteredExamQuestions.map((q, idx) => (
+                    <div
+                      key={q.id || idx}
+                      className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:border-indigo-300 transition space-y-3"
+                    >
+                      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-2.5">
+                        <div className="flex items-center gap-2">
+                          <span className="font-mono text-xs font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
+                            {q.id}
+                          </span>
+                          <span className={`text-[11px] font-black px-2.5 py-0.5 rounded-full ${
+                            q.stream === 'MPC' ? 'bg-blue-100 text-blue-800' :
+                            q.stream === 'BiPC' ? 'bg-emerald-100 text-emerald-800' :
+                            q.stream === 'CEC' ? 'bg-amber-100 text-amber-800' :
+                            q.stream === 'MEC' ? 'bg-purple-100 text-purple-800' :
+                            'bg-rose-100 text-rose-800'
+                          }`}>
+                            {q.stream} Stream
+                          </span>
+                          <span className="text-xs font-bold text-slate-800">
+                            {q.subject}
+                          </span>
+                          {q.topic && (
+                            <span className="text-[11px] text-slate-500 font-medium">
+                              • {q.topic}
+                            </span>
+                          )}
+                        </div>
+
+                        <div className="flex items-center gap-2">
+                          <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded-md ${
+                            q.type === 'mcq' ? 'bg-indigo-100 text-indigo-900 border border-indigo-200' : 'bg-amber-100 text-amber-900 border border-amber-200'
+                          }`}>
+                            {q.type === 'mcq' ? 'Multiple Choice (MCQ)' : 'Descriptive'}
+                          </span>
+                          <span className="text-xs font-extrabold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded">
+                            {q.marks || (q.type === 'mcq' ? 10 : 20)} Marks
+                          </span>
+                          <button
+                            onClick={() => handleEditQuestion(q)}
+                            className="p-1.5 text-slate-500 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition"
+                            title="Edit Question"
+                          >
+                            <Edit3 className="w-4 h-4" />
+                          </button>
+                          <button
+                            onClick={() => handleDeleteQuestion(q.id)}
+                            className="p-1.5 text-slate-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition"
+                            title="Delete Question"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Question Text */}
+                      <p className="text-sm font-bold text-slate-900 leading-snug">
+                        {q.question}
+                      </p>
+
+                      {/* MCQ Options Display */}
+                      {q.type === 'mcq' && q.options && q.options.length > 0 && (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+                          {q.options.map((opt, oIdx) => {
+                            const isCorrect = q.correctAnswer === oIdx;
+                            return (
+                              <div
+                                key={oIdx}
+                                className={`text-xs p-2 rounded-xl flex items-center gap-2 ${
+                                  isCorrect
+                                    ? 'bg-emerald-50 text-emerald-950 border border-emerald-300 font-bold'
+                                    : 'bg-slate-50 text-slate-700 border border-slate-200'
+                                }`}
+                              >
+                                <span className={`w-5 h-5 rounded-full flex items-center justify-center font-mono text-[10px] ${
+                                  isCorrect ? 'bg-emerald-600 text-white font-bold' : 'bg-slate-200 text-slate-600'
+                                }`}>
+                                  {String.fromCharCode(65 + oIdx)}
+                                </span>
+                                <span>{opt}</span>
+                                {isCorrect && (
+                                  <span className="ml-auto text-[10px] font-black text-emerald-700 uppercase">
+                                    Official Key
+                                  </span>
+                                )}
+                              </div>
+                            );
+                          })}
+                        </div>
+                      )}
+
+                      {/* Descriptive Guidance */}
+                      {q.type === 'descriptive' && (
+                        <div className="text-[11px] bg-slate-50 p-2.5 rounded-xl border border-slate-200 text-slate-600 space-y-1">
+                          <p className="font-bold text-slate-800">
+                            Format: Student answers in full theory/derivation mode in Exam Portal.
+                          </p>
+                          {q.gradingNotes && (
+                            <p className="text-slate-500">Grading Key: {q.gradingNotes}</p>
+                          )}
+                        </div>
+                      )}
+
+                      {/* Footer Info */}
+                      <div className="flex items-center justify-between text-[11px] text-slate-400 pt-1">
+                        <span>Published by: <strong className="text-slate-600">{q.author || 'Admin / Board'}</strong></span>
+                        <span>Date: {q.date || 'Active'}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
           </div>
         )}
 
