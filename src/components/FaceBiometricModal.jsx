@@ -59,32 +59,40 @@ export default function FaceBiometricModal({ isOpen, onClose, onAttendanceRecord
 
   // Navigate back to Home seamlessly
   const handleReturnToHome = useCallback(() => {
-    handleModalClose();
+    stopCamera();
+    if (watchIdRef.current !== null && navigator.geolocation) {
+      navigator.geolocation.clearWatch(watchIdRef.current);
+      watchIdRef.current = null;
+    }
     setIsSuccess(false);
     setIsScanning(false);
     setCountdown(3);
     setAutoRedirectPaused(false);
+    if (onClose) onClose();
     window.scrollTo({ top: 0, behavior: 'smooth' });
     const heroEl = document.getElementById('hero');
     if (heroEl) {
       heroEl.scrollIntoView({ behavior: 'smooth' });
     }
-  }, [handleModalClose]);
+  }, [onClose]);
 
-  // Auto-redirect timer: Return to Home 3 seconds after face recognition completes
+  // Robust Auto-redirect interval: Visually counts down 3 -> 2 -> 1 -> Return to Home
   useEffect(() => {
-    let timer;
-    if (isSuccess && !autoRedirectPaused) {
-      if (countdown > 0) {
-        timer = setTimeout(() => {
-          setCountdown((prev) => prev - 1);
-        }, 1000);
-      } else if (countdown === 0) {
-        handleReturnToHome();
-      }
-    }
-    return () => clearTimeout(timer);
-  }, [isSuccess, countdown, autoRedirectPaused, handleReturnToHome]);
+    if (!isSuccess || autoRedirectPaused) return;
+
+    const timer = setInterval(() => {
+      setCountdown((prev) => {
+        if (prev <= 1) {
+          clearInterval(timer);
+          handleReturnToHome();
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [isSuccess, autoRedirectPaused, handleReturnToHome]);
 
   useEffect(() => {
     if (isOpen) {
@@ -660,20 +668,25 @@ Please contact Principal: 8143217785 immediately.`;
               </div>
 
               {/* Auto-Redirect Countdown Status */}
-              <div className="bg-amber-50 border border-amber-300 rounded-2xl p-3 text-xs text-amber-950 flex items-center justify-between shadow-sm">
-                <div className="flex items-center gap-2">
-                  <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping flex-shrink-0" />
-                  <span className="font-bold">
-                    {!autoRedirectPaused 
-                      ? `Attendance Verified! Returning to Home in ${countdown}s...` 
-                      : 'Auto-return paused.'}
+              <div className="bg-amber-100/80 border-2 border-amber-400 rounded-2xl p-3.5 text-xs text-amber-950 flex items-center justify-between shadow-sm">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-7 h-7 rounded-full bg-amber-500 text-slate-950 font-black text-sm flex items-center justify-center font-mono shadow flex-shrink-0 animate-pulse">
+                    {countdown}
                   </span>
+                  <div className="text-left">
+                    <p className="font-extrabold text-slate-950 text-xs">
+                      Attendance Verified! Auto-returning to Home in {countdown}s...
+                    </p>
+                    <p className="text-[10px] text-amber-900">
+                      Window will close automatically, or tap the button below.
+                    </p>
+                  </div>
                 </div>
                 {!autoRedirectPaused ? (
                   <button
                     type="button"
                     onClick={() => setAutoRedirectPaused(true)}
-                    className="text-[11px] font-bold text-amber-900 underline hover:text-black cursor-pointer"
+                    className="text-[11px] font-bold text-amber-900 bg-white border border-amber-300 px-2.5 py-1 rounded-lg hover:bg-amber-50 cursor-pointer shadow-xs flex-shrink-0"
                   >
                     Pause
                   </button>
@@ -681,7 +694,7 @@ Please contact Principal: 8143217785 immediately.`;
                   <button
                     type="button"
                     onClick={() => setAutoRedirectPaused(false)}
-                    className="text-[11px] font-bold text-emerald-800 underline cursor-pointer"
+                    className="text-[11px] font-bold text-emerald-900 bg-emerald-100 border border-emerald-300 px-2.5 py-1 rounded-lg hover:bg-emerald-200 cursor-pointer shadow-xs flex-shrink-0"
                   >
                     Resume
                   </button>
