@@ -4,6 +4,7 @@ import initialStudents from '../data/studentsData.json';
 import initialTeachers from '../data/teachersData.json';
 import { createWhatsAppLink } from '../utils/geoUtils';
 import { getSavedExamQuestions, saveExamQuestions, DEFAULT_EXAM_QUESTIONS } from '../data/defaultExamQuestions';
+import sunriseLogo from '../assets/sunrise_official_logo.png';
 
 export default function AdminPortal({ 
   admin, 
@@ -388,8 +389,12 @@ export default function AdminPortal({
         {/* Top Header */}
         <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="flex items-center gap-4">
-            <div className="w-16 h-16 rounded-2xl bg-amber-500 text-slate-950 flex items-center justify-center font-extrabold text-2xl shadow-md">
-              A
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-transparent flex items-center justify-center flex-shrink-0">
+              <img 
+                src={sunriseLogo} 
+                alt="Sunrise Junior College Crest" 
+                className="w-full h-full object-contain filter drop-shadow-lg" 
+              />
             </div>
             <div>
               <div className="flex flex-wrap items-center gap-2">

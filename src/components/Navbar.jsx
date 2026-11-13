@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Menu, X, Phone, ShieldCheck, UserCircle, LogIn, Sparkles, MapPin, UserPlus, CreditCard, Camera, Award, Clock, Download } from 'lucide-react';
 import { collegeInfo } from '../data/collegeData';
+import sunriseLogo from '../assets/sunrise_official_logo.png';
 
 export default function Navbar({ 
   onOpenLogin, 
@@ -95,11 +96,11 @@ export default function Navbar({
               className="flex items-center gap-2 cursor-pointer flex-shrink min-w-0" 
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden shadow border border-amber-400 bg-white flex items-center justify-center p-0.5 flex-shrink-0">
+              <div className="w-11 h-11 sm:w-14 sm:h-14 bg-transparent flex items-center justify-center flex-shrink-0">
                 <img 
-                  src="./assets/sunrise_official_logo.png" 
+                  src={sunriseLogo} 
                   alt="Sunrise Junior College Official Crest" 
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain filter drop-shadow-sm"
                 />
               </div>
               <div className="flex-shrink min-w-0">

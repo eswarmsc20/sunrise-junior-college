@@ -1,6 +1,7 @@
 import React from 'react';
 import { Sparkles, Shield, Heart, ArrowUp } from 'lucide-react';
 import { collegeInfo } from '../data/collegeData';
+import sunriseLogo from '../assets/sunrise_official_logo.png';
 
 export default function Footer({ onOpenLogin }) {
   const scrollToTop = () => {
@@ -21,8 +22,8 @@ export default function Footer({ onOpenLogin }) {
           {/* Col 1: Identity */}
           <div className="lg:col-span-4 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-full overflow-hidden bg-white p-0.5 border-2 border-amber-400 flex items-center justify-center shadow-md">
-                <img src="./assets/sunrise_official_logo.png" alt="Sunrise Junior College Official Logo" className="w-full h-full object-contain" />
+              <div className="w-12 h-12 bg-transparent flex items-center justify-center flex-shrink-0">
+                <img src={sunriseLogo} alt="Sunrise Junior College Official Crest" className="w-full h-full object-contain filter drop-shadow" />
               </div>
               <div>
                 <h3 className="font-extrabold text-base tracking-tight text-white leading-tight">

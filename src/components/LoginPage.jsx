@@ -5,6 +5,7 @@ import {
 } from 'lucide-react';
 import studentsData from '../data/studentsData.json';
 import teachersData from '../data/teachersData.json';
+import sunriseLogo from '../assets/sunrise_official_logo.png';
 
 export default function LoginPage({ 
   onLoginSuccess, 
@@ -84,13 +85,13 @@ export default function LoginPage({
 
       <div className="relative z-10 w-full max-w-sm sm:max-w-md mx-auto my-auto flex flex-col items-center space-y-4">
         
-        {/* Brand Header with Clean Non-Overlapping Logo */}
+        {/* Brand Header with Clean Transparent Official Crest */}
         <div className="text-center space-y-2">
-          <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden bg-white p-0.5 shadow-2xl border-2 border-amber-400 mx-auto">
+          <div className="w-24 h-24 sm:w-28 sm:h-28 bg-transparent flex items-center justify-center mx-auto">
             <img 
-              src="./assets/sunrise_official_logo.png" 
+              src={sunriseLogo} 
               alt="Sunrise Junior College Crest" 
-              className="w-full h-full object-contain"
+              className="w-full h-full object-contain filter drop-shadow-2xl"
             />
           </div>
 

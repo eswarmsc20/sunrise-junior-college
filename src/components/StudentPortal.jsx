@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { User, Award, BookOpen, Calendar, CheckCircle2, Download, LogOut, ShieldCheck, Clock, FileText, MapPin, Navigation, Receipt, MessageSquare, AlertCircle } from 'lucide-react';
 import { COLLEGE_LOCATION, calculateDistanceMeters, createWhatsAppLink } from '../utils/geoUtils';
+import sunriseLogo from '../assets/sunrise_official_logo.png';
 
 export default function StudentPortal({ 
   student, 
@@ -88,8 +89,12 @@ Principal Desk: 8143217785`;
         {/* Top Header / Profile Ribbon */}
         <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="flex items-center gap-4">
-            <div className="w-16 h-16 rounded-2xl bg-amber-500 text-slate-950 flex items-center justify-center font-extrabold text-2xl shadow-md">
-              {s.name ? s.name.charAt(0) : 'S'}
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-transparent flex items-center justify-center flex-shrink-0">
+              <img 
+                src={sunriseLogo} 
+                alt="Sunrise Junior College Crest" 
+                className="w-full h-full object-contain filter drop-shadow-lg" 
+              />
             </div>
             <div>
               <div className="flex flex-wrap items-center gap-2">

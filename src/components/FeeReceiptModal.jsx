@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { X, Printer, Send, MessageSquare, CheckCircle, ShieldCheck, Download } from 'lucide-react';
 import { collegeInfo } from '../data/collegeData';
 import { createWhatsAppLink } from '../utils/geoUtils';
+import sunriseLogo from '../assets/sunrise_official_logo.png';
 
 export default function FeeReceiptModal({ isOpen, onClose, student, onSendAlert }) {
   if (!isOpen || !student) return null;
@@ -99,8 +100,8 @@ Principal Desk: 8143217785`;
           {/* Institutional Header */}
           <div className="border-b-2 border-slate-900 pb-3 text-center relative">
             <div className="flex items-center justify-center gap-3 mb-1">
-              <div className="w-12 h-12 rounded-full overflow-hidden bg-white p-0.5 border-2 border-amber-500 flex items-center justify-center shadow-sm flex-shrink-0">
-                <img src="./assets/sunrise_official_logo.png" alt="Sunrise Official Logo" className="w-full h-full object-contain" />
+              <div className="w-12 h-12 bg-transparent flex items-center justify-center flex-shrink-0">
+                <img src={sunriseLogo} alt="Sunrise Official Crest" className="w-full h-full object-contain filter drop-shadow" />
               </div>
               <div className="text-left">
                 <p className="text-[9px] font-bold tracking-widest text-slate-600 uppercase">Sunrise Educational Society</p>
