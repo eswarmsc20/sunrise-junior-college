@@ -16,11 +16,20 @@ import AdminPortal from './components/AdminPortal';
 import FeeReceiptModal from './components/FeeReceiptModal';
 import ExamMarksModal from './components/ExamMarksModal';
 import EnrollmentModal from './components/EnrollmentModal';
+import PaymentModal from './components/PaymentModal';
+import CampaignManagerModal from './components/CampaignManagerModal';
+import FaceBiometricModal from './components/FaceBiometricModal';
+import ExamPortalModal from './components/ExamPortalModal';
 import NotificationToast from './components/NotificationToast';
 
 export default function App() {
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [enrollmentModalOpen, setEnrollmentModalOpen] = useState(false);
+  const [paymentModalOpen, setPaymentModalOpen] = useState(false);
+  const [campaignModalOpen, setCampaignModalOpen] = useState(false);
+  const [biometricModalOpen, setBiometricModalOpen] = useState(false);
+  const [examPortalModalOpen, setExamPortalModalOpen] = useState(false);
+
   const [currentPortal, setCurrentPortal] = useState(null);
   const [selectedCourse, setSelectedCourse] = useState('M.P.C');
 
@@ -58,12 +67,34 @@ export default function App() {
     localStorage.setItem('sunrise_enrolled_teachers', JSON.stringify(updated));
   };
 
+  const handlePaymentSuccess = (receiptData, openReceipt = false) => {
+    triggerAlert({
+      title: "Fee Payment Received (₹" + receiptData.amount.toLocaleString('en-IN') + ")",
+      message: `Transaction verified for ${receiptData.student.name}. Instant SMS & WhatsApp receipt dispatched to ${receiptData.student.phone}.`
+    });
+
+    if (openReceipt) {
+      setActiveReceiptStudent(receiptData.student);
+    }
+  };
+
+  const handleAttendanceRecorded = (record) => {
+    triggerAlert({
+      title: "Biometric Attendance Verified (50m Geofence)",
+      message: `Face match verified for ${record.studentName} at ${record.distanceMeters}m from campus. Alert dispatched to ${record.parentPhone}.`
+    });
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800">
       {/* Top Navbar */}
       <Navbar
         onOpenLogin={() => setLoginModalOpen(true)}
         onOpenEnrollment={() => setEnrollmentModalOpen(true)}
+        onOpenPayment={() => setPaymentModalOpen(true)}
+        onOpenCampaign={() => setCampaignModalOpen(true)}
+        onOpenBiometric={() => setBiometricModalOpen(true)}
+        onOpenExamPortal={() => setExamPortalModalOpen(true)}
         currentPortal={currentPortal}
         onLogout={handleLogout}
       />
@@ -78,6 +109,9 @@ export default function App() {
               onOpenReceipt={(s) => setActiveReceiptStudent(s)}
               onOpenMarks={(s) => setActiveMarksStudent(s)}
               onSendAlert={triggerAlert}
+              onOpenPayment={() => setPaymentModalOpen(true)}
+              onOpenExamPortal={() => setExamPortalModalOpen(true)}
+              onOpenBiometric={() => setBiometricModalOpen(true)}
             />
           )}
           {currentPortal.role === 'teacher' && (
@@ -87,6 +121,7 @@ export default function App() {
               onOpenReceipt={(s) => setActiveReceiptStudent(s)}
               onOpenMarks={(s) => setActiveMarksStudent(s)}
               onSendAlert={triggerAlert}
+              onOpenBiometric={() => setBiometricModalOpen(true)}
             />
           )}
           {currentPortal.role === 'admin' && (
@@ -97,6 +132,10 @@ export default function App() {
               onOpenMarks={(s) => setActiveMarksStudent(s)}
               onSendAlert={triggerAlert}
               onOpenEnrollment={() => setEnrollmentModalOpen(true)}
+              onOpenPayment={() => setPaymentModalOpen(true)}
+              onOpenCampaign={() => setCampaignModalOpen(true)}
+              onOpenBiometric={() => setBiometricModalOpen(true)}
+              onOpenExamPortal={() => setExamPortalModalOpen(true)}
             />
           )}
         </main>
@@ -109,6 +148,9 @@ export default function App() {
               const el = document.getElementById('video-tour');
               if (el) el.scrollIntoView({ behavior: 'smooth' });
             }}
+            onOpenPayment={() => setPaymentModalOpen(true)}
+            onOpenExamPortal={() => setExamPortalModalOpen(true)}
+            onOpenBiometric={() => setBiometricModalOpen(true)}
           />
 
           {/* About Section */}
@@ -129,8 +171,12 @@ export default function App() {
           {/* Online Admission Application Form */}
           <AdmissionForm initialCourse={selectedCourse} />
 
-          {/* Contact & Location Map */}
-          <Contact />
+          {/* Contact, Location Map & Interactive Enquiry Form */}
+          <Contact
+            onOpenPayment={() => setPaymentModalOpen(true)}
+            onOpenCampaign={() => setCampaignModalOpen(true)}
+            onOpenExamPortal={() => setExamPortalModalOpen(true)}
+          />
         </main>
       )}
 
@@ -152,6 +198,34 @@ export default function App() {
         onEnrollStudent={handleEnrollStudent}
         onEnrollTeacher={handleEnrollTeacher}
         onSendAlert={triggerAlert}
+      />
+
+      {/* Online Fee Payment Modal (UPI QR Code & Gateway) */}
+      <PaymentModal
+        isOpen={paymentModalOpen}
+        onClose={() => setPaymentModalOpen(false)}
+        onPaymentSuccess={handlePaymentSuccess}
+      />
+
+      {/* 2-Day Drip Marketing & Indian Calendar Festival Broadcast Modal */}
+      <CampaignManagerModal
+        isOpen={campaignModalOpen}
+        onClose={() => setCampaignModalOpen(false)}
+        onSendNotification={triggerAlert}
+      />
+
+      {/* 50-Meter Geofenced Biometric Face Recognition Attendance Modal */}
+      <FaceBiometricModal
+        isOpen={biometricModalOpen}
+        onClose={() => setBiometricModalOpen(false)}
+        onAttendanceRecorded={handleAttendanceRecorded}
+      />
+
+      {/* Comprehensive Examination Portal Modal (Registration -> Hall Ticket -> CBT Exam -> Marks Memo) */}
+      <ExamPortalModal
+        isOpen={examPortalModalOpen}
+        onClose={() => setExamPortalModalOpen(false)}
+        onOpenMarksMemo={(studentData) => setActiveMarksStudent(studentData)}
       />
 
       {/* Universal Fee Receipt Modal (Accessible by Student, Teacher, Admin) */}

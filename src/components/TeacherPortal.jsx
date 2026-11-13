@@ -3,7 +3,7 @@ import { UserCheck, Calendar, BookOpen, Upload, LogOut, Check, X, Search, Filter
 import initialStudentsData from '../data/studentsData.json';
 import { createWhatsAppLink } from '../utils/geoUtils';
 
-export default function TeacherPortal({ teacher, onLogout, onOpenReceipt, onOpenMarks, onSendAlert }) {
+export default function TeacherPortal({ teacher, onLogout, onOpenReceipt, onOpenMarks, onSendAlert, onOpenBiometric }) {
   const [students, setStudents] = useState(initialStudentsData);
   const [selectedGroup, setSelectedGroup] = useState('MPC');
   const [searchTerm, setSearchTerm] = useState('');
@@ -98,6 +98,14 @@ export default function TeacherPortal({ teacher, onLogout, onOpenReceipt, onOpen
           </div>
 
           <div className="flex flex-wrap items-center gap-3 w-full md:w-auto justify-end">
+            {onOpenBiometric && (
+              <button
+                onClick={onOpenBiometric}
+                className="bg-cyan-700 hover:bg-cyan-800 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow transition flex items-center gap-1.5"
+              >
+                <span>Face Biometric Scan</span>
+              </button>
+            )}
             <button
               onClick={handleBulkDispatch}
               className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow transition flex items-center gap-1.5"

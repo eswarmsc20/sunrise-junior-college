@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
-import { Menu, X, Phone, ShieldCheck, UserCircle, LogIn, Sparkles, MapPin, UserPlus } from 'lucide-react';
+import { Menu, X, Phone, ShieldCheck, UserCircle, LogIn, Sparkles, MapPin, UserPlus, CreditCard, Camera, Award, Clock } from 'lucide-react';
 import { collegeInfo } from '../data/collegeData';
 
-export default function Navbar({ onOpenLogin, onOpenEnrollment, currentPortal, onLogout }) {
+export default function Navbar({ 
+  onOpenLogin, 
+  onOpenEnrollment, 
+  onOpenPayment,
+  onOpenCampaign,
+  onOpenBiometric,
+  onOpenExamPortal,
+  currentPortal, 
+  onLogout 
+}) {
   const [isOpen, setIsOpen] = useState(false);
 
   const scrollTo = (id) => {
@@ -15,17 +24,45 @@ export default function Navbar({ onOpenLogin, onOpenEnrollment, currentPortal, o
 
   return (
     <header className="sticky top-0 z-50 shadow-md">
-      {/* Top Notification Bar */}
+      {/* Top Notification Bar with Direct Feature Shortcuts */}
       <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white text-xs py-2 px-4 border-b border-indigo-900/40">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 flex-wrap justify-center sm:justify-start">
             <span className="bg-amber-500 text-slate-950 font-bold px-2 py-0.5 rounded text-[11px] uppercase tracking-wider flex items-center gap-1 shadow-sm">
               <Sparkles className="w-3 h-3" /> Admissions Open 2026–27
             </span>
             <span className="hidden md:inline text-slate-300">
               Recognised by BIE AP • <strong className="text-amber-400">Code: {collegeInfo.bieCode}</strong>
             </span>
+
+            {/* Quick Feature Pills */}
+            <div className="hidden lg:flex items-center gap-2 pl-2 border-l border-slate-700">
+              <button
+                onClick={onOpenPayment}
+                className="text-[11px] text-emerald-300 hover:text-emerald-200 flex items-center gap-1 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-800 transition"
+              >
+                <CreditCard className="w-3 h-3 text-emerald-400" />
+                <span>Pay Fee Online</span>
+              </button>
+
+              <button
+                onClick={onOpenExamPortal}
+                className="text-[11px] text-amber-300 hover:text-amber-200 flex items-center gap-1 bg-amber-950/60 px-2 py-0.5 rounded border border-amber-800 transition"
+              >
+                <Award className="w-3 h-3 text-amber-400" />
+                <span>Exam Portal & Hall Ticket</span>
+              </button>
+
+              <button
+                onClick={onOpenBiometric}
+                className="text-[11px] text-cyan-300 hover:text-cyan-200 flex items-center gap-1 bg-cyan-950/60 px-2 py-0.5 rounded border border-cyan-800 transition"
+              >
+                <Camera className="w-3 h-3 text-cyan-400" />
+                <span>Face Biometric</span>
+              </button>
+            </div>
           </div>
+
           <div className="flex items-center gap-4 text-xs font-medium text-slate-300">
             <a href={`tel:${collegeInfo.phones[0]}`} className="hover:text-amber-400 transition flex items-center gap-1">
               <Phone className="w-3.5 h-3.5 text-amber-400" /> {collegeInfo.phones[0]}
@@ -65,22 +102,39 @@ export default function Navbar({ onOpenLogin, onOpenEnrollment, currentPortal, o
               </div>
             </div>
 
-            {/* Desktop Navigation Links (Visible on XL screens to guarantee zero overlap) */}
+            {/* Desktop Navigation Links */}
             <div className="hidden xl:flex items-center gap-4 2xl:gap-6 text-[13px] font-bold text-slate-700 whitespace-nowrap">
               <button onClick={() => scrollTo('hero')} className="hover:text-amber-600 transition">Home</button>
               <button onClick={() => scrollTo('about')} className="hover:text-amber-600 transition">About</button>
               <button onClick={() => scrollTo('courses')} className="hover:text-amber-600 transition">Academics</button>
-              <button onClick={() => scrollTo('video-tour')} className="hover:text-amber-600 transition">Video Tour</button>
               <button onClick={() => scrollTo('facilities')} className="hover:text-amber-600 transition">Facilities</button>
               <button onClick={() => scrollTo('gallery')} className="hover:text-amber-600 transition">Gallery</button>
               <button onClick={() => scrollTo('contact')} className="hover:text-amber-600 transition">Contact</button>
             </div>
 
             {/* Action Buttons Right Side */}
-            <div className="hidden md:flex items-center gap-2.5 flex-shrink-0">
+            <div className="hidden md:flex items-center gap-2 flex-shrink-0">
+              <button
+                onClick={onOpenPayment}
+                className="bg-emerald-50 hover:bg-emerald-100 text-emerald-900 border border-emerald-300 font-extrabold text-xs px-3 py-2 rounded-xl transition flex items-center gap-1.5 shadow-sm whitespace-nowrap"
+                title="Instant UPI Payment & 1-Page Fee Receipt"
+              >
+                <CreditCard className="w-3.5 h-3.5 text-emerald-700" />
+                <span>Pay Fee</span>
+              </button>
+
+              <button
+                onClick={onOpenExamPortal}
+                className="bg-indigo-50 hover:bg-indigo-100 text-indigo-900 border border-indigo-300 font-extrabold text-xs px-3 py-2 rounded-xl transition flex items-center gap-1.5 shadow-sm whitespace-nowrap"
+                title="Candidate Registration, Hall Ticket & CBT Online Exam"
+              >
+                <Award className="w-3.5 h-3.5 text-indigo-700" />
+                <span>Exam Portal</span>
+              </button>
+
               <button
                 onClick={onOpenEnrollment}
-                className="bg-amber-100 hover:bg-amber-200 text-amber-950 border border-amber-300 font-extrabold text-xs px-3.5 py-2.5 rounded-xl transition flex items-center gap-1.5 shadow-sm whitespace-nowrap flex-shrink-0"
+                className="bg-amber-100 hover:bg-amber-200 text-amber-950 border border-amber-300 font-extrabold text-xs px-3 py-2 rounded-xl transition flex items-center gap-1.5 shadow-sm whitespace-nowrap"
               >
                 <UserPlus className="w-3.5 h-3.5 text-amber-700" />
                 <span>+ Enroll</span>
@@ -102,7 +156,7 @@ export default function Navbar({ onOpenLogin, onOpenEnrollment, currentPortal, o
               ) : (
                 <button
                   onClick={onOpenLogin}
-                  className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-black text-xs px-4 py-2.5 rounded-xl shadow-md transition flex items-center gap-1.5 whitespace-nowrap flex-shrink-0"
+                  className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-black text-xs px-3.5 py-2 rounded-xl shadow-md transition flex items-center gap-1.5 whitespace-nowrap flex-shrink-0"
                 >
                   <LogIn className="w-3.5 h-3.5" />
                   <span>Portal Login</span>
@@ -113,14 +167,20 @@ export default function Navbar({ onOpenLogin, onOpenEnrollment, currentPortal, o
             {/* Mobile / Tablet Hamburger & Quick Action */}
             <div className="flex xl:hidden items-center gap-2">
               <button
+                onClick={onOpenPayment}
+                className="bg-emerald-600 text-white text-[11px] font-black px-2 py-1.5 rounded-lg shadow-sm md:hidden"
+              >
+                Pay Fee
+              </button>
+              <button
                 onClick={onOpenEnrollment}
-                className="bg-amber-100 text-amber-950 border border-amber-300 text-[11px] font-black px-2.5 py-1.5 rounded-lg shadow-sm md:hidden"
+                className="bg-amber-100 text-amber-950 border border-amber-300 text-[11px] font-black px-2 py-1.5 rounded-lg shadow-sm md:hidden"
               >
                 + Enroll
               </button>
               <button
                 onClick={onOpenLogin}
-                className="bg-amber-500 text-slate-950 text-[11px] font-black px-2.5 py-1.5 rounded-lg shadow sm:hidden"
+                className="bg-amber-500 text-slate-950 text-[11px] font-black px-2 py-1.5 rounded-lg shadow sm:hidden"
               >
                 Login
               </button>
@@ -142,12 +202,43 @@ export default function Navbar({ onOpenLogin, onOpenEnrollment, currentPortal, o
             <button onClick={() => scrollTo('hero')} className="block w-full text-left py-2 font-semibold text-slate-800 hover:text-amber-600">Home</button>
             <button onClick={() => scrollTo('about')} className="block w-full text-left py-2 font-semibold text-slate-800 hover:text-amber-600">About College</button>
             <button onClick={() => scrollTo('courses')} className="block w-full text-left py-2 font-semibold text-slate-800 hover:text-amber-600">Academic Courses (MPC, BiPC, CEC, MEC)</button>
-            <button onClick={() => scrollTo('video-tour')} className="block w-full text-left py-2 font-semibold text-slate-800 hover:text-amber-600">Video Tour</button>
             <button onClick={() => scrollTo('facilities')} className="block w-full text-left py-2 font-semibold text-slate-800 hover:text-amber-600">Hostel & Facilities</button>
             <button onClick={() => scrollTo('gallery')} className="block w-full text-left py-2 font-semibold text-slate-800 hover:text-amber-600">Campus Photo Gallery</button>
-            <button onClick={() => scrollTo('contact')} className="block w-full text-left py-2 font-semibold text-slate-800 hover:text-amber-600">Contact College</button>
+            <button onClick={() => scrollTo('contact')} className="block w-full text-left py-2 font-semibold text-slate-800 hover:text-amber-600">Contact & Enquiry</button>
 
             <div className="pt-3 border-t border-slate-100 space-y-2">
+              <button
+                onClick={() => { setIsOpen(false); onOpenPayment(); }}
+                className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold py-2.5 rounded-xl shadow-sm flex items-center justify-center gap-2 text-xs"
+              >
+                <CreditCard className="w-4 h-4" />
+                <span>Online Fee Payment (UPI QR Code)</span>
+              </button>
+
+              <button
+                onClick={() => { setIsOpen(false); onOpenExamPortal(); }}
+                className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold py-2.5 rounded-xl shadow-sm flex items-center justify-center gap-2 text-xs"
+              >
+                <Award className="w-4 h-4" />
+                <span>Exam Portal, Hall Ticket & Online CBT</span>
+              </button>
+
+              <button
+                onClick={() => { setIsOpen(false); onOpenBiometric(); }}
+                className="w-full bg-cyan-700 hover:bg-cyan-800 text-white font-extrabold py-2.5 rounded-xl shadow-sm flex items-center justify-center gap-2 text-xs"
+              >
+                <Camera className="w-4 h-4" />
+                <span>Face Biometric Attendance (50m Limit)</span>
+              </button>
+
+              <button
+                onClick={() => { setIsOpen(false); onOpenCampaign(); }}
+                className="w-full bg-slate-900 hover:bg-slate-800 text-amber-400 font-extrabold py-2.5 rounded-xl shadow-sm flex items-center justify-center gap-2 text-xs"
+              >
+                <Clock className="w-4 h-4 text-amber-400" />
+                <span>2-Day Drip Campaigns & Festival Broadcasts</span>
+              </button>
+
               <button
                 onClick={() => { setIsOpen(false); onOpenEnrollment(); }}
                 className="w-full bg-amber-100 hover:bg-amber-200 text-amber-950 border border-amber-300 font-extrabold py-2.5 rounded-xl shadow-sm flex items-center justify-center gap-2 text-xs"
@@ -155,6 +246,7 @@ export default function Navbar({ onOpenLogin, onOpenEnrollment, currentPortal, o
                 <UserPlus className="w-4 h-4 text-amber-700" />
                 <span>+ Enroll New Student or Teacher</span>
               </button>
+
               <button
                 onClick={() => { setIsOpen(false); onOpenLogin(); }}
                 className="w-full bg-amber-500 text-slate-950 font-black py-2.5 rounded-xl shadow flex items-center justify-center gap-2 text-xs"

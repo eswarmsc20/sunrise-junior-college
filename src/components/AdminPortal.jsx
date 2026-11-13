@@ -4,7 +4,18 @@ import initialStudents from '../data/studentsData.json';
 import initialTeachers from '../data/teachersData.json';
 import { createWhatsAppLink } from '../utils/geoUtils';
 
-export default function AdminPortal({ admin, onLogout, onOpenReceipt, onOpenMarks, onSendAlert, onOpenEnrollment }) {
+export default function AdminPortal({ 
+  admin, 
+  onLogout, 
+  onOpenReceipt, 
+  onOpenMarks, 
+  onSendAlert, 
+  onOpenEnrollment,
+  onOpenPayment,
+  onOpenCampaign,
+  onOpenBiometric,
+  onOpenExamPortal
+}) {
   const [activeTab, setActiveTab] = useState('students'); // 'students' | 'faculty' | 'attendance' | 'enroll_student' | 'enroll_teacher' | 'inquiries'
   
   const [students, setStudents] = useState(() => {
@@ -240,27 +251,59 @@ export default function AdminPortal({ admin, onLogout, onOpenReceipt, onOpenMark
           </div>
 
           {/* Prominent Quick Action Buttons */}
-          <div className="flex flex-wrap items-center gap-3 w-full md:w-auto justify-end">
+          <div className="flex flex-wrap items-center gap-2.5 w-full md:w-auto justify-end">
+            {onOpenPayment && (
+              <button
+                onClick={onOpenPayment}
+                className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-3 py-2 rounded-xl shadow transition"
+              >
+                UPI Pay Portal
+              </button>
+            )}
+            {onOpenCampaign && (
+              <button
+                onClick={onOpenCampaign}
+                className="bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold px-3 py-2 rounded-xl shadow transition"
+              >
+                Campaigns (7893505185)
+              </button>
+            )}
+            {onOpenBiometric && (
+              <button
+                onClick={onOpenBiometric}
+                className="bg-cyan-700 hover:bg-cyan-800 text-white text-xs font-bold px-3 py-2 rounded-xl shadow transition"
+              >
+                Face Biometrics
+              </button>
+            )}
+            {onOpenExamPortal && (
+              <button
+                onClick={onOpenExamPortal}
+                className="bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold px-3 py-2 rounded-xl shadow transition"
+              >
+                CBT Exam Portal
+              </button>
+            )}
             <button
               onClick={() => setActiveTab('enroll_student')}
-              className="bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-extrabold px-4 py-2.5 rounded-xl shadow-lg transition flex items-center gap-1.5"
+              className="bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-extrabold px-3 py-2 rounded-xl shadow transition flex items-center gap-1.5"
             >
-              <UserPlus className="w-4 h-4" />
-              <span>+ Enroll Student</span>
+              <UserPlus className="w-3.5 h-3.5" />
+              <span>+ Student</span>
             </button>
             <button
               onClick={() => setActiveTab('enroll_teacher')}
-              className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-extrabold px-4 py-2.5 rounded-xl shadow-lg transition flex items-center gap-1.5"
+              className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-extrabold px-3 py-2 rounded-xl shadow transition flex items-center gap-1.5"
             >
-              <School className="w-4 h-4" />
-              <span>+ Enroll Teacher</span>
+              <School className="w-3.5 h-3.5" />
+              <span>+ Teacher</span>
             </button>
             <button
               onClick={onLogout}
-              className="bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl border border-slate-700 transition flex items-center gap-1.5 shadow"
+              className="bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold px-3 py-2 rounded-xl border border-slate-700 transition flex items-center gap-1.5 shadow"
             >
-              <LogOut className="w-4 h-4" />
-              <span>Exit Admin Portal</span>
+              <LogOut className="w-3.5 h-3.5" />
+              <span>Exit</span>
             </button>
           </div>
         </div>

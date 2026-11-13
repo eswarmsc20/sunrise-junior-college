@@ -2,7 +2,16 @@ import React, { useState } from 'react';
 import { User, Award, BookOpen, Calendar, CheckCircle2, Download, LogOut, ShieldCheck, Clock, FileText, MapPin, Navigation, Receipt, MessageSquare, AlertCircle } from 'lucide-react';
 import { COLLEGE_LOCATION, calculateDistanceMeters, createWhatsAppLink } from '../utils/geoUtils';
 
-export default function StudentPortal({ student, onLogout, onOpenReceipt, onOpenMarks, onSendAlert }) {
+export default function StudentPortal({ 
+  student, 
+  onLogout, 
+  onOpenReceipt, 
+  onOpenMarks, 
+  onSendAlert,
+  onOpenPayment,
+  onOpenExamPortal,
+  onOpenBiometric
+}) {
   const [gpsLoading, setGpsLoading] = useState(false);
   const [currentDistance, setCurrentDistance] = useState(student.attendanceLog?.gpsDistanceMeters || 18);
   const [checkedIn, setCheckedIn] = useState(student.attendanceLog?.todayStatus === 'Present');
@@ -102,6 +111,22 @@ Principal Desk: 8143217785`;
           </div>
 
           <div className="flex flex-wrap items-center gap-3 w-full md:w-auto justify-end">
+            {onOpenPayment && (
+              <button
+                onClick={onOpenPayment}
+                className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-black px-3.5 py-2.5 rounded-xl shadow transition flex items-center gap-1.5"
+              >
+                <span>Pay Fee Online (UPI)</span>
+              </button>
+            )}
+            {onOpenExamPortal && (
+              <button
+                onClick={onOpenExamPortal}
+                className="bg-purple-600 hover:bg-purple-700 text-white text-xs font-black px-3.5 py-2.5 rounded-xl shadow transition flex items-center gap-1.5"
+              >
+                <span>CBT Exam & Hall Ticket</span>
+              </button>
+            )}
             <button
               onClick={() => onOpenReceipt(s)}
               className="bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-black px-4 py-2.5 rounded-xl shadow transition flex items-center gap-1.5"
@@ -162,6 +187,15 @@ Principal Desk: 8143217785`;
             </div>
 
             <div className="flex flex-wrap items-center gap-3">
+              {onOpenBiometric && (
+                <button
+                  onClick={onOpenBiometric}
+                  className="bg-cyan-700 hover:bg-cyan-800 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-1.5 shadow"
+                >
+                  <span>📷 Face Biometric Scan</span>
+                </button>
+              )}
+
               <button
                 onClick={handleDetectGPS}
                 disabled={gpsLoading}

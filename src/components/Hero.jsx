@@ -1,8 +1,8 @@
 import React from 'react';
-import { ArrowRight, Play, Award, CheckCircle2, ShieldCheck, PhoneCall, Sparkles } from 'lucide-react';
+import { ArrowRight, Play, Award, CheckCircle2, ShieldCheck, PhoneCall, Sparkles, CreditCard, Camera } from 'lucide-react';
 import { collegeInfo } from '../data/collegeData';
 
-export default function Hero({ onOpenLogin, onPlayVideo }) {
+export default function Hero({ onOpenLogin, onPlayVideo, onOpenPayment, onOpenExamPortal, onOpenBiometric }) {
   const scrollTo = (id) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -56,7 +56,7 @@ export default function Hero({ onOpenLogin, onPlayVideo }) {
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap items-center gap-4 pt-4">
+            <div className="flex flex-wrap items-center gap-3 pt-3">
               <button
                 onClick={() => scrollTo('admissions')}
                 className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold px-6 py-3.5 rounded-xl shadow-lg hover:shadow-amber-500/25 transition flex items-center gap-2 text-sm sm:text-base group"
@@ -67,12 +67,12 @@ export default function Hero({ onOpenLogin, onPlayVideo }) {
 
               <button
                 onClick={() => scrollTo('video-tour')}
-                className="bg-slate-800/80 hover:bg-slate-800 border border-slate-700 text-white font-semibold px-5 py-3.5 rounded-xl transition flex items-center gap-2 text-sm sm:text-base"
+                className="bg-slate-800/80 hover:bg-slate-800 border border-slate-700 text-white font-semibold px-4 py-3.5 rounded-xl transition flex items-center gap-2 text-sm"
               >
-                <div className="w-6 h-6 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center">
-                  <Play className="w-3 h-3 fill-current ml-0.5" />
+                <div className="w-5 h-5 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center">
+                  <Play className="w-2.5 h-2.5 fill-current ml-0.5" />
                 </div>
-                <span>Watch Campus Video</span>
+                <span>Watch Video</span>
               </button>
 
               <button
@@ -80,6 +80,34 @@ export default function Hero({ onOpenLogin, onPlayVideo }) {
                 className="text-amber-300 hover:text-amber-200 text-sm font-semibold underline underline-offset-4 px-2"
               >
                 Student / Staff Login →
+              </button>
+            </div>
+
+            {/* Service Quick Access Pills */}
+            <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-800/70">
+              <span className="text-xs text-slate-400 font-bold uppercase tracking-wider">Quick Services:</span>
+              <button
+                onClick={onOpenPayment}
+                className="bg-emerald-950/80 hover:bg-emerald-900 border border-emerald-500/40 text-emerald-300 text-xs font-bold px-3 py-1 rounded-lg flex items-center gap-1.5 transition"
+              >
+                <CreditCard className="w-3.5 h-3.5 text-emerald-400" />
+                <span>Pay Fee Online (UPI)</span>
+              </button>
+
+              <button
+                onClick={onOpenExamPortal}
+                className="bg-indigo-950/80 hover:bg-indigo-900 border border-indigo-500/40 text-indigo-300 text-xs font-bold px-3 py-1 rounded-lg flex items-center gap-1.5 transition"
+              >
+                <Award className="w-3.5 h-3.5 text-indigo-400" />
+                <span>Exam Portal & Hall Ticket</span>
+              </button>
+
+              <button
+                onClick={onOpenBiometric}
+                className="bg-cyan-950/80 hover:bg-cyan-900 border border-cyan-500/40 text-cyan-300 text-xs font-bold px-3 py-1 rounded-lg flex items-center gap-1.5 transition"
+              >
+                <Camera className="w-3.5 h-3.5 text-cyan-400" />
+                <span>50m Face Attendance</span>
               </button>
             </div>
           </div>
@@ -114,12 +142,18 @@ export default function Hero({ onOpenLogin, onPlayVideo }) {
 
                     <div className="flex items-end justify-between">
                       <div>
-                        <h4 className="text-white font-extrabold text-base sm:text-lg leading-tight">
+                        <p className="text-[11px] font-bold uppercase tracking-wider text-amber-400">
+                          Srikakulam, AP
+                        </p>
+                        <h3 className="text-xl font-black text-white leading-tight">
                           Sunrise Junior College
-                        </h4>
-                        <p className="text-slate-300 text-xs mt-0.5">Day & Night Junction, Srikakulam</p>
+                        </h3>
+                        <p className="text-xs text-slate-300">
+                          Day & Night Jn, Beside KR Stadium
+                        </p>
                       </div>
-                      <div className="w-12 h-12 rounded-full bg-amber-500 hover:bg-amber-400 text-slate-950 flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition flex-shrink-0">
+
+                      <div className="w-12 h-12 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-amber-400 transition flex-shrink-0">
                         <Play className="w-5 h-5 fill-current ml-0.5" />
                       </div>
                     </div>
@@ -127,47 +161,27 @@ export default function Hero({ onOpenLogin, onPlayVideo }) {
                 </div>
               </div>
 
-              {/* Verified Recognition Strip Below Image (Separated) */}
-              <div className="mt-4 bg-slate-800/90 backdrop-blur-md text-white rounded-2xl p-3.5 shadow-xl border border-slate-700/80 flex items-center justify-between gap-3">
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center flex-shrink-0">
-                    <Award className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-[11px] text-slate-400 font-semibold">Government Approved Intermediate</p>
-                    <p className="text-xs font-black text-white">BIE AP Recognition Code: <span className="text-amber-400">01089</span></p>
-                  </div>
+              {/* Verified Government BIE Code Card */}
+              <div className="mt-4 bg-white text-slate-900 rounded-2xl p-4 shadow-xl border border-slate-200 flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center flex-shrink-0">
+                  <ShieldCheck className="w-6 h-6" />
                 </div>
-                <span className="text-[10px] font-extrabold text-slate-300 bg-slate-700/60 px-2.5 py-1 rounded-lg">
-                  ESTD. 2008
-                </span>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-bold text-amber-700 uppercase tracking-wide">Government Approved</span>
+                    <span className="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-mono font-semibold">RC No. 652995</span>
+                  </div>
+                  <p className="text-base font-black text-slate-950">
+                    BIE AP Code: <span className="text-amber-600">01089</span>
+                  </p>
+                  <p className="text-[11px] text-slate-500">Board of Intermediate Education, Andhra Pradesh</p>
+                </div>
               </div>
 
             </div>
           </div>
 
         </div>
-
-        {/* Bottom Metrics Bar */}
-        <div className="mt-16 pt-8 border-t border-slate-800/80 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          <div className="space-y-1">
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-amber-400">2008–09</h3>
-            <p className="text-xs sm:text-sm text-slate-400 font-medium">Established Year</p>
-          </div>
-          <div className="space-y-1">
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-amber-400">01089</h3>
-            <p className="text-xs sm:text-sm text-slate-400 font-medium">BIE AP Recognition Code</p>
-          </div>
-          <div className="space-y-1">
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-amber-400">4 Key Streams</h3>
-            <p className="text-xs sm:text-sm text-slate-400 font-medium">MPC • BiPC • CEC • MEC</p>
-          </div>
-          <div className="space-y-1">
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-amber-400">100% In-House</h3>
-            <p className="text-xs sm:text-sm text-slate-400 font-medium">Hostels & Labs on Campus</p>
-          </div>
-        </div>
-
       </div>
     </section>
   );
