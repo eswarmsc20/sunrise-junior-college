@@ -25,6 +25,15 @@ export default function ExamPortalModal({ isOpen, onClose, onOpenMarksMemo }) {
   const [examSubmitted, setExamSubmitted] = useState(false);
   const [scoreData, setScoreData] = useState(null);
 
+  // Close on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+    if (isOpen) window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   // Stream-specific CBT question sets
@@ -237,9 +246,14 @@ export default function ExamPortalModal({ isOpen, onClose, onOpenMarksMemo }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 overflow-y-auto print-modal-container">
+    <div 
+      className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 overflow-y-auto print-modal-container cursor-pointer"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
       <div 
-        className="relative bg-white rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl border border-slate-200 my-4"
+        className="relative bg-white rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl border border-slate-200 my-4 cursor-default"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Control Bar (Hidden from Print) */}
@@ -262,6 +276,7 @@ export default function ExamPortalModal({ isOpen, onClose, onOpenMarksMemo }) {
           <div className="flex items-center gap-2">
             {(stage === 'hallticket' || stage === 'result') && (
               <button
+                type="button"
                 onClick={handlePrint}
                 className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-xs px-3.5 py-2 rounded-xl flex items-center gap-1.5 transition shadow"
               >
@@ -270,10 +285,17 @@ export default function ExamPortalModal({ isOpen, onClose, onOpenMarksMemo }) {
               </button>
             )}
             <button
-              onClick={onClose}
-              className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-slate-300 hover:text-white transition"
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                onClose();
+              }}
+              className="w-9 h-9 rounded-full bg-slate-800/90 hover:bg-red-600 active:scale-95 text-white flex items-center justify-center transition shadow-lg border border-white/20 cursor-pointer"
+              title="Close Portal (Esc)"
+              aria-label="Close"
             >
-              <X className="w-4 h-4" />
+              <X className="w-5 h-5 text-white stroke-[2.5]" />
             </button>
           </div>
         </div>

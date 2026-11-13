@@ -219,6 +219,7 @@ export default function App() {
         isOpen={biometricModalOpen}
         onClose={() => setBiometricModalOpen(false)}
         onAttendanceRecorded={handleAttendanceRecorded}
+        onSendAlert={triggerAlert}
       />
 
       {/* Comprehensive Examination Portal Modal (Registration -> Hall Ticket -> CBT Exam -> Marks Memo) */}
