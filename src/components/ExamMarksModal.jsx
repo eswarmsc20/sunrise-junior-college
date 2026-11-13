@@ -135,10 +135,21 @@ Principal: Sri Andhavarapu Sudarshan Rao (8143217785)`;
         {/* Scrollable Body Container (Contains Printable Card and WhatsApp Actions) */}
         <div className="flex-1 overflow-y-auto modal-scroll-body divide-y divide-slate-100">
           {/* Printable Official Marks Memo Card (Fits on EXACTLY 1 A4 Page) */}
-          <div className="printable-memo-card p-5 sm:p-6 bg-white text-slate-900">
-          
-          {/* Official College Header */}
-          <div className="border-b-2 border-slate-900 pb-3 text-center relative">
+          <div className="printable-memo-card p-5 sm:p-6 bg-white text-slate-900 relative overflow-hidden">
+            
+            {/* Official College Watermark Crest (Centered Subtle Background) */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0 watermark-container overflow-hidden">
+              <img 
+                src={sunriseLogo} 
+                alt="" 
+                className="w-64 h-64 sm:w-80 sm:h-80 object-contain opacity-[0.07] filter contrast-125 transform -rotate-10 watermark-logo pointer-events-none" 
+              />
+            </div>
+
+            {/* Document Content (Elevated above Watermark) */}
+            <div className="relative z-10 space-y-2">
+              {/* Official College Header */}
+              <div className="border-b-2 border-slate-900 pb-3 text-center relative">
             <div className="flex items-center justify-center gap-3 mb-1">
               <div className="w-12 h-12 bg-transparent flex items-center justify-center flex-shrink-0">
                 <img src={sunriseLogo} alt="Sunrise Official Crest" className="w-full h-full object-contain filter drop-shadow" />
@@ -250,6 +261,7 @@ Principal: Sri Andhavarapu Sudarshan Rao (8143217785)`;
             </div>
           </div>
 
+          </div>
         </div>
 
         {/* WhatsApp & SMS Dispatch Buttons (Hidden from Print) */}

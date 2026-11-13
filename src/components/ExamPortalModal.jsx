@@ -390,9 +390,21 @@ export default function ExamPortalModal({ isOpen, onClose, onOpenMarksMemo }) {
            ======================================================== */}
         {stage === 'hallticket' && candidateInfo && (
           <div className="p-6 space-y-4">
-            <div className="printable-memo-card p-6 bg-white border border-slate-300 rounded-2xl shadow-sm text-slate-900">
-              {/* College Header */}
-              <div className="border-b-2 border-slate-900 pb-3 text-center relative">
+            <div className="printable-memo-card p-6 bg-white border border-slate-300 rounded-2xl shadow-sm text-slate-900 relative overflow-hidden">
+              
+              {/* Official College Watermark Crest */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0 watermark-container overflow-hidden">
+                <img 
+                  src={sunriseLogo} 
+                  alt="" 
+                  className="w-64 h-64 sm:w-80 sm:h-80 object-contain opacity-[0.07] filter contrast-125 transform -rotate-10 watermark-logo pointer-events-none" 
+                />
+              </div>
+
+              {/* Document Content */}
+              <div className="relative z-10 space-y-2">
+                {/* College Header */}
+                <div className="border-b-2 border-slate-900 pb-3 text-center relative">
                 <div className="flex items-center justify-center gap-3 mb-1">
                   <div className="w-12 h-12 bg-transparent flex items-center justify-center flex-shrink-0">
                     <img src={sunriseLogo} alt="Sunrise Official Crest" className="w-full h-full object-contain filter drop-shadow" />
@@ -470,6 +482,8 @@ export default function ExamPortalModal({ isOpen, onClose, onOpenMarksMemo }) {
                   <p className="font-black text-slate-900 text-xs mt-1">Chief Superintendent</p>
                   <p className="text-[9px] text-slate-500">Sunrise Junior College</p>
                 </div>
+              </div>
+
               </div>
             </div>
 
@@ -657,9 +671,21 @@ export default function ExamPortalModal({ isOpen, onClose, onOpenMarksMemo }) {
            ======================================================== */}
         {stage === 'result' && scoreData && (
           <div className="p-6 space-y-4">
-            <div className="printable-memo-card p-6 bg-white border border-slate-300 rounded-2xl shadow-sm text-slate-900">
-              {/* College Header */}
-              <div className="border-b-2 border-slate-900 pb-3 text-center relative">
+            <div className="printable-memo-card p-6 bg-white border border-slate-300 rounded-2xl shadow-sm text-slate-900 relative overflow-hidden">
+              
+              {/* Official College Watermark Crest */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0 watermark-container overflow-hidden">
+                <img 
+                  src={sunriseLogo} 
+                  alt="" 
+                  className="w-64 h-64 sm:w-80 sm:h-80 object-contain opacity-[0.07] filter contrast-125 transform -rotate-10 watermark-logo pointer-events-none" 
+                />
+              </div>
+
+              {/* Document Content */}
+              <div className="relative z-10 space-y-2">
+                {/* College Header */}
+                <div className="border-b-2 border-slate-900 pb-3 text-center relative">
                 <div className="flex items-center justify-center gap-3 mb-1">
                   <div className="w-12 h-12 bg-transparent flex items-center justify-center flex-shrink-0">
                     <img src={sunriseLogo} alt="Sunrise Official Crest" className="w-full h-full object-contain filter drop-shadow" />
@@ -756,6 +782,8 @@ export default function ExamPortalModal({ isOpen, onClose, onOpenMarksMemo }) {
                   <p className="font-black text-slate-900 text-xs mt-1">Controller of Examinations</p>
                   <p className="text-[9px] text-slate-500">Sunrise Junior College</p>
                 </div>
+              </div>
+
               </div>
             </div>
 

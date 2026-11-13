@@ -177,14 +177,41 @@
     print-color-adjust: exact !important;
   }
 
-  /* Official logo crisp rendering */
-  .printable-receipt-card img,
-  .printable-memo-card img {
+  /* Official header logo crisp rendering */
+  .printable-receipt-card img:not(.watermark-logo),
+  .printable-memo-card img:not(.watermark-logo) {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
     display: inline-block !important;
     max-height: 48px !important;
     width: auto !important;
+  }
+
+  /* Centered watermark crest logo behind certificate / receipt */
+  .printable-receipt-card .watermark-container,
+  .printable-memo-card .watermark-container {
+    position: absolute !important;
+    inset: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .printable-receipt-card .watermark-logo,
+  .printable-memo-card .watermark-logo {
+    width: 280px !important;
+    height: 280px !important;
+    max-width: 280px !important;
+    max-height: 280px !important;
+    opacity: 0.08 !important;
+    transform: rotate(-10deg) !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    display: block !important;
+    object-contain: contain !important;
   }
 
   /* Ensure official badge renders cleanly with white text on dark background */
