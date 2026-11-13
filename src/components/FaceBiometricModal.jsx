@@ -361,7 +361,7 @@ Please contact Principal: 8143217785 immediately.`;
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header with High-Priority Foolproof Close Button */}
-        <div className="bg-gradient-to-r from-slate-950 via-slate-900 to-emerald-950 text-white p-5 relative">
+        <div className="sticky top-0 z-50 bg-gradient-to-r from-slate-950 via-slate-900 to-emerald-950 text-white p-4 sm:p-5 relative shadow-md">
           <button
             type="button"
             onClick={(e) => {

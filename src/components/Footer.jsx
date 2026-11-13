@@ -65,6 +65,7 @@ export default function Footer({ onOpenLogin }) {
               <li><span className="text-white font-medium">Bi.P.C:</span> Biology, Physics, Chemistry</li>
               <li><span className="text-white font-medium">C.E.C:</span> Civics, Economics, Commerce</li>
               <li><span className="text-white font-medium">M.E.C:</span> Maths, Economics, Commerce</li>
+              <li><span className="text-white font-medium">H.E.C:</span> History, Economics, Civics</li>
               <li className="pt-2">
                 <button
                   onClick={onOpenLogin}

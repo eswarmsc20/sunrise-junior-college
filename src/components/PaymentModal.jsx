@@ -114,7 +114,7 @@ export default function PaymentModal({ isOpen, onClose, onPaymentSuccess }) {
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950 text-white p-6 relative">
+        <div className="sticky top-0 z-50 bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950 text-white p-5 sm:p-6 relative shadow-md">
           <button
             type="button"
             onClick={(e) => {

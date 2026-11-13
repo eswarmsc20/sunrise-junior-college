@@ -55,14 +55,28 @@ Principal: Sri Andhavarapu Sudarshan Rao (8143217785)`;
   const studentWhatsApp = createWhatsAppLink(student.phone, reportMessage);
   const fatherWhatsApp = createWhatsAppLink(student.fatherPhone || student.phone, reportMessage);
 
+  // Close on Escape key
+  React.useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+    if (isOpen) window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
+
   return (
-    <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 overflow-y-auto print-modal-container">
+    <div 
+      className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 overflow-y-auto print-modal-container cursor-pointer"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
       <div 
-        className="relative bg-white rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl border border-slate-300 my-4"
+        className="relative bg-white rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl border border-slate-300 my-4 cursor-default"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Control Bar (Hidden from Print) */}
-        <div className="bg-slate-900 text-white p-4 flex items-center justify-between no-print">
+        <div className="sticky top-0 z-50 bg-slate-900 text-white p-4 flex items-center justify-between no-print shadow-md">
           <div className="flex items-center gap-2">
             <span className="text-xs font-bold text-indigo-400 bg-indigo-500/20 px-2.5 py-0.5 rounded">
               Official Marks Memo
@@ -73,16 +87,24 @@ Principal: Sri Andhavarapu Sudarshan Rao (8143217785)`;
           <div className="flex items-center gap-2">
             <button
               onClick={handlePrint}
-              className="bg-indigo-600 hover:bg-indigo-700 text-white font-black text-xs px-4 py-2 rounded-xl flex items-center gap-1.5 transition shadow-md"
+              className="bg-indigo-600 hover:bg-indigo-700 text-white font-black text-xs px-3 sm:px-4 py-2 rounded-xl flex items-center gap-1.5 transition shadow-md"
             >
               <Printer className="w-4 h-4" />
-              <span>Print / Save 1-Page Marks Memo</span>
+              <span className="hidden sm:inline">Print / Save 1-Page Marks Memo</span>
+              <span className="sm:hidden">Print</span>
             </button>
             <button
-              onClick={onClose}
-              className="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center transition"
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                onClose();
+              }}
+              className="w-9 h-9 rounded-full bg-slate-800/90 hover:bg-red-600 active:scale-95 text-white flex items-center justify-center transition shadow-lg border border-white/20 cursor-pointer"
+              title="Close (Esc)"
+              aria-label="Close"
             >
-              <X className="w-4 h-4" />
+              <X className="w-5 h-5 text-white stroke-[2.5]" />
             </button>
           </div>
         </div>

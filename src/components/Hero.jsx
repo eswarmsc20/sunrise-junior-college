@@ -56,68 +56,70 @@ export default function Hero({ onOpenLogin, onPlayVideo, onOpenPayment, onOpenEx
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap items-center gap-3 pt-3">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-3">
               <button
                 onClick={() => scrollTo('admissions')}
-                className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold px-6 py-3.5 rounded-xl shadow-lg hover:shadow-amber-500/25 transition flex items-center gap-2 text-sm sm:text-base group"
+                className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold px-6 py-3.5 rounded-xl shadow-lg hover:shadow-amber-500/25 transition flex items-center justify-center gap-2 text-sm sm:text-base group w-full sm:w-auto"
               >
                 <span>Apply for Admission 2026–27</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition" />
               </button>
 
-              <button
-                onClick={() => scrollTo('video-tour')}
-                className="bg-slate-800/80 hover:bg-slate-800 border border-slate-700 text-white font-semibold px-4 py-3.5 rounded-xl transition flex items-center gap-2 text-sm"
-              >
-                <div className="w-5 h-5 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center">
-                  <Play className="w-2.5 h-2.5 fill-current ml-0.5" />
-                </div>
-                <span>Watch Video</span>
-              </button>
+              <div className="flex items-center gap-2 w-full sm:w-auto">
+                <button
+                  onClick={() => scrollTo('video-tour')}
+                  className="flex-1 sm:flex-initial bg-slate-800/80 hover:bg-slate-800 border border-slate-700 text-white font-semibold px-4 py-3 rounded-xl transition flex items-center justify-center gap-2 text-sm"
+                >
+                  <div className="w-5 h-5 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center">
+                    <Play className="w-2.5 h-2.5 fill-current ml-0.5" />
+                  </div>
+                  <span>Watch Video</span>
+                </button>
 
-              <button
-                onClick={onOpenLogin}
-                className="text-amber-300 hover:text-amber-200 text-sm font-semibold underline underline-offset-4 px-2"
-              >
-                Student / Staff Login →
-              </button>
+                <button
+                  onClick={onOpenLogin}
+                  className="flex-1 sm:flex-initial text-center text-amber-300 hover:text-amber-200 text-xs sm:text-sm font-semibold underline underline-offset-4 px-2 py-3"
+                >
+                  Portal Login →
+                </button>
+              </div>
             </div>
 
             {/* Service Quick Access Pills */}
-            <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-800/70">
-              <span className="text-xs text-slate-400 font-bold uppercase tracking-wider">Quick Services:</span>
+            <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-2 pt-3 border-t border-slate-800/70">
+              <span className="col-span-2 sm:col-span-1 text-xs text-slate-400 font-bold uppercase tracking-wider">Quick Services:</span>
               <button
                 onClick={onOpenPayment}
-                className="bg-emerald-950/80 hover:bg-emerald-900 border border-emerald-500/40 text-emerald-300 text-xs font-bold px-3 py-1 rounded-lg flex items-center gap-1.5 transition"
+                className="bg-emerald-950/80 hover:bg-emerald-900 border border-emerald-500/40 text-emerald-300 text-xs font-bold px-3 py-2 rounded-lg flex items-center justify-center gap-1.5 transition"
               >
-                <CreditCard className="w-3.5 h-3.5 text-emerald-400" />
-                <span>Pay Fee Online (UPI)</span>
+                <CreditCard className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
+                <span className="truncate">Pay Fee Online</span>
               </button>
 
               <button
                 onClick={onOpenExamPortal}
-                className="bg-indigo-950/80 hover:bg-indigo-900 border border-indigo-500/40 text-indigo-300 text-xs font-bold px-3 py-1 rounded-lg flex items-center gap-1.5 transition"
+                className="bg-indigo-950/80 hover:bg-indigo-900 border border-indigo-500/40 text-indigo-300 text-xs font-bold px-3 py-2 rounded-lg flex items-center justify-center gap-1.5 transition"
               >
-                <Award className="w-3.5 h-3.5 text-indigo-400" />
-                <span>Exam Portal & Hall Ticket</span>
+                <Award className="w-3.5 h-3.5 text-indigo-400 flex-shrink-0" />
+                <span className="truncate">CBT Exam Portal</span>
               </button>
 
               <button
                 onClick={onOpenBiometric}
-                className="bg-cyan-950/80 hover:bg-cyan-900 border border-cyan-500/40 text-cyan-300 text-xs font-bold px-3 py-1 rounded-lg flex items-center gap-1.5 transition"
+                className="bg-cyan-950/80 hover:bg-cyan-900 border border-cyan-500/40 text-cyan-300 text-xs font-bold px-3 py-2 rounded-lg flex items-center justify-center gap-1.5 transition"
               >
-                <Camera className="w-3.5 h-3.5 text-cyan-400" />
-                <span>50m Face Attendance</span>
+                <Camera className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0" />
+                <span className="truncate">50m Face Attendance</span>
               </button>
 
               <a
                 href="./downloads/SunriseJuniorCollege.apk"
                 download="SunriseJuniorCollege.apk"
-                className="bg-lime-950/80 hover:bg-lime-900 border border-lime-500/40 text-lime-300 text-xs font-bold px-3 py-1 rounded-lg flex items-center gap-1.5 transition"
+                className="bg-lime-950/80 hover:bg-lime-900 border border-lime-500/40 text-lime-300 text-xs font-bold px-3 py-2 rounded-lg flex items-center justify-center gap-1.5 transition"
                 title="Download Official Android Mobile App (.apk)"
               >
-                <Download className="w-3.5 h-3.5 text-lime-400" />
-                <span>Download Android APK</span>
+                <Download className="w-3.5 h-3.5 text-lime-400 flex-shrink-0" />
+                <span className="truncate">Download APK</span>
               </a>
             </div>
           </div>

@@ -23,20 +23,20 @@ export default function Navbar({
   };
 
   return (
-    <header className="sticky top-0 z-50 shadow-md">
-      {/* Top Notification Bar with Direct Feature Shortcuts */}
-      <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white text-xs py-2 px-4 border-b border-indigo-900/40">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-          <div className="flex items-center gap-2 sm:gap-3 flex-wrap justify-center sm:justify-start">
+    <header className="sticky top-0 z-50 shadow-md bg-white">
+      {/* Top Notification Bar - Desktop / Tablet Only */}
+      <div className="hidden md:block bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white text-xs py-2 px-4 border-b border-indigo-900/40">
+        <div className="max-w-7xl mx-auto flex justify-between items-center gap-2">
+          <div className="flex items-center gap-3 flex-wrap">
             <span className="bg-amber-500 text-slate-950 font-bold px-2 py-0.5 rounded text-[11px] uppercase tracking-wider flex items-center gap-1 shadow-sm">
               <Sparkles className="w-3 h-3" /> Admissions Open 2026–27
             </span>
-            <span className="hidden md:inline text-slate-300">
+            <span className="text-slate-300">
               Recognised by BIE AP • <strong className="text-amber-400">Code: {collegeInfo.bieCode}</strong>
             </span>
 
             {/* Quick Feature Pills */}
-            <div className="hidden lg:flex items-center gap-2 pl-2 border-l border-slate-700">
+            <div className="flex items-center gap-2 pl-2 border-l border-slate-700">
               <button
                 onClick={onOpenPayment}
                 className="text-[11px] text-emerald-300 hover:text-emerald-200 flex items-center gap-1 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-800 transition"
@@ -77,8 +77,8 @@ export default function Navbar({
             <a href={`tel:${collegeInfo.phones[0]}`} className="hover:text-amber-400 transition flex items-center gap-1">
               <Phone className="w-3.5 h-3.5 text-amber-400" /> {collegeInfo.phones[0]}
             </a>
-            <span className="hidden sm:inline opacity-40">|</span>
-            <span className="hidden sm:flex items-center gap-1 text-slate-400">
+            <span className="opacity-40">|</span>
+            <span className="flex items-center gap-1 text-slate-400">
               <MapPin className="w-3 h-3 text-red-400" /> Srikakulam, AP
             </span>
           </div>
@@ -86,28 +86,28 @@ export default function Navbar({
       </div>
 
       {/* Main Navbar */}
-      <nav className="bg-white/95 backdrop-blur-md border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20 gap-3">
+      <nav className="bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 sm:h-20 gap-2">
             
             {/* Logo & College Identity */}
             <div 
-              className="flex items-center gap-2.5 cursor-pointer flex-shrink-0" 
+              className="flex items-center gap-2 cursor-pointer flex-shrink min-w-0" 
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
-              <div className="relative w-12 h-12 rounded-full overflow-hidden shadow-md border-2 border-amber-400 bg-white flex items-center justify-center p-0.5 flex-shrink-0">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden shadow border border-amber-400 bg-white flex items-center justify-center p-0.5 flex-shrink-0">
                 <img 
                   src="./assets/sunrise_official_logo.png" 
                   alt="Sunrise Junior College Official Crest" 
                   className="w-full h-full object-contain"
                 />
               </div>
-              <div className="flex-shrink-0">
-                <h1 className="text-base sm:text-lg font-black tracking-tight text-slate-900 leading-none">
+              <div className="flex-shrink min-w-0">
+                <h1 className="text-xs sm:text-base md:text-lg font-black tracking-tight text-slate-900 leading-tight truncate">
                   SUNRISE <span className="text-amber-600">JUNIOR COLLEGE</span>
                 </h1>
-                <p className="text-[10px] font-bold text-slate-500 tracking-wider mt-1">
-                  SRIKAKULAM • BIE AP CODE: {collegeInfo.bieCode}
+                <p className="text-[9px] sm:text-[10px] font-bold text-slate-500 tracking-wider truncate">
+                  SRIKAKULAM • BIE AP: {collegeInfo.bieCode}
                 </p>
               </div>
             </div>
@@ -122,7 +122,7 @@ export default function Navbar({
               <button onClick={() => scrollTo('contact')} className="hover:text-amber-600 transition">Contact</button>
             </div>
 
-            {/* Action Buttons Right Side */}
+            {/* Desktop Action Buttons */}
             <div className="hidden md:flex items-center gap-2 flex-shrink-0">
               <button
                 onClick={onOpenPayment}
@@ -154,7 +154,7 @@ export default function Navbar({
                 <div className="flex items-center gap-2 flex-shrink-0">
                   <div className="bg-emerald-50 border border-emerald-300 text-emerald-800 text-xs font-bold px-3 py-1.5 rounded-lg flex items-center gap-1.5 shadow-sm whitespace-nowrap">
                     <UserCircle className="w-4 h-4 text-emerald-600" />
-                    <span>{currentPortal.role.toUpperCase()} PORTAL</span>
+                    <span>{currentPortal.role.toUpperCase()}</span>
                   </div>
                   <button 
                     onClick={onLogout}
@@ -174,29 +174,19 @@ export default function Navbar({
               )}
             </div>
 
-            {/* Mobile / Tablet Hamburger & Quick Action */}
-            <div className="flex xl:hidden items-center gap-2">
-              <button
-                onClick={onOpenPayment}
-                className="bg-emerald-600 text-white text-[11px] font-black px-2 py-1.5 rounded-lg shadow-sm md:hidden"
-              >
-                Pay Fee
-              </button>
-              <button
-                onClick={onOpenEnrollment}
-                className="bg-amber-100 text-amber-950 border border-amber-300 text-[11px] font-black px-2 py-1.5 rounded-lg shadow-sm md:hidden"
-              >
-                + Enroll
-              </button>
+            {/* Mobile View: Clean Hamburger Button (Zero Clutter, Zero Overlap) */}
+            <div className="flex md:hidden items-center gap-2">
               <button
                 onClick={onOpenLogin}
-                className="bg-amber-500 text-slate-950 text-[11px] font-black px-2 py-1.5 rounded-lg shadow sm:hidden"
+                className="bg-amber-500 text-slate-950 text-xs font-black px-2.5 py-1.5 rounded-xl shadow flex items-center gap-1"
               >
-                Login
+                <LogIn className="w-3.5 h-3.5" />
+                <span>Login</span>
               </button>
+
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="p-2 rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-100 border border-slate-200"
+                className="p-2 rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-100 border border-slate-200 transition"
                 aria-label="Toggle Menu"
               >
                 {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -208,7 +198,7 @@ export default function Navbar({
 
         {/* Mobile Dropdown Menu */}
         {isOpen && (
-          <div className="xl:hidden bg-white border-t border-slate-200 px-4 pt-3 pb-5 space-y-2 shadow-2xl">
+          <div className="md:hidden bg-white border-t border-slate-200 px-4 pt-3 pb-6 space-y-2 shadow-2xl animate-in slide-in-from-top-2 duration-200">
             <button onClick={() => scrollTo('hero')} className="block w-full text-left py-2 font-semibold text-slate-800 hover:text-amber-600">Home</button>
             <button onClick={() => scrollTo('about')} className="block w-full text-left py-2 font-semibold text-slate-800 hover:text-amber-600">About College</button>
             <button onClick={() => scrollTo('courses')} className="block w-full text-left py-2 font-semibold text-slate-800 hover:text-amber-600">Academic Courses (MPC, BiPC, CEC, MEC, HEC)</button>
@@ -230,7 +220,7 @@ export default function Navbar({
                 className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold py-2.5 rounded-xl shadow-sm flex items-center justify-center gap-2 text-xs"
               >
                 <Award className="w-4 h-4" />
-                <span>Exam Portal, Hall Ticket & Online CBT</span>
+                <span>Online CBT Exam & Hall Ticket</span>
               </button>
 
               <button
@@ -238,15 +228,7 @@ export default function Navbar({
                 className="w-full bg-cyan-700 hover:bg-cyan-800 text-white font-extrabold py-2.5 rounded-xl shadow-sm flex items-center justify-center gap-2 text-xs"
               >
                 <Camera className="w-4 h-4" />
-                <span>Face Biometric Attendance (50m Limit)</span>
-              </button>
-
-              <button
-                onClick={() => { setIsOpen(false); onOpenCampaign(); }}
-                className="w-full bg-slate-900 hover:bg-slate-800 text-amber-400 font-extrabold py-2.5 rounded-xl shadow-sm flex items-center justify-center gap-2 text-xs"
-              >
-                <Clock className="w-4 h-4 text-amber-400" />
-                <span>2-Day Drip Campaigns & Festival Broadcasts</span>
+                <span>50m Face Recognition Biometric</span>
               </button>
 
               <button
@@ -259,11 +241,20 @@ export default function Navbar({
 
               <button
                 onClick={() => { setIsOpen(false); onOpenLogin(); }}
-                className="w-full bg-amber-500 text-slate-950 font-black py-2.5 rounded-xl shadow flex items-center justify-center gap-2 text-xs"
+                className="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-black py-2.5 rounded-xl shadow flex items-center justify-center gap-2 text-xs"
               >
                 <LogIn className="w-4 h-4" />
                 <span>Portal Login (Student / Teacher / Admin)</span>
               </button>
+
+              <a
+                href="./downloads/SunriseJuniorCollege.apk"
+                download="SunriseJuniorCollege.apk"
+                className="w-full bg-slate-900 hover:bg-slate-800 text-lime-400 font-extrabold py-2.5 rounded-xl shadow-sm flex items-center justify-center gap-2 text-xs"
+              >
+                <Download className="w-4 h-4" />
+                <span>Download Android App (APK)</span>
+              </a>
             </div>
           </div>
         )}

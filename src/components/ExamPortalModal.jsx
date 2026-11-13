@@ -202,7 +202,7 @@ export default function ExamPortalModal({ isOpen, onClose, onOpenMarksMemo }) {
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Control Bar (Hidden from Print) */}
-        <div className="bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950 text-white p-5 flex items-center justify-between no-print">
+        <div className="sticky top-0 z-50 bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950 text-white p-4 sm:p-5 flex items-center justify-between no-print shadow-md">
           <div>
             <div className="flex items-center gap-2 mb-1">
               <span className="text-[10px] font-bold bg-amber-400 text-slate-950 px-2 py-0.5 rounded uppercase tracking-wider">
