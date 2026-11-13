@@ -109,7 +109,7 @@ Principal: Sri Andhavarapu Sudarshan Rao (8143217785)`;
           <div className="border-b-2 border-slate-900 pb-3 text-center relative">
             <div className="flex items-center justify-center gap-3 mb-1">
               <div className="w-12 h-12 rounded-full overflow-hidden bg-white p-0.5 border-2 border-amber-500 flex items-center justify-center shadow-sm flex-shrink-0">
-                <img src="./assets/sunrise_logo.svg" alt="Sunrise Logo" className="w-full h-full object-contain" />
+                <img src="./assets/sunrise_official_logo.png" alt="Sunrise Official Logo" className="w-full h-full object-contain" />
               </div>
               <div className="text-left">
                 <p className="text-[9px] font-bold tracking-widest text-slate-600 uppercase">Sunrise Educational Society</p>

@@ -22,7 +22,7 @@ export default function Footer({ onOpenLogin }) {
           <div className="lg:col-span-4 space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-full overflow-hidden bg-white p-0.5 border-2 border-amber-400 flex items-center justify-center shadow-md">
-                <img src="./assets/sunrise_logo.svg" alt="Sunrise Junior College Logo" className="w-full h-full object-contain" />
+                <img src="./assets/sunrise_official_logo.png" alt="Sunrise Junior College Official Logo" className="w-full h-full object-contain" />
               </div>
               <div>
                 <h3 className="font-extrabold text-base tracking-tight text-white leading-tight">

@@ -10,6 +10,8 @@ import AdmissionForm from './components/AdmissionForm';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import LoginModal from './components/LoginModal';
+import LoginPage from './components/LoginPage';
+import MobileBottomNav from './components/MobileBottomNav';
 import StudentPortal from './components/StudentPortal';
 import TeacherPortal from './components/TeacherPortal';
 import AdminPortal from './components/AdminPortal';
@@ -23,6 +25,9 @@ import ExamPortalModal from './components/ExamPortalModal';
 import NotificationToast from './components/NotificationToast';
 
 export default function App() {
+  // App opens directly on the dedicated Gradient Navy Blue Login Page as requested
+  const [viewMode, setViewMode] = useState('login'); // 'login' | 'home' | 'portal'
+  
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [enrollmentModalOpen, setEnrollmentModalOpen] = useState(false);
   const [paymentModalOpen, setPaymentModalOpen] = useState(false);
@@ -43,11 +48,13 @@ export default function App() {
   const handleLoginSuccess = (portalData) => {
     setCurrentPortal(portalData);
     setLoginModalOpen(false);
+    setViewMode('portal');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleLogout = () => {
     setCurrentPortal(null);
+    setViewMode('login');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -85,11 +92,57 @@ export default function App() {
     });
   };
 
+  // If in 'login' mode and not authenticated, show the full-screen Gradient Navy Blue Login Page
+  if (viewMode === 'login' && !currentPortal) {
+    return (
+      <div className="min-h-screen bg-[#030712] text-white">
+        <LoginPage
+          onLoginSuccess={handleLoginSuccess}
+          onContinueToHome={() => setViewMode('home')}
+          onOpenExamPortal={() => {
+            setViewMode('home');
+            setExamPortalModalOpen(true);
+          }}
+          onOpenBiometric={() => {
+            setViewMode('home');
+            setBiometricModalOpen(true);
+          }}
+          onOpenPayment={() => {
+            setViewMode('home');
+            setPaymentModalOpen(true);
+          }}
+        />
+
+        {/* Global Modals accessible if triggered */}
+        <ExamPortalModal
+          isOpen={examPortalModalOpen}
+          onClose={() => setExamPortalModalOpen(false)}
+          onOpenMarksMemo={(studentData) => setActiveMarksStudent(studentData)}
+        />
+        <PaymentModal
+          isOpen={paymentModalOpen}
+          onClose={() => setPaymentModalOpen(false)}
+          onPaymentSuccess={handlePaymentSuccess}
+        />
+        <FaceBiometricModal
+          isOpen={biometricModalOpen}
+          onClose={() => setBiometricModalOpen(false)}
+          onAttendanceRecorded={handleAttendanceRecorded}
+          onSendAlert={triggerAlert}
+        />
+        <NotificationToast
+          alert={notificationAlert}
+          onClose={() => setNotificationAlert(null)}
+        />
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800">
+    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800 pb-16 md:pb-0 overflow-x-hidden">
       {/* Top Navbar */}
       <Navbar
-        onOpenLogin={() => setLoginModalOpen(true)}
+        onOpenLogin={() => setViewMode('login')}
         onOpenEnrollment={() => setEnrollmentModalOpen(true)}
         onOpenPayment={() => setPaymentModalOpen(true)}
         onOpenCampaign={() => setCampaignModalOpen(true)}
@@ -143,7 +196,7 @@ export default function App() {
         <main className="flex-1">
           {/* Hero Section */}
           <Hero
-            onOpenLogin={() => setLoginModalOpen(true)}
+            onOpenLogin={() => setViewMode('login')}
             onPlayVideo={() => {
               const el = document.getElementById('video-tour');
               if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -181,9 +234,24 @@ export default function App() {
       )}
 
       {/* Footer */}
-      <Footer onOpenLogin={() => setLoginModalOpen(true)} />
+      <Footer onOpenLogin={() => setViewMode('login')} />
 
-      {/* Role-Based Login Modal (Student, Teacher, Admin) */}
+      {/* Native Mobile Bottom Navigation Bar (Visible on mobile/tablets/APK) */}
+      <MobileBottomNav
+        currentPortal={currentPortal}
+        onGoHome={() => {
+          if (currentPortal) setCurrentPortal(null);
+          setViewMode('home');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        onOpenExamPortal={() => setExamPortalModalOpen(true)}
+        onOpenBiometric={() => setBiometricModalOpen(true)}
+        onOpenPayment={() => setPaymentModalOpen(true)}
+        onOpenLogin={() => setViewMode('login')}
+        onLogout={handleLogout}
+      />
+
+      {/* Role-Based Login Modal (Accessible from anywhere) */}
       <LoginModal
         isOpen={loginModalOpen}
         onClose={() => setLoginModalOpen(false)}

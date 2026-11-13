@@ -97,8 +97,8 @@ export default function Navbar({
             >
               <div className="relative w-12 h-12 rounded-full overflow-hidden shadow-md border-2 border-amber-400 bg-white flex items-center justify-center p-0.5 flex-shrink-0">
                 <img 
-                  src="./assets/sunrise_logo.svg" 
-                  alt="Sunrise Junior College Crest" 
+                  src="./assets/sunrise_official_logo.png" 
+                  alt="Sunrise Junior College Official Crest" 
                   className="w-full h-full object-contain"
                 />
               </div>
