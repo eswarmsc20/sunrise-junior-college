@@ -126,7 +126,8 @@
     z-index: auto !important;
   }
 
-  .print-modal-container > div {
+  .print-modal-container > div,
+  .print-modal-container .modal-scroll-body {
     position: static !important;
     display: block !important;
     background: transparent !important;
@@ -137,6 +138,7 @@
     width: 100% !important;
     max-width: 100% !important;
     height: auto !important;
+    max-height: none !important;
     overflow: visible !important;
     border-radius: 0 !important;
   }

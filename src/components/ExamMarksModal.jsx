@@ -74,17 +74,17 @@ Principal: Sri Andhavarapu Sudarshan Rao (8143217785)`;
 
   return (
     <div 
-      className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 overflow-y-auto print-modal-container cursor-pointer"
+      className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-5 print-modal-container cursor-pointer overflow-y-auto"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
     >
       <div 
-        className="relative bg-white rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl border border-slate-300 my-4 cursor-default"
+        className="relative bg-white rounded-3xl max-w-2xl w-full max-h-[92dvh] flex flex-col overflow-hidden shadow-2xl border border-slate-300 my-auto cursor-default"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Top Control Bar (Hidden from Print) */}
-        <div className="sticky top-0 z-50 bg-slate-900 text-white p-4 flex items-center justify-between no-print shadow-md">
+        {/* Top Control Bar (Pinned Header - Hidden from Print) */}
+        <div className="flex-shrink-0 bg-slate-900 text-white p-3.5 sm:p-4 flex items-center justify-between no-print shadow-md z-20">
           <div className="flex items-center gap-2">
             <span className="text-xs font-bold text-indigo-400 bg-indigo-500/20 px-2.5 py-0.5 rounded">
               Official Marks Memo
@@ -117,8 +117,8 @@ Principal: Sri Andhavarapu Sudarshan Rao (8143217785)`;
           </div>
         </div>
 
-        {/* Exam Selector Tabs (Hidden from Print) */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 p-2 bg-slate-100 border-b border-slate-200 gap-1 no-print">
+        {/* Exam Selector Tabs (Pinned - Hidden from Print) */}
+        <div className="flex-shrink-0 grid grid-cols-2 sm:grid-cols-4 p-2 bg-slate-100 border-b border-slate-200 gap-1 no-print z-10">
           {Object.keys(exams).map((ex) => (
             <button
               key={ex}
@@ -132,8 +132,10 @@ Principal: Sri Andhavarapu Sudarshan Rao (8143217785)`;
           ))}
         </div>
 
-        {/* Printable Official Marks Memo Card (Fits on EXACTLY 1 A4 Page) */}
-        <div className="printable-memo-card p-6 bg-white text-slate-900">
+        {/* Scrollable Body Container (Contains Printable Card and WhatsApp Actions) */}
+        <div className="flex-1 overflow-y-auto modal-scroll-body divide-y divide-slate-100">
+          {/* Printable Official Marks Memo Card (Fits on EXACTLY 1 A4 Page) */}
+          <div className="printable-memo-card p-5 sm:p-6 bg-white text-slate-900">
           
           {/* Official College Header */}
           <div className="border-b-2 border-slate-900 pb-3 text-center relative">
@@ -293,6 +295,7 @@ Principal: Sri Andhavarapu Sudarshan Rao (8143217785)`;
               Simulate Direct SMS Gateways (Send to Both)
             </button>
           </div>
+        </div>
         </div>
 
       </div>
