@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Sunrise Junior College</string>
+    <string name="title_activity_main">Sunrise Junior College</string>
+    <string name="package_name">com.sunrise.college</string>
+    <string name="custom_url_scheme">com.sunrise.college</string>
+</resources>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Play, Award, CheckCircle2, ShieldCheck, PhoneCall, Sparkles, CreditCard, Camera } from 'lucide-react';
+import { ArrowRight, Play, Award, CheckCircle2, ShieldCheck, PhoneCall, Sparkles, CreditCard, Camera, Download } from 'lucide-react';
 import { collegeInfo } from '../data/collegeData';
 
 export default function Hero({ onOpenLogin, onPlayVideo, onOpenPayment, onOpenExamPortal, onOpenBiometric }) {
@@ -109,6 +109,16 @@ export default function Hero({ onOpenLogin, onPlayVideo, onOpenPayment, onOpenEx
                 <Camera className="w-3.5 h-3.5 text-cyan-400" />
                 <span>50m Face Attendance</span>
               </button>
+
+              <a
+                href="./downloads/SunriseJuniorCollege.apk"
+                download="SunriseJuniorCollege.apk"
+                className="bg-lime-950/80 hover:bg-lime-900 border border-lime-500/40 text-lime-300 text-xs font-bold px-3 py-1 rounded-lg flex items-center gap-1.5 transition"
+                title="Download Official Android Mobile App (.apk)"
+              >
+                <Download className="w-3.5 h-3.5 text-lime-400" />
+                <span>Download Android APK</span>
+              </a>
             </div>
           </div>
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, Phone, ShieldCheck, UserCircle, LogIn, Sparkles, MapPin, UserPlus, CreditCard, Camera, Award, Clock } from 'lucide-react';
+import { Menu, X, Phone, ShieldCheck, UserCircle, LogIn, Sparkles, MapPin, UserPlus, CreditCard, Camera, Award, Clock, Download } from 'lucide-react';
 import { collegeInfo } from '../data/collegeData';
 
 export default function Navbar({ 
@@ -60,6 +60,16 @@ export default function Navbar({
                 <Camera className="w-3 h-3 text-cyan-400" />
                 <span>Face Biometric</span>
               </button>
+
+              <a
+                href="./downloads/SunriseJuniorCollege.apk"
+                download="SunriseJuniorCollege.apk"
+                className="text-[11px] text-lime-300 hover:text-lime-200 flex items-center gap-1 bg-lime-950/60 px-2.5 py-0.5 rounded border border-lime-700 transition font-bold"
+                title="Download Official Android Mobile App (.apk)"
+              >
+                <Download className="w-3 h-3 text-lime-400" />
+                <span>Android App (APK)</span>
+              </a>
             </div>
           </div>
 

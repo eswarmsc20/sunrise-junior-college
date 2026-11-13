@@ -4,3 +4,12 @@ dist-ssr
 *.local
 .vscode
 .idea
+
+# Android build outputs and caches
+android/.gradle/
+android/app/build/
+android/build/
+android/local.properties
+android/.idea/
+android/*.iml
+android/app/*.iml
