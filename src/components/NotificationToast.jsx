@@ -14,7 +14,7 @@ export default function NotificationToast({ alert, onClose }) {
   if (!alert) return null;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 max-w-md w-full bg-slate-900 text-white rounded-2xl p-4 shadow-2xl border border-amber-500/50 animate-bounce-short">
+    <div className="fixed bottom-6 right-6 z-50 max-w-md w-full bg-slate-900 text-white rounded-2xl p-4 shadow-2xl border border-amber-500/50 animate-bounce-short no-print">
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-start gap-3">
           <div className="w-9 h-9 rounded-xl bg-emerald-500 text-slate-950 flex items-center justify-center flex-shrink-0 mt-0.5">

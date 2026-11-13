@@ -11,7 +11,7 @@ export default function MobileBottomNav({
   onLogout 
 }) {
   return (
-    <nav className="fixed bottom-0 inset-x-0 z-40 bg-slate-950/95 backdrop-blur-lg border-t border-slate-800 text-white md:hidden shadow-2xl safe-area-pb">
+    <nav className="fixed bottom-0 inset-x-0 z-40 bg-slate-950/95 backdrop-blur-lg border-t border-slate-800 text-white md:hidden shadow-2xl safe-area-pb no-print">
       <div className="grid grid-cols-5 items-center justify-around h-16 px-1">
         
         {/* 1. Home */}

@@ -24,7 +24,7 @@ export default function Navbar({
   };
 
   return (
-    <header className="sticky top-0 z-50 shadow-md bg-white">
+    <header className="sticky top-0 z-50 shadow-md bg-white no-print">
       {/* Top Notification Bar - Desktop / Tablet Only */}
       <div className="hidden md:block bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white text-xs py-2 px-4 border-b border-indigo-900/40">
         <div className="max-w-7xl mx-auto flex justify-between items-center gap-2">

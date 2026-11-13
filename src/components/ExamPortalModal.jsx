@@ -38,13 +38,19 @@ export default function ExamPortalModal({ isOpen, onClose, onOpenMarksMemo }) {
     }
   }, [isOpen, formData.stream]);
 
-  // Close on Escape key
+  // Close on Escape key & manage print body class
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') onClose();
     };
-    if (isOpen) window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    if (isOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+      document.body.classList.add('modal-exam-open');
+    }
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.classList.remove('modal-exam-open');
+    };
   }, [isOpen, onClose]);
 
   // Filter questions dynamically: only questions uploaded/saved for this stream

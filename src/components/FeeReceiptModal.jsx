@@ -40,13 +40,19 @@ Principal Desk: 8143217785`;
   const studentWhatsApp = createWhatsAppLink(student.phone, receiptMessage);
   const fatherWhatsApp = createWhatsAppLink(student.fatherPhone || student.phone, receiptMessage);
 
-  // Close on Escape key
+  // Close on Escape key & manage print body class
   React.useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') onClose();
     };
-    if (isOpen) window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    if (isOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+      document.body.classList.add('modal-receipt-open');
+    }
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.classList.remove('modal-receipt-open');
+    };
   }, [isOpen, onClose]);
 
   return (
