@@ -104,17 +104,17 @@ export default function PaymentModal({ isOpen, onClose, onPaymentSuccess }) {
 
   return (
     <div 
-      className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 overflow-y-auto cursor-pointer"
+      className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 cursor-pointer"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
     >
       <div 
-        className="relative bg-white rounded-3xl max-w-xl w-full overflow-hidden shadow-2xl border border-slate-200 my-4 cursor-default"
+        className="relative bg-white rounded-3xl max-w-xl w-full max-h-[90dvh] flex flex-col overflow-hidden shadow-2xl border border-slate-200 cursor-default"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="sticky top-0 z-50 bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950 text-white p-5 sm:p-6 relative shadow-md">
+        <div className="flex-shrink-0 bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950 text-white p-5 sm:p-6 relative shadow-md">
           <button
             type="button"
             onClick={(e) => {
@@ -129,7 +129,7 @@ export default function PaymentModal({ isOpen, onClose, onPaymentSuccess }) {
             <X className="w-5 h-5 text-white stroke-[2.5]" />
           </button>
           
-          <div className="flex items-center gap-2 mb-2">
+          <div className="flex items-center gap-2 mb-2 pr-10">
             <span className="text-[11px] font-bold bg-amber-400 text-slate-950 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
               Instant UPI Gateway
             </span>
@@ -138,7 +138,7 @@ export default function PaymentModal({ isOpen, onClose, onPaymentSuccess }) {
             </span>
           </div>
 
-          <h2 className="text-2xl font-black tracking-tight text-white">
+          <h2 className="text-xl sm:text-2xl font-black tracking-tight text-white pr-10">
             Online Fee Payment Portal
           </h2>
           <p className="text-xs text-slate-300 mt-1">
@@ -146,9 +146,10 @@ export default function PaymentModal({ isOpen, onClose, onPaymentSuccess }) {
           </p>
         </div>
 
-        {/* Modal Body */}
-        {!isSuccess ? (
-          <form onSubmit={handleSimulatePayment} className="p-6 space-y-5">
+        {/* Modal Body Container with Smooth Scrolling */}
+        <div className="overflow-y-auto flex-1">
+          {!isSuccess ? (
+            <form onSubmit={handleSimulatePayment} className="p-6 space-y-5">
             {/* Quick Fee Presets */}
             <div>
               <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
@@ -358,6 +359,7 @@ export default function PaymentModal({ isOpen, onClose, onPaymentSuccess }) {
             </div>
           </div>
         )}
+        </div>
       </div>
     </div>
   );

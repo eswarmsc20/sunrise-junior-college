@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { App as CapApp } from '@capacitor/app';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -44,6 +45,48 @@ export default function App() {
 
   // Instant SMS / WhatsApp Notification Toast
   const [notificationAlert, setNotificationAlert] = useState(null);
+
+  // Native Android Hardware Back Button Handler
+  useEffect(() => {
+    let handlerPromise;
+    try {
+      handlerPromise = CapApp.addListener('backButton', () => {
+        if (examPortalModalOpen) {
+          setExamPortalModalOpen(false);
+        } else if (biometricModalOpen) {
+          setBiometricModalOpen(false);
+        } else if (paymentModalOpen) {
+          setPaymentModalOpen(false);
+        } else if (enrollmentModalOpen) {
+          setEnrollmentModalOpen(false);
+        } else if (campaignModalOpen) {
+          setCampaignModalOpen(false);
+        } else if (loginModalOpen) {
+          setLoginModalOpen(false);
+        } else if (activeReceiptStudent) {
+          setActiveReceiptStudent(null);
+        } else if (activeMarksStudent) {
+          setActiveMarksStudent(null);
+        } else if (viewMode === 'portal') {
+          handleLogout();
+        } else if (viewMode === 'home') {
+          setViewMode('login');
+        }
+      });
+    } catch (e) {
+      // Running outside Capacitor web environment
+    }
+
+    return () => {
+      if (handlerPromise && typeof handlerPromise.then === 'function') {
+        handlerPromise.then(h => h.remove()).catch(() => {});
+      }
+    };
+  }, [
+    examPortalModalOpen, biometricModalOpen, paymentModalOpen, 
+    enrollmentModalOpen, campaignModalOpen, loginModalOpen,
+    activeReceiptStudent, activeMarksStudent, viewMode
+  ]);
 
   const handleLoginSuccess = (portalData) => {
     setCurrentPortal(portalData);

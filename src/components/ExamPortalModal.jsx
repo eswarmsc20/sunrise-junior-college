@@ -192,17 +192,17 @@ export default function ExamPortalModal({ isOpen, onClose, onOpenMarksMemo }) {
 
   return (
     <div 
-      className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 overflow-y-auto print-modal-container cursor-pointer"
+      className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 print-modal-container cursor-pointer"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
     >
       <div 
-        className="relative bg-white rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl border border-slate-200 my-4 cursor-default"
+        className="relative bg-white rounded-3xl max-w-3xl w-full max-h-[92dvh] flex flex-col overflow-hidden shadow-2xl border border-slate-200 cursor-default"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Control Bar (Hidden from Print) */}
-        <div className="sticky top-0 z-50 bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950 text-white p-4 sm:p-5 flex items-center justify-between no-print shadow-md">
+        <div className="flex-shrink-0 bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950 text-white p-4 sm:p-5 flex items-center justify-between no-print shadow-md">
           <div>
             <div className="flex items-center gap-2 mb-1">
               <span className="text-[10px] font-bold bg-amber-400 text-slate-950 px-2 py-0.5 rounded uppercase tracking-wider">
@@ -210,7 +210,7 @@ export default function ExamPortalModal({ isOpen, onClose, onOpenMarksMemo }) {
               </span>
               <span className="text-xs text-slate-300">BIE AP Code: 01089</span>
             </div>
-            <h2 className="text-xl sm:text-2xl font-black text-white">
+            <h2 className="text-lg sm:text-2xl font-black text-white">
               {stage === 'register' && 'Candidate Registration for Examination'}
               {stage === 'hallticket' && 'Official Examination Hall Ticket Generated'}
               {stage === 'exam' && `Subject Examination: ${formData.stream} Stream`}
@@ -223,10 +223,11 @@ export default function ExamPortalModal({ isOpen, onClose, onOpenMarksMemo }) {
               <button
                 type="button"
                 onClick={handlePrint}
-                className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-xs px-3.5 py-2 rounded-xl flex items-center gap-1.5 transition shadow"
+                className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-xs px-3 sm:px-3.5 py-2 rounded-xl flex items-center gap-1.5 transition shadow"
               >
                 <Printer className="w-4 h-4" />
-                <span>Print 1-Page Document</span>
+                <span className="hidden sm:inline">Print 1-Page Document</span>
+                <span className="sm:hidden">Print</span>
               </button>
             )}
             <button
@@ -246,7 +247,7 @@ export default function ExamPortalModal({ isOpen, onClose, onOpenMarksMemo }) {
         </div>
 
         {/* Modal Stage Steps Indicator (Hidden from Print) */}
-        <div className="bg-slate-100 border-b border-slate-200 px-6 py-2.5 flex items-center justify-between text-xs font-bold no-print overflow-x-auto">
+        <div className="flex-shrink-0 bg-slate-100 border-b border-slate-200 px-4 sm:px-6 py-2.5 flex items-center justify-between text-xs font-bold no-print overflow-x-auto">
           <div className={`flex items-center gap-1.5 ${stage === 'register' ? 'text-indigo-600' : 'text-emerald-700'}`}>
             <span className="w-5 h-5 rounded-full bg-white border flex items-center justify-center text-[10px]">1</span>
             <span>Registration</span>
@@ -267,6 +268,9 @@ export default function ExamPortalModal({ isOpen, onClose, onOpenMarksMemo }) {
             <span>Marks Memo</span>
           </div>
         </div>
+
+        {/* Scrollable Stage Content Container */}
+        <div className="overflow-y-auto flex-1">
 
         {/* ========================================================
             STAGE 1: Candidate Registration
@@ -780,6 +784,7 @@ Principal: 8143217785`)}
             </div>
           </div>
         )}
+        </div>
 
       </div>
     </div>
