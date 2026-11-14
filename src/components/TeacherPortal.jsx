@@ -1,19 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   UserCheck, Calendar, BookOpen, Upload, LogOut, Check, X, Search, Filter, 
   Save, Sparkles, Receipt, Award, MessageSquare, MapPin, Plus, Trash2, Edit3, 
-  HelpCircle, CheckCircle2, FileText, ArrowRight
+  HelpCircle, CheckCircle2, FileText, ArrowRight, Clock, AlertCircle, Eye
 } from 'lucide-react';
 import initialStudentsData from '../data/studentsData.json';
 import { createWhatsAppLink } from '../utils/geoUtils';
 import { getSavedExamQuestions, saveExamQuestions } from '../data/defaultExamQuestions';
+import { getEnrolledStudents, getMarksApprovalRequests } from '../utils/marksApprovalService';
+import TeacherMarksEntryModal from './TeacherMarksEntryModal';
 import sunriseLogo from '../assets/sunrise_official_logo.png';
 
 export default function TeacherPortal({ teacher, onLogout, onOpenReceipt, onOpenMarks, onSendAlert, onOpenBiometric }) {
-  const [activeTab, setActiveTab] = useState('attendance'); // 'attendance' | 'exam_management'
+  const [activeTab, setActiveTab] = useState('attendance'); // 'attendance' | 'exam_management' | 'marks_management'
+
+  // --- STUDENTS & MARKS APPROVAL STATE ---
+  const [students, setStudents] = useState(() => getEnrolledStudents());
+  const [marksEntryStudent, setMarksEntryStudent] = useState(null);
+  const [marksRequests, setMarksRequests] = useState(() => getMarksApprovalRequests());
+  const [marksSearchTerm, setMarksSearchTerm] = useState('');
+  const [marksStreamFilter, setMarksStreamFilter] = useState('ALL');
+
+  useEffect(() => {
+    const handleStudentsUpdate = () => {
+      setStudents(getEnrolledStudents());
+    };
+    const handleApprovalsUpdate = () => {
+      setMarksRequests(getMarksApprovalRequests());
+    };
+    window.addEventListener('sunrise_students_updated', handleStudentsUpdate);
+    window.addEventListener('sunrise_marks_approvals_updated', handleApprovalsUpdate);
+    return () => {
+      window.removeEventListener('sunrise_students_updated', handleStudentsUpdate);
+      window.removeEventListener('sunrise_marks_approvals_updated', handleApprovalsUpdate);
+    };
+  }, []);
 
   // --- ATTENDANCE STATE ---
-  const [students, setStudents] = useState(initialStudentsData);
   const [selectedGroup, setSelectedGroup] = useState('MPC');
   const [searchTerm, setSearchTerm] = useState('');
   const [attendanceDate, setAttendanceDate] = useState(new Date().toISOString().split('T')[0]);
@@ -310,6 +333,23 @@ export default function TeacherPortal({ teacher, onLogout, onOpenReceipt, onOpen
               {examQuestions.length} Live
             </span>
           </button>
+
+          <button
+            onClick={() => setActiveTab('marks_management')}
+            className={`text-xs sm:text-sm font-bold px-5 py-3 rounded-2xl transition flex items-center gap-2 ${
+              activeTab === 'marks_management'
+                ? 'bg-emerald-900 text-white shadow-md ring-2 ring-amber-400/50'
+                : 'bg-white text-slate-700 hover:bg-slate-200 border border-slate-200'
+            }`}
+          >
+            <Award className="w-4 h-4 text-emerald-400" />
+            <span>Enter Marks & Admin Approvals (మార్క్స్ నమోదు)</span>
+            {marksRequests.filter(r => r.status === 'pending').length > 0 && (
+              <span className="bg-amber-400 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded-full ml-1 animate-pulse">
+                {marksRequests.filter(r => r.status === 'pending').length} Pending
+              </span>
+            )}
+          </button>
         </div>
 
         {/* ========================================================
@@ -472,14 +512,14 @@ export default function TeacherPortal({ teacher, onLogout, onOpenReceipt, onOpen
                             </button>
                           </td>
                           <td className="py-3 px-3 text-center">
-                            <div className="flex items-center justify-center gap-1.5">
+                            <div className="flex items-center justify-center gap-1.5 flex-wrap">
                               <button
-                                onClick={() => onOpenReceipt(s)}
-                                className="bg-amber-100 hover:bg-amber-200 text-amber-900 text-[11px] font-bold px-2 py-1 rounded-lg transition flex items-center gap-1"
-                                title="Generate Official Fee Receipt Only"
+                                onClick={() => setMarksEntryStudent(s)}
+                                className="bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg transition flex items-center gap-1 shadow-sm cursor-pointer"
+                                title="Enter Marks & Send for Admin Approval"
                               >
-                                <Receipt className="w-3 h-3" />
-                                <span>Fee Receipt</span>
+                                <Edit3 className="w-3 h-3" />
+                                <span>Enter Marks</span>
                               </button>
                               <button
                                 onClick={() => onOpenMarks(s)}
@@ -488,6 +528,14 @@ export default function TeacherPortal({ teacher, onLogout, onOpenReceipt, onOpen
                               >
                                 <Award className="w-3 h-3" />
                                 <span>Marks Memo</span>
+                              </button>
+                              <button
+                                onClick={() => onOpenReceipt(s)}
+                                className="bg-amber-100 hover:bg-amber-200 text-amber-900 text-[11px] font-bold px-2 py-1 rounded-lg transition flex items-center gap-1"
+                                title="Generate Official Fee Receipt Only"
+                              >
+                                <Receipt className="w-3 h-3" />
+                                <span>Receipt</span>
                               </button>
                             </div>
                           </td>
@@ -929,6 +977,272 @@ export default function TeacherPortal({ teacher, onLogout, onOpenReceipt, onOpen
 
           </div>
         )}
+
+        {/* ========================================================
+            TAB 3: MARKS ENTRY & ADMIN APPROVAL STATUS
+           ======================================================== */}
+        {activeTab === 'marks_management' && (
+          <div className="space-y-6">
+            {/* Banner & Stats */}
+            <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="bg-emerald-100 text-emerald-800 text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                    Staff Grading Desk
+                  </span>
+                  <span className="text-xs text-slate-500 font-semibold">Step 1: Faculty Entry → Step 2: Admin Approval</span>
+                </div>
+                <h2 className="text-xl sm:text-2xl font-black text-slate-900 flex items-center gap-2">
+                  <Award className="w-6 h-6 text-emerald-600" />
+                  <span>Enter Student Marks (మార్క్స్ నమోదు & స్థితి)</span>
+                </h2>
+                <p className="text-xs text-slate-600 mt-1">
+                  Enter Unit Test, Quarterly, and Half-Yearly marks for students. All submitted marks are forwarded to Principal / Admin for verification and published directly to the official Marks Memo.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-2 w-full md:w-auto">
+                <div className="bg-amber-50 border border-amber-200 rounded-2xl p-3 flex-1 md:flex-none text-center min-w-[100px]">
+                  <span className="block text-2xl font-black text-amber-600 leading-none">
+                    {marksRequests.filter(r => r.status === 'pending').length}
+                  </span>
+                  <span className="text-[10px] font-bold text-amber-900 uppercase">Pending Admin</span>
+                </div>
+                <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-3 flex-1 md:flex-none text-center min-w-[100px]">
+                  <span className="block text-2xl font-black text-emerald-600 leading-none">
+                    {marksRequests.filter(r => r.status === 'approved').length}
+                  </span>
+                  <span className="text-[10px] font-bold text-emerald-900 uppercase">Approved</span>
+                </div>
+                <div className="bg-indigo-50 border border-indigo-200 rounded-2xl p-3 flex-1 md:flex-none text-center min-w-[100px]">
+                  <span className="block text-2xl font-black text-indigo-700 leading-none">
+                    {students.length}
+                  </span>
+                  <span className="text-[10px] font-bold text-indigo-900 uppercase">Students</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Students Marks Entry Directory */}
+            <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-xs font-bold text-slate-700">Filter Stream:</span>
+                  <div className="flex flex-wrap gap-1 bg-slate-100 p-1 rounded-xl">
+                    {['ALL', 'MPC', 'BiPC', 'HEC'].map((grp) => (
+                      <button
+                        key={grp}
+                        onClick={() => setMarksStreamFilter(grp)}
+                        className={`text-xs font-bold px-3 py-1.5 rounded-lg transition ${
+                          marksStreamFilter === grp ? 'bg-emerald-600 text-white shadow' : 'text-slate-600 hover:text-slate-900'
+                        }`}
+                      >
+                        {grp === 'ALL' ? 'All Streams' : grp}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="relative w-full sm:w-72">
+                  <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
+                  <input
+                    type="text"
+                    placeholder="Search student by name or hall ticket..."
+                    value={marksSearchTerm}
+                    onChange={(e) => setMarksSearchTerm(e.target.value)}
+                    className="w-full text-xs pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:border-emerald-600 transition"
+                  />
+                </div>
+              </div>
+
+              {/* Student Table for Direct Marks Entry */}
+              <div className="overflow-x-auto rounded-2xl border border-slate-200">
+                <table className="w-full text-left text-xs">
+                  <thead className="bg-slate-900 text-white font-bold uppercase text-[11px]">
+                    <tr>
+                      <th className="py-3 px-4">Hall Ticket / Roll</th>
+                      <th className="py-3 px-4">Student Name</th>
+                      <th className="py-3 px-4">Stream</th>
+                      <th className="py-3 px-4 text-center">Marks Action</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100">
+                    {students
+                      .filter(s => {
+                        const matchesStream = marksStreamFilter === 'ALL' || s.group === marksStreamFilter;
+                        const term = marksSearchTerm.toLowerCase();
+                        const matchesSearch = s.name.toLowerCase().includes(term) || s.hallTicket.toLowerCase().includes(term);
+                        return matchesStream && matchesSearch;
+                      })
+                      .slice(0, 15)
+                      .map((s) => (
+                        <tr key={s.id} className="hover:bg-slate-50/70 transition">
+                          <td className="py-3 px-4 font-mono font-bold text-slate-900">{s.hallTicket}</td>
+                          <td className="py-3 px-4">
+                            <span className="font-bold text-slate-950 block">{s.name}</span>
+                            <span className="text-[10px] text-slate-500 font-mono">Adm: {s.admissionNo || 'SJC-2026-001'}</span>
+                          </td>
+                          <td className="py-3 px-4">
+                            <span className="font-bold text-amber-800">{s.groupFull || s.group}</span>
+                          </td>
+                          <td className="py-3 px-4 text-center">
+                            <div className="flex items-center justify-center gap-2">
+                              <button
+                                onClick={() => setMarksEntryStudent(s)}
+                                className="bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-black text-xs px-3.5 py-1.5 rounded-xl transition flex items-center gap-1.5 shadow-sm cursor-pointer"
+                              >
+                                <Edit3 className="w-3.5 h-3.5" />
+                                <span>Enter / Update Marks</span>
+                              </button>
+                              <button
+                                onClick={() => onOpenMarks(s)}
+                                className="bg-indigo-50 hover:bg-indigo-100 text-indigo-900 font-bold text-xs px-3 py-1.5 rounded-xl transition flex items-center gap-1 border border-indigo-200"
+                              >
+                                <Award className="w-3.5 h-3.5 text-indigo-600" />
+                                <span>View Memo</span>
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Submissions & Approvals Audit History */}
+            <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="text-base font-black text-slate-900 flex items-center gap-2">
+                    <Clock className="w-5 h-5 text-amber-500" />
+                    <span>My Marks Submissions & Admin Approval Status</span>
+                  </h3>
+                  <p className="text-xs text-slate-500 mt-0.5">Track whether Principal / Admin has approved or returned your marks entries</p>
+                </div>
+              </div>
+
+              {marksRequests.length === 0 ? (
+                <div className="text-center py-10 bg-slate-50 rounded-2xl border border-slate-200">
+                  <Award className="w-10 h-10 text-slate-300 mx-auto mb-2" />
+                  <p className="text-xs font-bold text-slate-700">No marks submissions logged yet.</p>
+                  <p className="text-[11px] text-slate-500 mt-0.5">Click "Enter / Update Marks" on any student above to submit marks for Admin review.</p>
+                </div>
+              ) : (
+                <div className="overflow-x-auto rounded-2xl border border-slate-200">
+                  <table className="w-full text-left text-xs">
+                    <thead className="bg-slate-100 text-slate-700 font-bold uppercase text-[11px] border-b border-slate-200">
+                      <tr>
+                        <th className="py-2.5 px-3">Req ID</th>
+                        <th className="py-2.5 px-3">Student</th>
+                        <th className="py-2.5 px-3">Exam</th>
+                        <th className="py-2.5 px-3 text-center">Score</th>
+                        <th className="py-2.5 px-3">Submitted At</th>
+                        <th className="py-2.5 px-3 text-center">Admin Approval Status</th>
+                        <th className="py-2.5 px-3 text-right">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100">
+                      {marksRequests.map((req) => {
+                        const marksEntries = Object.entries(req.marks || {});
+                        const isUT = req.examName?.includes('25M');
+                        const maxPerSub = isUT ? 25 : 100;
+                        const totalScored = marksEntries.reduce((sum, [, val]) => sum + (Number(val) || 0), 0);
+                        const totalMax = marksEntries.length * maxPerSub;
+                        const isPending = req.status === 'pending';
+                        const isApproved = req.status === 'approved';
+                        const isRejected = req.status === 'rejected';
+
+                        return (
+                          <tr key={req.id} className="hover:bg-slate-50">
+                            <td className="py-2.5 px-3 font-mono font-bold text-slate-600">{req.id.split('-').slice(0, 3).join('-')}</td>
+                            <td className="py-2.5 px-3 font-bold text-slate-900">
+                              <span>{req.studentName}</span>
+                              <span className="block font-mono text-[10px] text-slate-500">{req.hallTicket}</span>
+                            </td>
+                            <td className="py-2.5 px-3 font-semibold text-indigo-900">{req.examName}</td>
+                            <td className="py-2.5 px-3 text-center font-mono font-black text-slate-950">
+                              {totalScored} / {totalMax}
+                            </td>
+                            <td className="py-2.5 px-3 text-slate-500">{req.submittedAt}</td>
+                            <td className="py-2.5 px-3 text-center">
+                              {isPending && (
+                                <span className="inline-flex items-center gap-1 bg-amber-100 text-amber-800 text-[10px] font-black px-2.5 py-1 rounded-full animate-pulse">
+                                  <Clock className="w-3 h-3" />
+                                  <span>Pending Admin Review</span>
+                                </span>
+                              )}
+                              {isApproved && (
+                                <div className="space-y-0.5">
+                                  <span className="inline-flex items-center gap-1 bg-emerald-100 text-emerald-800 text-[10px] font-black px-2.5 py-1 rounded-full">
+                                    <Check className="w-3 h-3 stroke-[3]" />
+                                    <span>Approved by Admin</span>
+                                  </span>
+                                  {req.actionTakenAt && (
+                                    <span className="block text-[9px] text-slate-400 font-mono">{req.actionTakenAt}</span>
+                                  )}
+                                </div>
+                              )}
+                              {isRejected && (
+                                <div className="space-y-0.5">
+                                  <span className="inline-flex items-center gap-1 bg-red-100 text-red-800 text-[10px] font-black px-2.5 py-1 rounded-full">
+                                    <X className="w-3 h-3 stroke-[3]" />
+                                    <span>Action Required</span>
+                                  </span>
+                                  {req.adminRemarks && (
+                                    <span className="block text-[10px] text-red-600 italic">"{req.adminRemarks}"</span>
+                                  )}
+                                </div>
+                              )}
+                            </td>
+                            <td className="py-2.5 px-3 text-right">
+                              {isApproved ? (
+                                <button
+                                  onClick={() => {
+                                    const stu = students.find(s => s.id === req.studentId || s.hallTicket === req.hallTicket);
+                                    if (stu) onOpenMarks(stu);
+                                  }}
+                                  className="text-indigo-600 hover:text-indigo-900 font-bold text-xs inline-flex items-center gap-1"
+                                >
+                                  <Eye className="w-3 h-3" />
+                                  <span>View Memo</span>
+                                </button>
+                              ) : isRejected ? (
+                                <button
+                                  onClick={() => {
+                                    const stu = students.find(s => s.id === req.studentId || s.hallTicket === req.hallTicket);
+                                    if (stu) setMarksEntryStudent(stu);
+                                  }}
+                                  className="bg-red-600 hover:bg-red-700 text-white font-bold text-[11px] px-2.5 py-1 rounded-lg shadow-sm"
+                                >
+                                  Resubmit
+                                </button>
+                              ) : (
+                                <span className="text-slate-400 text-[11px]">Awaiting Admin</span>
+                              )}
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Teacher Marks Entry Modal */}
+        <TeacherMarksEntryModal
+          isOpen={!!marksEntryStudent}
+          onClose={() => setMarksEntryStudent(null)}
+          student={marksEntryStudent}
+          teacher={teacher}
+          onSendAlert={onSendAlert}
+          onSubmitted={() => {
+            setMarksRequests(getMarksApprovalRequests());
+          }}
+        />
 
       </div>
     </div>

@@ -23,7 +23,18 @@ export default function ExamMarksModal({ isOpen, onClose, student, onSendAlert }
 
   if (!isOpen || !student) return null;
 
-  const exams = student.examReports || {
+  // Retrieve latest fresh copy of student data from localStorage if updated
+  let freshStudent = student;
+  try {
+    const saved = localStorage.getItem('sunrise_enrolled_students');
+    if (saved) {
+      const all = JSON.parse(saved);
+      const found = all.find(s => s.id === student.id || s.hallTicket === student.hallTicket);
+      if (found) freshStudent = found;
+    }
+  } catch (e) {}
+
+  const exams = freshStudent.examReports || {
     'Unit Test - 1 (25M)': { 'Maths/Botany': 24, 'Physics/Zoology': 23, 'Chemistry': 22, 'English': 23, 'Sanskrit': 24 },
     'Unit Test - 2 (25M)': { 'Maths/Botany': 25, 'Physics/Zoology': 22, 'Chemistry': 24, 'English': 24, 'Sanskrit': 25 },
     'Quarterly Exam (100M)': { 'Maths/Botany': 92, 'Physics/Zoology': 88, 'Chemistry': 85, 'English': 90, 'Sanskrit': 98 },

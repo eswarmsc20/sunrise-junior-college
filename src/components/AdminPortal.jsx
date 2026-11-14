@@ -4,6 +4,8 @@ import initialStudents from '../data/studentsData.json';
 import initialTeachers from '../data/teachersData.json';
 import { createWhatsAppLink } from '../utils/geoUtils';
 import { getSavedExamQuestions, saveExamQuestions, DEFAULT_EXAM_QUESTIONS } from '../data/defaultExamQuestions';
+import { getMarksApprovalRequests, getEnrolledStudents } from '../utils/marksApprovalService';
+import AdminMarksApprovalSection from './AdminMarksApprovalSection';
 import sunriseLogo from '../assets/sunrise_official_logo.png';
 
 export default function AdminPortal({ 
@@ -18,7 +20,7 @@ export default function AdminPortal({
   onOpenBiometric,
   onOpenExamPortal
 }) {
-  const [activeTab, setActiveTab] = useState('students'); // 'students' | 'faculty' | 'attendance' | 'enroll_student' | 'enroll_teacher' | 'inquiries' | 'exam_questions'
+  const [activeTab, setActiveTab] = useState('students'); // 'students' | 'faculty' | 'attendance' | 'enroll_student' | 'enroll_teacher' | 'inquiries' | 'exam_questions' | 'marks_approvals'
   
   const [students, setStudents] = useState(() => {
     const saved = localStorage.getItem('sunrise_enrolled_students');
@@ -29,6 +31,23 @@ export default function AdminPortal({
     const saved = localStorage.getItem('sunrise_enrolled_teachers');
     return saved ? JSON.parse(saved) : initialTeachers;
   });
+
+  const [marksApprovals, setMarksApprovals] = useState(() => getMarksApprovalRequests());
+  
+  useEffect(() => {
+    const handleApprovals = () => {
+      setMarksApprovals(getMarksApprovalRequests());
+    };
+    const handleStudents = () => {
+      setStudents(getEnrolledStudents());
+    };
+    window.addEventListener('sunrise_marks_approvals_updated', handleApprovals);
+    window.addEventListener('sunrise_students_updated', handleStudents);
+    return () => {
+      window.removeEventListener('sunrise_marks_approvals_updated', handleApprovals);
+      window.removeEventListener('sunrise_students_updated', handleStudents);
+    };
+  }, []);
   
   const [searchTerm, setSearchTerm] = useState('');
   const [groupFilter, setGroupFilter] = useState('ALL');
@@ -576,6 +595,21 @@ export default function AdminPortal({
             <BookOpen className="w-4 h-4 text-amber-400" />
             <span>Master Exam Bank ({examQuestions.length})</span>
           </button>
+
+          <button
+            onClick={() => setActiveTab('marks_approvals')}
+            className={`text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-2 ${
+              activeTab === 'marks_approvals' ? 'bg-indigo-900 text-white shadow ring-2 ring-emerald-400' : 'bg-white text-slate-700 hover:bg-slate-200'
+            }`}
+          >
+            <Award className="w-4 h-4 text-emerald-400" />
+            <span>Marks Approvals (మార్క్స్ ఆమోదం)</span>
+            {marksApprovals.filter(r => r.status === 'pending').length > 0 && (
+              <span className="bg-amber-400 text-slate-950 px-2 py-0.5 rounded-full text-[10px] font-black animate-pulse">
+                {marksApprovals.filter(r => r.status === 'pending').length} Pending
+              </span>
+            )}
+          </button>
         </div>
 
         {/* Global Feedback Banner */}
@@ -585,6 +619,7 @@ export default function AdminPortal({
             <span>{enrollSuccessMessage}</span>
           </div>
         )}
+
 
         {/* Tab 1: Students Directory */}
         {activeTab === 'students' && (
@@ -709,6 +744,7 @@ export default function AdminPortal({
           </div>
         )}
 
+
         {/* Tab 2: Faculty Directory */}
         {activeTab === 'faculty' && (
           <div className="space-y-4">
@@ -776,6 +812,7 @@ export default function AdminPortal({
             </div>
           </div>
         )}
+
 
         {/* Tab 3: Enroll Student Form */}
         {activeTab === 'enroll_student' && (
@@ -925,6 +962,7 @@ export default function AdminPortal({
             </form>
           </div>
         )}
+
 
         {/* Tab 4: Enroll Teacher Form */}
         {activeTab === 'enroll_teacher' && (
@@ -1081,6 +1119,7 @@ export default function AdminPortal({
           </div>
         )}
 
+
         {/* Tab 5: GPS Geofence (50m) Attendance */}
         {activeTab === 'attendance' && (
           <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
@@ -1169,6 +1208,7 @@ export default function AdminPortal({
           </div>
         )}
 
+
         {/* Tab 6: Web Inquiries */}
         {activeTab === 'inquiries' && (
           <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-5">
@@ -1222,6 +1262,7 @@ export default function AdminPortal({
             )}
           </div>
         )}
+
 
         {/* Tab 7: Master Exam Bank & Question Management */}
         {activeTab === 'exam_questions' && (
@@ -1677,6 +1718,19 @@ export default function AdminPortal({
 
           </div>
         )}
+
+        {/* Tab 8: Marks Approval & Verification Suite */}
+        {activeTab === 'marks_approvals' && (
+          <AdminMarksApprovalSection
+            admin={admin}
+            onOpenMarks={onOpenMarks}
+            onSendAlert={onSendAlert}
+            onStudentsUpdated={() => {
+              setStudents(getEnrolledStudents());
+            }}
+          />
+        )}
+
 
       </div>
     </div>
